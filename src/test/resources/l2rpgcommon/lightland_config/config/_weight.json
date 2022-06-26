@@ -1,0 +1,11 @@
+{
+  "_class": "dev.xkmc.lightland.content.common.capability.restriction.ArmorWeight",
+  "entries": {},
+  "materials": {},
+  "suffixes": [
+	"helmet",
+	"chestplate",
+	"leggings",
+	"boots"
+  ]
+}

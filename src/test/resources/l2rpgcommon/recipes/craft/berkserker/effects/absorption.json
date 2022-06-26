@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+	"FVF",
+	"FLF",
+	"FVF"
+  ],
+  "key": {
+	"L": {
+	  "item": "minecraft:leather"
+	},
+	"V": {
+	  "item": "minecraft:vine"
+	},
+	"F": {
+	  "item": "minecraft:blue_orchid"
+	}
+  },
+  "result": {
+	"item": "lightland:medicine_leather",
+	"nbt": {
+	  "CustomPotionEffects": [
+		{
+		  "Id": 22,
+		  "Amplifier": 0,
+		  "Duration": 200
+		}
+	  ]
+	}
+  }
+}

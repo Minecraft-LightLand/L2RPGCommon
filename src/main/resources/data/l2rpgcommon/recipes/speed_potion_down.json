@@ -1,0 +1,66 @@
+{
+    "type": "lightland:ritual_potion_boost",
+    "effect": "minecraft:speed",
+    "modify_level": 1,
+    "magic_recipe": "lightland:effect_speed",
+    "levels": [100,40,30,27,26],
+    "core": {
+        "input": {
+            "item": "lightland:potion_core",
+            "nbt": {
+                "CustomPotionEffects": [
+                    {
+                        "Id": 1,
+                        "Duration": 200
+                    }
+                ]
+            }
+        },
+        "output": {
+            "item": "lightland:potion_core"
+        }
+    },
+    "side": [
+        {
+            "input": {
+                "item": "minecraft:redstone"
+            }
+        },
+        {
+            "input": {
+                "item": "minecraft:sugar"
+            }
+        },
+        {
+            "input": {
+                "item": "minecraft:redstone"
+            }
+        },
+        {
+            "input": {
+                "item": "minecraft:nether_wart"
+            }
+        },
+        {
+            "input": {
+                "item": "minecraft:nether_wart"
+            }
+        },
+        {
+            "input": {
+                "item": "minecraft:redstone"
+            }
+        },
+        {
+            "input": {
+                "item": "minecraft:sugar"
+            }
+        },
+        {
+            "input": {
+                "item": "minecraft:redstone"
+            }
+        }
+    ]
+}
+

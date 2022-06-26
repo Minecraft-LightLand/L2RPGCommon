@@ -1,0 +1,209 @@
+{
+  "item.l2rpgcommon": {
+	"ability_book": "职业书",
+	"arcane_inject_book": "奥术注魔书(创造)",
+	"coal_iron_mix": "生铁混合物",
+	"copper_arrow": "铜头箭",
+	"disenchant_book": "卸魔书(创造)",
+	"dispell_arrow": "破魔箭",
+	"eagle_bow": "鹰之号角",
+	"enchant_apple": "魔力金苹果",
+	"enchant_carrot": "魔力金胡萝卜",
+	"enchant_cookie": "魔力金曲奇",
+	"enchant_melon": "魔力金西瓜片",
+	"ender_aim_bow": "末影弓",
+	"ender_arrow": "末影箭",
+	"ender_backpack": "末影背包",
+	"ender_pocket": "空间升级组件",
+	"fire_arrow_lv1": "魂火箭",
+	"fire_arrow_lv2": "业火箭",
+	"frozen_arrow": "寒冰箭",
+	"gilded_arcane_axe": "奥术斧",
+	"gilded_arcane_sword": "奥术剑",
+	"glow_aim_bow": "荧光弓",
+	"hot_coal_iron_mix": "炽热的生铁",
+	"incomplete_ender_pocket": "未完成空间组件",
+	"iron_arrow": "铁头箭",
+	"iron_bow": "铁弓",
+	"king_leather": "玄牛皮",
+	"king_med_leather": "浸药玄牛皮",
+	"magic_book": "魔导书",
+	"magic_wand": "法杖",
+	"magnify_bow": "放大镜弓",
+	"medicine_leather": "药草革",
+	"no_fall_arrow": "悬浮箭",
+	"obsidian_arrow": "黑曜石箭",
+	"potion_core": "药水核心",
+	"processing_leather": "加工中的皮革",
+	"processing_steel": "未成形的钢",
+	"record_pearl": "记录宝珠",
+	"spell_card": "符文卡片",
+	"spell_craft_book": "符文合成书(创造)",
+	"spell_parchment": "符文卷轴",
+	"spell_scroll": "符文原典",
+	"starter_arrow": "基础箭",
+	"starter_bow": "基础弓",
+	"strong_leather": "强化皮革",
+	"tnt_arrow_lv1": "爆裂箭",
+	"tnt_arrow_lv2": "TNT箭",
+	"tnt_arrow_lv3": "末影水晶箭",
+	"wind_bow": "八坂的神风",
+	"layline_orb": "游离的地脉能量",
+	"cursed_droplet": "诅咒泪滴",
+	"knight_scrap": "骑士甲碎片",
+	"dispell_dust": "驱魔粉",
+	"cleanse_water_bottle": "瓶装净化水",
+	"holy_water_bottle": "瓶装圣水",
+	"oldroot": "石化世界树根",
+	"layline_heart": "地脉之心",
+	"acid_slime": "酸液球",
+	"dirty_slime": "结合源质",
+	"acid_arrow": "酸液箭",
+	"slime_tentacle": "史莱姆触手",
+	"good_soul": "解放的灵魂",
+	"bad_soul": "怨灵",
+	"holy_powder": "神圣粉末",
+	"unstable_slime": "不稳定生命源质",
+	"boss_slime": "变异源质"
+  },
+  "block.l2rpgcommon": {
+	"ritual_core": "仪式祭坛",
+	"ritual_side": "仪式祭台",
+	"layline_head": "地脉根冠",
+	"layroot_body": "世界树根",
+	"layroot_head": "世界树根",
+	"layline_charger": "地脉充能器",
+	"slime_carpet": "粘液层",
+	"slime_vine": "粘液藤蔓",
+	"maze_wall": "再生石"
+  },
+  "-cartesian": {
+	"leathers": {
+	  "path": "item.l2rpgcommon",
+	  "list": [
+		{
+		  "medicine_leather": "药草皮革",
+		  "king_leather": "玄牛皮"
+		},
+		{
+		  "boots": "靴子",
+		  "chestplate": "外套",
+		  "helmet": "帽子",
+		  "leggings": "裤子"
+		}
+	  ]
+	},
+	"gen_item": {
+	  "path": "item.l2rpgcommon",
+	  "list": [
+		{
+		  "steel": "钢",
+		  "layroot": "铁木",
+		  "layline": "地脉",
+		  "oldroot": "古木",
+		  "knightsteel": "骑士",
+		  "heavysteel": "重装",
+		  "dispellium": "破魔",
+		  "ethernium": "永恒"
+		},
+		{
+		  "helmet": "头盔",
+		  "chestplate": "胸甲",
+		  "leggings": "护腿",
+		  "boots": "靴子",
+		  "sword": "剑",
+		  "axe": "斧头",
+		  "shovel": "铲子",
+		  "pickaxe": "镐子",
+		  "hoe": "锄头"
+		}
+	  ]
+	},
+	"gen_item_mat": {
+	  "path": "item.l2rpgcommon",
+	  "list": [
+		{
+		  "lead": "铅",
+		  "enchant_gold": "蓄魔金",
+		  "steel": "钢",
+		  "layroot": "铁木",
+		  "layline": "地脉",
+		  "oldroot": "古木",
+		  "knightsteel": "骑士钢",
+		  "heavysteel": "重装钢",
+		  "dispellium": "破魔钢",
+		  "magicium": "魔导合金",
+		  "ethernium": "永恒钢"
+		},
+		{
+		  "ingot": "锭",
+		  "nugget": "粒"
+		}
+	  ]
+	},
+	"gen_block_mat": {
+	  "path": "block.l2rpgcommon",
+	  "list": [
+		{
+		  "lead": "铅",
+		  "enchant_gold": "蓄魔金",
+		  "steel": "钢",
+		  "layroot": "铁木",
+		  "layline": "地脉",
+		  "oldroot": "古木",
+		  "knightsteel": "骑士",
+		  "heavysteel": "重装",
+		  "dispellium": "破魔钢",
+		  "magicium": "魔导合金",
+		  "ethernium": "永恒钢"
+		},
+		{
+		  "block": "块"
+		}
+	  ]
+	},
+	"spawn_egg": {
+	  "path": "item.l2rpgcommon",
+	  "list": [
+		{
+		  "layline_skeleton": "地脉骸骨",
+		  "layline_zombie": "地脉躯壳",
+		  "cursed_knight": "诅咒骑士",
+		  "cursed_archer": "诅咒射手",
+		  "cursed_shield": "诅咒重盾",
+		  "potion_slime": "药水史莱姆",
+		  "stone_slime": "石莱姆",
+		  "vine_slime": "藤蔓史莱姆",
+		  "carpet_slime": "不稳定史莱姆",
+		  "boss_slime": "史莱姆王"
+		},
+		{
+		  "spawn_egg": "生成蛋"
+		}
+	  ]
+	},
+	"potion": {
+	  "path": "item.minecraft",
+	  "use_dot": true,
+	  "list": [
+		{
+		  "lingering_potion": "滞留型",
+		  "potion": "",
+		  "splash_potion": "喷溅型"
+		},
+		{
+		  "effect": ""
+		},
+		{
+		  "cleanse_water": "净化药水",
+		  "long_cleanse_water": "净化药水",
+		  "holy_water": "神圣药水",
+		  "long_holy_water": "神圣药水",
+		  "dispell": "破魔药水",
+		  "long_dispell": "破魔药水",
+		  "strong_dispell": "破魔药水"
+		}
+	  ]
+	}
+  }
+}
