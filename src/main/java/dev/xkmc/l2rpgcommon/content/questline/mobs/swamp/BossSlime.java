@@ -5,7 +5,7 @@ import dev.xkmc.l2library.util.data.LootTableTemplate;
 import dev.xkmc.l2rpgcommon.content.common.item.generic.GenericTieredItem;
 import dev.xkmc.l2rpgcommon.init.registrate.LightlandEntities;
 import dev.xkmc.l2rpgcommon.init.registrate.LightlandItems;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandVanillaMagic;
+import dev.xkmc.l2rpgcommon.init.registrate.LightlangEffects;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
@@ -59,7 +59,7 @@ public class BossSlime extends MaterialSlime<BossSlime> {
 	@Override
 	public void aiStep() {
 		super.aiStep();
-		boolean flag = hasEffect(LightlandVanillaMagic.DISPELL.get()) || hasEffect(LightlandVanillaMagic.CLEANSE.get());
+		boolean flag = hasEffect(LightlangEffects.DISPELL.get()) || hasEffect(LightlangEffects.CLEANSE.get());
 		if (this.tickCount % 20 == 0) {
 			if (!flag) {
 				this.heal(1);
@@ -91,7 +91,7 @@ public class BossSlime extends MaterialSlime<BossSlime> {
 
 	@Override
 	public void actuallyHurt(DamageSource source, float damage) {
-		MobEffectInstance ins = getEffect(LightlandVanillaMagic.DISPELL.get());
+		MobEffectInstance ins = getEffect(LightlangEffects.DISPELL.get());
 		float new_damage = recalculateDamage(source, damage);
 		if (ins != null && new_damage < damage) {
 			int factor = 1 << (ins.getAmplifier() + 1);

@@ -10,16 +10,12 @@ import java.util.Map;
 import java.util.TreeMap;
 
 @SerialClass
-public class DefMagicRecipe extends IMagicRecipe<DefMagicRecipe> {
+public class DefMagicRecipe extends IMagicRecipe {
 
 	@SerialClass.SerialField
 	public TreeMap<String, MagicElement> elements = new TreeMap<>();
 	@SerialClass.SerialField
 	public String[] flows;
-
-	public DefMagicRecipe(ResourceLocation id) {
-		super(id, LightlandRecipe.RSM_DEF.get());
-	}
 
 	private static boolean flowRegex(char[] chars, String s0, String s1, boolean[][] bools, boolean bidirect) {
 		int[] i0 = new int[s0.length()];
@@ -93,7 +89,7 @@ public class DefMagicRecipe extends IMagicRecipe<DefMagicRecipe> {
 		for (Map.Entry<String, MagicElement> ent : elements.entrySet()) {
 			elems[i] = ent.getValue();
 			if (ent.getKey().length() != 1)
-				LogManager.getLogger().error("key length not 1 in " + this.id);
+				LogManager.getLogger().error("key length not 1 in " + getID());
 			chars[i] = ent.getKey().charAt(0);
 			i++;
 		}
@@ -102,15 +98,15 @@ public class DefMagicRecipe extends IMagicRecipe<DefMagicRecipe> {
 			if (flow.contains("<->")) {
 				String[] strs = flow.split("<->");
 				if (strs.length != 2 || !flowRegex(chars, strs[0], strs[1], bools, true))
-					LogManager.getLogger().error("illegal side expression" + flow + " in " + this.id);
+					LogManager.getLogger().error("illegal side expression" + flow + " in " + getID());
 			} else if (flow.contains("->")) {
 				String[] strs = flow.split("->");
 				if (strs.length != 2 || !flowRegex(chars, strs[0], strs[1], bools, false))
-					LogManager.getLogger().error("illegal side expression " + flow + " in " + this.id);
+					LogManager.getLogger().error("illegal side expression " + flow + " in " + getID());
 			} else if (flow.endsWith("|")) {
 				if (!flowRound(chars, flow.substring(0, flow.length() - 1), bools))
-					LogManager.getLogger().error("illegal round expression " + flow + " in " + this.id);
-			} else LogManager.getLogger().error("illegal connector " + flow + " in " + this.id);
+					LogManager.getLogger().error("illegal round expression " + flow + " in " + getID());
+			} else LogManager.getLogger().error("illegal connector " + flow + " in " + getID());
 		}
 		register(elems, bools);
 	}

@@ -80,7 +80,7 @@ public class MagicCraftRecipeCategory extends BaseRecipeCategory<AbstractRitualR
 		}
 		MagicWand wand = LightlandItems.MAGIC_WAND.get();
 		ItemStack wand_stack = wand.getDefaultInstance();
-		IMagicRecipe<?> magic = recipe.getMagic() == null ? null : CapProxy.getHandler().magicHolder.getRecipe(recipe.getMagic());
+		IMagicRecipe magic = recipe.getMagic() == null ? null : CapProxy.getHandler().magicHolder.getRecipe(recipe.getMagic());
 		if (magic != null) {
 			wand.setMagic(magic, wand_stack);
 		}

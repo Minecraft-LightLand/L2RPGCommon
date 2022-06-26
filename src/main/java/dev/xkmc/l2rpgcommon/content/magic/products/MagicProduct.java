@@ -25,9 +25,9 @@ public class MagicProduct<I, P extends MagicProduct<I, P>> extends IMagicProduct
 
 	public final NBTObj tag;
 	public final LLPlayerData player;
-	public final IMagicRecipe<?> recipe;
+	public final IMagicRecipe recipe;
 
-	public MagicProduct(MagicProductType<I, P> type, LLPlayerData player, NBTObj tag, ResourceLocation rl, IMagicRecipe<?> r) {
+	public MagicProduct(MagicProductType<I, P> type, LLPlayerData player, NBTObj tag, ResourceLocation rl, IMagicRecipe r) {
 		super(type, rl);
 		this.tag = tag;
 		this.player = player;

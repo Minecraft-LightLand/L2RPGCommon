@@ -1,14 +1,17 @@
 package dev.xkmc.l2rpgcommon.network.config;
 
-import dev.xkmc.l2library.serial.network.BaseConfig;
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.serial.network.BaseConfig;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
+import dev.xkmc.l2library.util.code.Wrappers;
+import dev.xkmc.l2rpgcommon.content.skill.internal.Skill;
 import dev.xkmc.l2rpgcommon.content.skill.internal.SkillConfig;
+import dev.xkmc.l2rpgcommon.network.ConfigType;
 import dev.xkmc.l2rpgcommon.network.NetworkManager;
 import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
-import java.util.Objects;
 
 @SerialClass
 public class SkillDataConfig extends BaseConfig {
@@ -17,12 +20,15 @@ public class SkillDataConfig extends BaseConfig {
 	public HashMap<String, SkillConfig<?>> map = new HashMap<>();
 
 	@Nullable
-	@SuppressWarnings({"unchecked", "unsafe"})
 	public static <C extends SkillConfig<?>> C getConfig(ResourceLocation rl) {
-		return (C) NetworkManager.getConfigs("config_skill")
-				.map(e -> ((SkillDataConfig) e.getValue()).map.get(rl.toString()))
-				.filter(Objects::nonNull).findFirst().orElse(null);
+		SkillDataConfig config = NetworkManager.getConfig(ConfigType.CONFIG_SKILL);
+		return Wrappers.cast(config.map.get(rl.toString()));
+	}
 
+	@DataGenOnly
+	public SkillDataConfig add(Skill<?,?> id, SkillConfig<?> config) {
+		map.put(id.getID(), config);
+		return this;
 	}
 
 }

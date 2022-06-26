@@ -6,6 +6,7 @@ import dev.xkmc.l2rpgcommon.content.magic.products.MagicElement;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicProduct;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicProductType;
 import dev.xkmc.l2rpgcommon.content.magic.products.recipe.IMagicRecipe;
+import dev.xkmc.l2rpgcommon.init.LightLand;
 import dev.xkmc.l2rpgcommon.init.special.LightLandRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -19,7 +20,7 @@ public class MagicHolder {
 	public static final int MAX_ELEMENTAL_MASTERY = 3;
 
 	private final Map<MagicProductType<?, ?>, Map<ResourceLocation, MagicProduct<?, ?>>> product_cache = new HashMap<>();
-	private final Map<ResourceLocation, IMagicRecipe<?>> recipe_cache = new HashMap<>();
+	private final Map<ResourceLocation, IMagicRecipe> recipe_cache = new HashMap<>();
 	private final LLPlayerData parent;
 
 	@SerialClass.SerialField
@@ -47,41 +48,44 @@ public class MagicHolder {
 	}
 
 	public void checkUnlocks() {
-		List<IMagicRecipe<?>> list = IMagicRecipe.getAll(parent.world);
-		for (IMagicRecipe<?> r : list) {
-			ResourceLocation id = r.id;
+		List<IMagicRecipe> list = IMagicRecipe.getAll();
+		for (IMagicRecipe r : list) {
+			ResourceLocation id = r.getID();
 			recipe_cache.put(id, r);
 		}
-		for (IMagicRecipe<?> r : list) {
+		for (IMagicRecipe r : list) {
 			if (isUnlocked(r))
 				getProduct(r).setUnlock();
 		}
 	}
 
-	private boolean isUnlocked(IMagicRecipe<?> r) {
+	private boolean isUnlocked(IMagicRecipe r) {
 		for (IMagicRecipe.ElementalMastery elem : r.elemental_mastery)
 			if (getElementalMastery(elem.element) < elem.level)
 				return false;
 		for (ResourceLocation rl : r.predecessor) {
-			MagicProduct<?, ?> prod = getProduct(recipe_cache.get(rl));
-			if (prod != null && !prod.usable())
+			IMagicRecipe recipe = recipe_cache.get(rl);
+			if (recipe == null) {
+				LightLand.LOGGER.error("Predecessor of " + r.getID() + " is not present: " + rl);
+				return false;
+			}
+			MagicProduct<?, ?> prod = getProduct(recipe);
+			if (!prod.usable())
 				return false;
 		}
 		return true;
 	}
 
 	@Nullable
-	public IMagicRecipe<?> getRecipe(ResourceLocation rl) {
+	public IMagicRecipe getRecipe(ResourceLocation rl) {
 		return recipe_cache.get(rl);
 	}
 
-	public Collection<IMagicRecipe<?>> listRecipe() {
+	public Collection<IMagicRecipe> listRecipe() {
 		return recipe_cache.values();
 	}
 
-	public MagicProduct<?, ?> getProduct(IMagicRecipe<?> r) {
-		if (r == null)
-			return null;
+	public MagicProduct<?, ?> getProduct(IMagicRecipe r) {
 		MagicProductType<?, ?> type = r.product_type;
 		Map<ResourceLocation, MagicProduct<?, ?>> submap;
 		if (!product_cache.containsKey(type))
@@ -104,7 +108,7 @@ public class MagicHolder {
 	}
 
 	@Nullable
-	public IMagicRecipe<?> getTree(List<MagicElement> elem) {
+	public IMagicRecipe getTree(List<MagicElement> elem) {
 		if (elem.size() == 0) {
 			return null;
 		}

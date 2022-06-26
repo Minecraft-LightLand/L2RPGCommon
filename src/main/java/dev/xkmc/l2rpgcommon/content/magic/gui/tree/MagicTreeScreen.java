@@ -57,7 +57,7 @@ public class MagicTreeScreen extends Screen {
 			}
 			tabs.put(type, gui);
 		}
-		for (IMagicRecipe<?> r : handler.magicHolder.listRecipe()) {
+		for (IMagicRecipe r : handler.magicHolder.listRecipe()) {
 			((MagicTreeGui) tabs.get(r.product_type)).addWidget(handler.magicHolder.getProduct(r));
 		}
 	}

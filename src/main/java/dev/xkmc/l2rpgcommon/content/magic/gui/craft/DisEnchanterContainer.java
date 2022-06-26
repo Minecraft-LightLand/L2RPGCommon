@@ -36,7 +36,7 @@ public class DisEnchanterContainer extends BaseContainerMenu<DisEnchanterContain
 	public static final SpriteManager MANAGER = new SpriteManager(LightLand.MODID, "disenchanter");
 
 	protected final Map<MagicElement, Integer> map = Maps.newLinkedHashMap();
-	protected final Map<Enchantment, IMagicRecipe<?>> ench_map;
+	protected final Map<Enchantment, IMagicRecipe> ench_map;
 	protected final Map<Enchantment, MagicElement[]> temp = Maps.newLinkedHashMap();
 
 	public DisEnchanterContainer(MenuType<DisEnchanterContainer> type, int wid, Inventory plInv) {
@@ -44,7 +44,7 @@ public class DisEnchanterContainer extends BaseContainerMenu<DisEnchanterContain
 		addSlot("main_slot", stack -> stack.isEnchanted() || stack.getItem() == Items.ENCHANTED_BOOK);
 		addSlot("gold_slot", stack -> stack.getItem() == Items.GOLD_NUGGET);
 		addSlot("ench_slot", stack -> false);
-		ench_map = IMagicRecipe.getMap(plInv.player.level, MagicRegistry.MPT_ENCH.get());
+		ench_map = IMagicRecipe.getMap(MagicRegistry.MPT_ENCH.get());
 		for (Enchantment enc : ForgeRegistries.ENCHANTMENTS.getValues()) {
 			if (!ench_map.containsKey(enc)) {
 				ResourceLocation rl = ForgeRegistries.ENCHANTMENTS.getKey(enc);
@@ -109,7 +109,7 @@ public class DisEnchanterContainer extends BaseContainerMenu<DisEnchanterContain
 				if (e.getValue() > 0) {
 					Enchantment ench = e.getKey();
 					if (ench_map.containsKey(ench)) {
-						IMagicRecipe<?> r = ench_map.get(ench);
+						IMagicRecipe r = ench_map.get(ench);
 						for (MagicElement elem : r.getElements()) {
 							if (map.containsKey(elem))
 								map.put(elem, map.get(elem) + e.getValue());

@@ -122,13 +122,12 @@ public class RitualCore {
 			if (list.size() < 8) {
 				return;
 			}
-			//TODO sideness
 			Inv inv = new Inv(this, list);
 			Optional<AbstractRitualRecipe<?>> r = level.getRecipeManager().getRecipeFor(LightlandRecipe.RT_RITUAL.get(), inv, level);
 			r.ifPresent(e -> {
 				Map<MagicElement, Integer> map = new LinkedHashMap<>();
 				if (e.getMagic() != null) {
-					if (magic == null || magic.getCost() <= 0 || !e.getMagic().equals(magic.recipe.id) || player == null) {
+					if (magic == null || magic.getCost() <= 0 || !e.getMagic().equals(magic.recipe.getID()) || player == null) {
 						send(player, LangData.IDS.RITUAL_WRONG.get());
 						return;
 					}
@@ -160,7 +159,7 @@ public class RitualCore {
 					for (MagicElement elem : map.keySet()) {
 						LLPlayerData.get(player).magicHolder.addElement(elem, -map.get(elem));
 					}
-					new CapToClient(CapToClient.Action.ALL, LLPlayerData.get(player)).toClientPlayer((ServerPlayer) player);
+					new CapToClient(CapToClient.Action.ALL, LLPlayerData.get(player)).toClientPlayer(player);
 				}
 			});
 

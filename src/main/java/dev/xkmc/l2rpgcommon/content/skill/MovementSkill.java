@@ -1,11 +1,14 @@
 package dev.xkmc.l2rpgcommon.content.skill;
 
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.l2rpgcommon.content.skill.internal.Skill;
 import dev.xkmc.l2rpgcommon.content.skill.internal.SkillConfig;
 import dev.xkmc.l2rpgcommon.content.skill.internal.SkillData;
 import dev.xkmc.l2rpgcommon.init.LightLand;
+import it.unimi.dsi.fastutil.ints.Int2DoubleFunction;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -105,4 +108,37 @@ public class MovementSkill extends Skill<MovementSkill.Config, MovementSkill.Dat
 			}
 		}
 	}
+
+	@DataGenOnly
+	public static class MovementSkillBuilder extends SkillConfig.ConfigLevelBuilder<Config, Data> {
+
+		private final Int2IntFunction time;
+		private final Int2DoubleFunction velocity;
+
+		public MovementSkillBuilder(int maxLevel, Int2IntFunction cooldown, Int2IntFunction time, Int2DoubleFunction velocity) {
+			super(maxLevel, cooldown);
+			this.time = time;
+			this.velocity = velocity;
+		}
+
+		@Override
+		protected Config build(Config config) {
+			config.time = new int[maxLevel];
+			config.velocity = new double[maxLevel];
+			return super.build(config);
+		}
+
+		@Override
+		protected void build(Config config, int lv) {
+			super.build(config, lv);
+			config.time[lv] = time.applyAsInt(lv);
+			config.velocity[lv] = velocity.applyAsDouble(lv);
+		}
+
+		@Override
+		public Config build() {
+			return build(new Config());
+		}
+	}
+
 }

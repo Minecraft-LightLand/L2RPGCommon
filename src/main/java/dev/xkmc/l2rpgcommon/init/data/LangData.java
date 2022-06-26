@@ -10,7 +10,7 @@ import dev.xkmc.l2rpgcommon.content.magic.gui.craft.SpellCraftContainer;
 import dev.xkmc.l2rpgcommon.content.magic.gui.hex.HexStatus;
 import dev.xkmc.l2rpgcommon.content.magic.products.info.ProductState;
 import dev.xkmc.l2rpgcommon.init.LightLand;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandVanillaMagic;
+import dev.xkmc.l2rpgcommon.init.registrate.LightlangEffects;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.TranslatableContents;
@@ -197,7 +197,7 @@ public class LangData {
 		});
 
 		List<Item> list = List.of(Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION);
-		for (RegistryEntry<? extends Potion> ent : LightlandVanillaMagic.POTION_LIST) {
+		for (RegistryEntry<? extends Potion> ent : LightlangEffects.POTION_LIST) {
 			for (Item item : list) {
 				String str = ent.get().getName(item.getDescriptionId() + ".effect.");
 				pvd.accept(str, RegistrateLangProvider.toEnglishName(str));

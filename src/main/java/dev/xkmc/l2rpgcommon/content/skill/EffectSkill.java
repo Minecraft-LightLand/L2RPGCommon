@@ -2,20 +2,27 @@ package dev.xkmc.l2rpgcommon.content.skill;
 
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
 import dev.xkmc.l2rpgcommon.compat.TeamAccessor;
 import dev.xkmc.l2rpgcommon.content.skill.internal.Skill;
 import dev.xkmc.l2rpgcommon.content.skill.internal.SkillConfig;
 import dev.xkmc.l2rpgcommon.content.skill.internal.SkillData;
 import dev.xkmc.l2rpgcommon.init.LightLand;
-import net.minecraft.resources.ResourceLocation;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.registries.ForgeRegistries;
+import org.checkerframework.checker.units.qual.C;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.IntFunction;
 
 public class EffectSkill extends Skill<EffectSkill.Config, SkillData> {
 
@@ -23,7 +30,7 @@ public class EffectSkill extends Skill<EffectSkill.Config, SkillData> {
 	public static class Effect {
 
 		@SerialClass.SerialField
-		public ResourceLocation id;
+		public MobEffect id;
 
 		@SerialClass.SerialField
 		public int duration;
@@ -31,13 +38,25 @@ public class EffectSkill extends Skill<EffectSkill.Config, SkillData> {
 		@SerialClass.SerialField
 		public int amplifier;
 
+		@Deprecated
+		public Effect() {
+
+		}
+
+		@DataGenOnly
+		public Effect(MobEffect eff, int duration, int amplifier) {
+			this.id = eff;
+			this.duration = duration;
+			this.amplifier = amplifier;
+		}
+
 	}
 
 	@SerialClass
 	public static class RangeEffect {
 
 		@SerialClass.SerialField
-		public ResourceLocation id;
+		public MobEffect id;
 
 		@SerialClass.SerialField
 		public int duration;
@@ -50,6 +69,20 @@ public class EffectSkill extends Skill<EffectSkill.Config, SkillData> {
 
 		@SerialClass.SerialField
 		public boolean for_enemy;
+
+		@Deprecated
+		public RangeEffect() {
+
+		}
+
+		@DataGenOnly
+		public RangeEffect(MobEffect id, int duration, int amplifier, double range, boolean for_enemy) {
+			this.id = id;
+			this.duration = duration;
+			this.amplifier = amplifier;
+			this.range = range;
+			this.for_enemy = for_enemy;
+		}
 
 	}
 
@@ -66,12 +99,12 @@ public class EffectSkill extends Skill<EffectSkill.Config, SkillData> {
 			int lv = Math.min(data.level, effects.length - 1);
 			if (effects != null)
 				for (Effect e : effects[lv]) {
-					MobEffectInstance ins = new MobEffectInstance(ForgeRegistries.MOB_EFFECTS.getValue(e.id), e.duration, e.amplifier);
+					MobEffectInstance ins = new MobEffectInstance(e.id, e.duration, e.amplifier);
 					EffectUtil.addEffect(player, ins, EffectUtil.AddReason.SKILL, player);
 				}
 			if (range_effects != null)
 				for (RangeEffect eff : range_effects[lv]) {
-					MobEffectInstance ins = new MobEffectInstance(ForgeRegistries.MOB_EFFECTS.getValue(eff.id), eff.duration, eff.amplifier);
+					MobEffectInstance ins = new MobEffectInstance(eff.id, eff.duration, eff.amplifier);
 					for (Entity e : player.level.getEntities(player, new AABB(player.position(), player.position()).inflate(eff.range))) {
 						if (e.distanceToSqr(player) > eff.range * eff.range) continue;
 						if (!(e instanceof LivingEntity le)) continue;
@@ -91,10 +124,6 @@ public class EffectSkill extends Skill<EffectSkill.Config, SkillData> {
 				}
 				for (int i = 0; i < max_level; i++)
 					for (Effect e : effects[i]) {
-						if (!ForgeRegistries.MOB_EFFECTS.containsKey(e.id)) {
-							LightLand.LOGGER.error("effect " + e.id + " is invalid");
-							return false;
-						}
 						if (e.duration <= 0 || e.duration > cooldown[i]) {
 							LightLand.LOGGER.error("duration is invalid");
 							return false;
@@ -112,10 +141,6 @@ public class EffectSkill extends Skill<EffectSkill.Config, SkillData> {
 				}
 				for (int i = 0; i < max_level; i++)
 					for (RangeEffect e : range_effects[i]) {
-						if (!ForgeRegistries.MOB_EFFECTS.containsKey(e.id)) {
-							LightLand.LOGGER.error("effect " + e.id + " is invalid");
-							return false;
-						}
 						if (e.duration <= 0 || e.duration > cooldown[i]) {
 							LightLand.LOGGER.error("duration is invalid");
 							return false;
@@ -132,6 +157,7 @@ public class EffectSkill extends Skill<EffectSkill.Config, SkillData> {
 			}
 			return true;
 		}
+
 	}
 
 	@Override
@@ -145,5 +171,46 @@ public class EffectSkill extends Skill<EffectSkill.Config, SkillData> {
 		return new SkillData();
 	}
 
+	@DataGenOnly
+	public static class EffectSkillBuilder extends SkillConfig.ConfigLevelBuilder<Config, SkillData> {
+
+		private final List<IntFunction<Effect>> effects = new ArrayList<>();
+		private final List<IntFunction<RangeEffect>> rangeEffects = new ArrayList<>();
+
+		public EffectSkillBuilder(int maxLevel, Int2IntFunction cooldown) {
+			super(maxLevel, cooldown);
+		}
+
+		public EffectSkillBuilder addEffect(IntFunction<Effect> gen) {
+			effects.add(gen);
+			return this;
+		}
+
+		public EffectSkillBuilder addRangeEffect(IntFunction<RangeEffect> gen) {
+			rangeEffects.add(gen);
+			return this;
+		}
+
+		@Override
+		protected Config build(Config config) {
+			config.effects = new Effect[maxLevel][];
+			config.range_effects = new RangeEffect[maxLevel][];
+			return super.build(config);
+		}
+
+		@Override
+		protected void build(Config config, int lv) {
+			super.build(config, lv);
+			config.effects[lv] = effects.stream().map(e -> e.apply(lv)).filter(Objects::nonNull).toArray(Effect[]::new);
+			config.range_effects[lv] = rangeEffects.stream().map(e -> e.apply(lv)).filter(Objects::nonNull).toArray(RangeEffect[]::new);
+		}
+
+		@Override
+		public Config build() {
+			Config ans = new Config();
+			build(ans);
+			return ans;
+		}
+	}
 
 }

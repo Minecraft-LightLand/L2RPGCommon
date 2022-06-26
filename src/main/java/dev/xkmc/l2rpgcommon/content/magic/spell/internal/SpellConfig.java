@@ -26,11 +26,11 @@ public class SpellConfig {
 	public static <C extends SpellConfig> C get(Spell<C, ?> spell, Level world, Player player) {
 		C ans = SpellDataConfig.getConfig(spell.getRegistryName());
 
-		IMagicRecipe<?> r = IMagicRecipe.getMap(world, MagicRegistry.MPT_SPELL.get()).get(spell);
+		IMagicRecipe r = IMagicRecipe.getMap( MagicRegistry.MPT_SPELL.get()).get(spell);
 		if (r == null)
 			return ans;
 		MagicProduct<?, ?> p = LLPlayerData.get(player).magicHolder.getProduct(r);
-		if (p == null || !p.usable())
+		if (!p.usable())
 			return ans;
 		ans = makeCopy(ans);
 		ans.mana_cost += p.getCost() * ans.factor;

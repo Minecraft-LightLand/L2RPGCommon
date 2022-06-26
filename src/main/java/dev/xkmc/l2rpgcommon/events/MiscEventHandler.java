@@ -8,7 +8,7 @@ import dev.xkmc.l2rpgcommon.content.common.capability.restriction.ArmorWeight;
 import dev.xkmc.l2rpgcommon.content.common.render.MagicWandOverlay;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
 import dev.xkmc.l2rpgcommon.init.data.Lore;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandVanillaMagic;
+import dev.xkmc.l2rpgcommon.init.registrate.LightlangEffects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.MutableComponent;
@@ -33,21 +33,21 @@ public class MiscEventHandler {
 
 	@SubscribeEvent
 	public static void onTargetSet(LivingSetAttackTargetEvent event) {
-		if (event.getTarget() != null && (event.getEntityLiving().hasEffect(LightlandVanillaMagic.T_CLEAR.get()) ||
-				event.getTarget().hasEffect(LightlandVanillaMagic.T_HIDE.get()))) {
+		if (event.getTarget() != null && (event.getEntityLiving().hasEffect(LightlangEffects.T_CLEAR.get()) ||
+				event.getTarget().hasEffect(LightlangEffects.T_HIDE.get()))) {
 			((Mob) event.getEntityLiving()).setTarget(null);
 		}
 	}
 
 	@SubscribeEvent
 	public static void onVisibilityGet(LivingEvent.LivingVisibilityEvent event) {
-		if (event.getEntityLiving().hasEffect(LightlandVanillaMagic.T_HIDE.get()))
+		if (event.getEntityLiving().hasEffect(LightlangEffects.T_HIDE.get()))
 			event.modifyVisibility(0);
 	}
 
 	@SubscribeEvent
 	public static void onEntityKnockBack(LivingKnockBackEvent event) {
-		if (event.getEntityLiving().hasEffect(LightlandVanillaMagic.NO_KB.get()))
+		if (event.getEntityLiving().hasEffect(LightlangEffects.NO_KB.get()))
 			event.setCanceled(true);
 	}
 
@@ -87,8 +87,8 @@ public class MiscEventHandler {
 
 	@SubscribeEvent
 	public static void onPotionTest(PotionEvent.PotionApplicableEvent event) {
-		boolean flag = event.getEntityLiving().hasEffect(LightlandVanillaMagic.CLEANSE.get());
-		flag |= event.getEntityLiving().hasEffect(LightlandVanillaMagic.DISPELL.get());
+		boolean flag = event.getEntityLiving().hasEffect(LightlangEffects.CLEANSE.get());
+		flag |= event.getEntityLiving().hasEffect(LightlangEffects.DISPELL.get());
 		if (flag) {
 			if (event.getPotionEffect().getEffect() instanceof InherentEffect)
 				return;
@@ -98,9 +98,9 @@ public class MiscEventHandler {
 				return;
 			if (EffectUtil.getReason() == EffectUtil.AddReason.SKILL)
 				return;
-			if (event.getPotionEffect().getEffect() == LightlandVanillaMagic.CLEANSE.get())
+			if (event.getPotionEffect().getEffect() == LightlangEffects.CLEANSE.get())
 				return;
-			if (event.getPotionEffect().getEffect() == LightlandVanillaMagic.DISPELL.get())
+			if (event.getPotionEffect().getEffect() == LightlangEffects.DISPELL.get())
 				return;
 			event.setResult(Event.Result.DENY);
 		}
@@ -108,16 +108,16 @@ public class MiscEventHandler {
 
 	@SubscribeEvent
 	public static void onPotionAdded(PotionEvent.PotionAddedEvent event) {
-		boolean flag = event.getPotionEffect().getEffect() == LightlandVanillaMagic.CLEANSE.get();
-		flag |= event.getPotionEffect().getEffect() == LightlandVanillaMagic.DISPELL.get();
+		boolean flag = event.getPotionEffect().getEffect() == LightlangEffects.CLEANSE.get();
+		flag |= event.getPotionEffect().getEffect() == LightlangEffects.DISPELL.get();
 		if (flag) {
 			List<MobEffectInstance> list = new ArrayList<>(event.getEntityLiving().getActiveEffects());
 			for (MobEffectInstance ins : list) {
 				if (ins.getEffect() instanceof InherentEffect)
 					continue;
-				if (ins.getEffect() == LightlandVanillaMagic.CLEANSE.get())
+				if (ins.getEffect() == LightlangEffects.CLEANSE.get())
 					continue;
-				if (ins.getEffect() == LightlandVanillaMagic.DISPELL.get())
+				if (ins.getEffect() == LightlangEffects.DISPELL.get())
 					continue;
 				event.getEntityLiving().removeEffect(ins.getEffect());
 			}

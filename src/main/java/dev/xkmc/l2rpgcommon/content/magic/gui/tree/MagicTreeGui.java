@@ -9,12 +9,12 @@ import dev.xkmc.l2rpgcommon.content.magic.gui.hex.MagicHexScreen;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicProduct;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicProductType;
 import dev.xkmc.l2rpgcommon.content.magic.products.info.TypeConfig;
+import dev.xkmc.l2rpgcommon.content.magic.products.recipe.IMagicRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
@@ -150,7 +150,11 @@ public class MagicTreeGui<I, P extends MagicProduct<I, P>> extends GuiComponent 
 		MagicHolder holder = screen.handler.magicHolder;
 		MagicTreeEntry<I, P> entry = new MagicTreeEntry<>(this, product, product.recipe.screen);
 		for (ResourceLocation rl : product.recipe.predecessor) {
-			P parent = (P) holder.getProduct(holder.getRecipe(rl));
+			IMagicRecipe recipe = holder.getRecipe(rl);
+			if (recipe == null) {
+				continue;
+			}
+			P parent = (P) holder.getProduct(recipe);
 			if (parent.type == type) {
 				addWidget(parent);
 				entry.parents.add(widgets.get(parent));

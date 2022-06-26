@@ -40,7 +40,7 @@ public class HexResultGui extends AbstractHexGui {
 
 	public HexResultGui(MagicHexScreen screen) {
 		this.screen = screen;
-		IMagicRecipe<?> recipe = screen.product.recipe;
+		IMagicRecipe recipe = screen.product.recipe;
 		this.elements = Arrays.copyOf(recipe.getElements(), 6);
 		this.graph = recipe.getGraph();
 		data = screen.product.getMiscData();

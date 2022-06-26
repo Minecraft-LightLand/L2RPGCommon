@@ -32,7 +32,7 @@ import java.util.Map;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class DisEnchanterRecipeCategory extends BaseRecipeCategory<IMagicRecipe<?>, DisEnchanterRecipeCategory> {
+public class DisEnchanterRecipeCategory extends BaseRecipeCategory<IMagicRecipe, DisEnchanterRecipeCategory> {
 
 	protected static final ResourceLocation BG = new ResourceLocation(LightLand.MODID, "textures/jei/background.png");
 
@@ -52,7 +52,7 @@ public class DisEnchanterRecipeCategory extends BaseRecipeCategory<IMagicRecipe<
 	}
 
 	@Override
-	public void setRecipe(IRecipeLayoutBuilder builder, IMagicRecipe<?> recipe, IFocusGroup focuses) {
+	public void setRecipe(IRecipeLayoutBuilder builder, IMagicRecipe recipe, IFocusGroup focuses) {
 		Enchantment ench = (Enchantment) recipe.getProduct().item;
 		List<ItemStack> l0 = new ArrayList<>();
 		List<ItemStack> l1 = new ArrayList<>();

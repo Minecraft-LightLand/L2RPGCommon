@@ -1,11 +1,14 @@
 package dev.xkmc.l2rpgcommon.content.skill;
 
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
 import dev.xkmc.l2rpgcommon.compat.TeamAccessor;
 import dev.xkmc.l2rpgcommon.content.skill.internal.Skill;
 import dev.xkmc.l2rpgcommon.content.skill.internal.SkillConfig;
 import dev.xkmc.l2rpgcommon.content.skill.internal.SkillData;
 import dev.xkmc.l2rpgcommon.init.LightLand;
+import it.unimi.dsi.fastutil.ints.Int2DoubleFunction;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -52,13 +55,13 @@ public class ImpactSkill extends Skill<ImpactSkill.Config, SkillData> {
 			}
 			for (double val : impact) {
 				if (val < -3 || val > 3) {
-					LightLand.LOGGER.error("radius must be between -3 and 3");
+					LightLand.LOGGER.error("impact must be between -3 and 3");
 					return false;
 				}
 			}
 			for (double val : damage) {
 				if (val < 0 || val > 100) {
-					LightLand.LOGGER.error("radius must be between 0 and 100");
+					LightLand.LOGGER.error("damage must be between 0 and 100");
 					return false;
 				}
 			}
@@ -94,6 +97,43 @@ public class ImpactSkill extends Skill<ImpactSkill.Config, SkillData> {
 	@Override
 	public SkillData genData(Player player) {
 		return new SkillData();
+	}
+
+	@DataGenOnly
+	public static class ImpactSkillBuilder extends SkillConfig.ConfigLevelBuilder<Config, SkillData> {
+
+		private final Int2DoubleFunction radius, impact, damage;
+
+		public ImpactSkillBuilder(int maxLevel, Int2IntFunction cooldown,
+								  Int2DoubleFunction radius,
+								  Int2DoubleFunction impact,
+								  Int2DoubleFunction damage) {
+			super(maxLevel, cooldown);
+			this.radius = radius;
+			this.impact = impact;
+			this.damage = damage;
+		}
+
+		@Override
+		protected Config build(Config config) {
+			config.radius = new double[maxLevel];
+			config.impact = new double[maxLevel];
+			config.damage = new double[maxLevel];
+			return super.build(config);
+		}
+
+		@Override
+		protected void build(Config config, int lv) {
+			super.build(config, lv);
+			config.radius[lv] = radius.applyAsDouble(lv);
+			config.impact[lv] = impact.applyAsDouble(lv);
+			config.damage[lv] = damage.applyAsDouble(lv);
+		}
+
+		@Override
+		public Config build() {
+			return build(new Config());
+		}
 	}
 
 }

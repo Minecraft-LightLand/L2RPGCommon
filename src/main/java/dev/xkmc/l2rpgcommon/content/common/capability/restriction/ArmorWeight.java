@@ -2,7 +2,9 @@ package dev.xkmc.l2rpgcommon.content.common.capability.restriction;
 
 import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2library.serial.network.BaseConfig;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.LLPlayerData;
+import dev.xkmc.l2rpgcommon.network.ConfigType;
 import dev.xkmc.l2rpgcommon.network.NetworkManager;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -19,7 +21,7 @@ public class ArmorWeight extends BaseConfig {
 
 	@Nullable
 	public static ArmorWeight getInstance() {
-		return (ArmorWeight) NetworkManager.getConfig("lightland:config_weight");
+		return NetworkManager.getConfig(ConfigType.ARMOR_WEIGHT);
 	}
 
 	public static boolean canPutOn(Player player, ItemStack stack) {
@@ -52,7 +54,7 @@ public class ArmorWeight extends BaseConfig {
 	}
 
 	@SerialClass.SerialField
-	private final HashMap<String, Entry> entries = new HashMap<>();
+	public final HashMap<String, Entry> entries = new HashMap<>();
 
 	@SerialClass.SerialField
 	public HashMap<String, String> materials = new HashMap<>();
@@ -69,13 +71,23 @@ public class ArmorWeight extends BaseConfig {
 		@SerialClass.SerialField
 		public int extra_weight;
 
+		@Deprecated
+		public Entry() {
+
+		}
+
+		private Entry(int ingredient, int extra) {
+			ingredient_weight = ingredient;
+			extra_weight = extra;
+		}
+
 	}
 
 	public static int getWeight(ItemStack stack) {
 		ArmorWeight ins = getInstance();
 		if (ins == null) return 0;
 		int weight = ins.getItemWeight(stack);
-		int lv = 0;//EnchantmentHelper.getItemEnchantmentLevel(VanillaMagicRegistrate.ENCH_HEAVY.get(), stack);
+		int lv = 0;//TODO stack.getEnchantmentLevel(LightlandVanillaMagic.HEAVY.get());
 		return (int) (weight * (1 + 0.1 * lv));
 	}
 
@@ -127,6 +139,12 @@ public class ArmorWeight extends BaseConfig {
 			return 4;
 		}
 		return 0;
+	}
+
+	@DataGenOnly
+	public ArmorWeight add(String id, int ingredient, int extra) {
+		entries.put(id, new Entry(ingredient, extra));
+		return this;
 	}
 
 }

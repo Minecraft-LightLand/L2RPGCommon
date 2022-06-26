@@ -269,4 +269,10 @@ public class LightlandItems {
 		return REGISTRATE.item(id, Item::new).defaultModel().defaultLang().register();
 	}
 
+	public static class ArmorItems {
+
+
+
+	}
+
 }

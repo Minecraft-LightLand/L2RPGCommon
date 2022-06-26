@@ -58,9 +58,12 @@ public class MagicWandOverlay implements IIngameOverlay {
 		if (player == null || !player.isAlive())
 			return null;
 		LLPlayerData handler = LLPlayerData.get(player);
-		IMagicRecipe<?> r = handler.magicHolder.getTree(ELEM);
+		IMagicRecipe r = handler.magicHolder.getTree(ELEM);
+		if (r == null) {
+			return null;
+		}
 		MagicProduct<?, ?> p = handler.magicHolder.getProduct(r);
-		if (p != null && p.usable())
+		if (p.usable())
 			return p;
 		return null;
 	}
@@ -109,7 +112,7 @@ public class MagicWandOverlay implements IIngameOverlay {
 					x = (width / 2 + 60);
 					int cost = p.getCost();
 					Optional<AbstractRitualRecipe<?>> opr = Proxy.getWorld().getRecipeManager().getAllRecipesFor(LightlandRecipe.RT_RITUAL.get()).stream()
-							.filter(e -> e instanceof AbstractLevelRitualRecipe<?>).filter(e -> p.recipe.id.equals(e.getMagic()))
+							.filter(e -> e instanceof AbstractLevelRitualRecipe<?>).filter(e -> p.recipe.getID().equals(e.getMagic()))
 							.findFirst();
 					if (opr.isPresent()) {
 						AbstractRitualRecipe<?> r = opr.get();

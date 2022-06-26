@@ -52,7 +52,7 @@ public class LightLand {
 		LightlandItems.register();
 		LightlandMenu.register();
 		LightlandRecipe.register(bus);
-		LightlandVanillaMagic.register();
+		LightlangEffects.register();
 		LightlandParticle.register();
 		WorldGenRegistrate.register();
 		StructureRegistrate.register();
@@ -106,7 +106,7 @@ public class LightLand {
 	private static void setup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
 			EffectAddUtil.init();
-			LightlandVanillaMagic.registerBrewingRecipe();
+			LightlangEffects.registerBrewingRecipe();
 		});
 		StructureRegistrate.commonSetup(event);
 	}

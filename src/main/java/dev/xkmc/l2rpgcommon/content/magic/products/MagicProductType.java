@@ -40,7 +40,7 @@ public class MagicProductType<I, P extends MagicProduct<I, P>> extends NamedEntr
 	@FunctionalInterface
 	public interface MagicFactory<I, P extends MagicProduct<I, P>> {
 
-		P get(LLPlayerData player, NBTObj nbtManager, ResourceLocation rl, IMagicRecipe<?> r);
+		P get(LLPlayerData player, NBTObj nbtManager, ResourceLocation rl, IMagicRecipe r);
 
 	}
 

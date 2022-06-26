@@ -47,7 +47,8 @@ public class MagicWand extends Item implements IGlowingTarget {
 		if (str.length() == 0)
 			return null;
 		LLPlayerData h = LLPlayerData.get(player);
-		IMagicRecipe<?> r = h.magicHolder.getRecipe(new ResourceLocation(str));
+		IMagicRecipe r = h.magicHolder.getRecipe(new ResourceLocation(str));
+		if (r == null) return null;
 		MagicProduct<?, ?> p = h.magicHolder.getProduct(r);
 		return p.usable() ? p : null;
 	}
@@ -88,8 +89,8 @@ public class MagicWand extends Item implements IGlowingTarget {
 		super.appendHoverText(stack, world, list, flag);
 	}
 
-	public void setMagic(IMagicRecipe<?> recipe, ItemStack stack) {
-		stack.getOrCreateTag().putString("recipe", recipe.id.toString());
+	public void setMagic(IMagicRecipe recipe, ItemStack stack) {
+		stack.getOrCreateTag().putString("recipe", recipe.getID().toString());
 	}
 
 	@OnlyIn(Dist.CLIENT)

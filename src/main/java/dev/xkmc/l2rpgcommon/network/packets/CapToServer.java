@@ -35,7 +35,9 @@ public class CapToServer extends LLSerialPacket {
 		HEX((handler, tag) -> {
 			MagicHolder holder = handler.magicHolder;
 			String str = tag.getString("product");
-			MagicProduct<?, ?> prod = holder.getProduct(holder.getRecipe(new ResourceLocation(str)));
+			IMagicRecipe recipe = holder.getRecipe(new ResourceLocation(str));
+			assert recipe != null;
+			MagicProduct<?, ?> prod = holder.getProduct(recipe);
 			CompoundTag ctag = prod.tag.tag;
 			Set<String> set = new HashSet<>(ctag.getAllKeys());
 			for (String key : set) {
@@ -77,16 +79,15 @@ public class CapToServer extends LLSerialPacket {
 		}),
 		WAND((handler, tag) -> {
 			Player player = handler.player;
-			IMagicRecipe<?> recipe = handler.magicHolder.getRecipe(new ResourceLocation(tag.getString("recipe")));
+			IMagicRecipe recipe = handler.magicHolder.getRecipe(new ResourceLocation(tag.getString("recipe")));
 			if (recipe == null)
 				return;
 			ItemStack stack = player.getMainHandItem();
 			if (!(stack.getItem() instanceof MagicWand)) {
 				stack = player.getOffhandItem();
 			}
-			if (!(stack.getItem() instanceof MagicWand))
+			if (!(stack.getItem() instanceof MagicWand wand))
 				return;
-			MagicWand wand = (MagicWand) stack.getItem();
 			wand.setMagic(recipe, stack);
 		});
 
@@ -100,7 +101,7 @@ public class CapToServer extends LLSerialPacket {
 	@OnlyIn(Dist.CLIENT)
 	public static void sendHexUpdate(MagicProduct<?, ?> prod) {
 		CompoundTag tag = new CompoundTag();
-		tag.putString("product", prod.recipe.id.toString());
+		tag.putString("product", prod.recipe.getID().toString());
 		tag.put("data", prod.tag.tag);
 		new CapToServer(Action.HEX, tag).toServer();
 		CapProxy.getHandler().magicHolder.checkUnlocks();
@@ -143,9 +144,9 @@ public class CapToServer extends LLSerialPacket {
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public static void activateWand(IMagicRecipe<?> recipe) {
+	public static void activateWand(IMagicRecipe recipe) {
 		CompoundTag tag = new CompoundTag();
-		tag.putString("recipe", recipe.id.toString());
+		tag.putString("recipe", recipe.getID().toString());
 		Action.WAND.cons.accept(CapProxy.getHandler(), tag);
 		new CapToServer(Action.WAND, tag).toServer();
 	}

@@ -24,7 +24,6 @@ public class LightlandRecipe {
 
 	public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Registry.RECIPE_TYPE_REGISTRY, LightLand.MODID);
 	public static RegistryObject<RecipeType<AbstractRitualRecipe<?>>> RT_RITUAL = REGISTRATE.recipe(RECIPE_TYPES, "ritual");
-	public static RegistryObject<RecipeType<IMagicRecipe<?>>> RT_MAGIC = REGISTRATE.recipe(RECIPE_TYPES, "magic");
 
 	public static final RegistryEntry<BaseRecipe.RecType<BasicRitualRecipe, AbstractRitualRecipe<?>, RitualCore.Inv>> RS_DEF =
 			reg("ritual_default", () -> new BaseRecipe.RecType<>(BasicRitualRecipe.class, RT_RITUAL));
@@ -42,9 +41,6 @@ public class LightlandRecipe {
 
 	public static final RegistryEntry<AbstractShapedRecipe.Serializer<MedArmorRecipe>> RSC_MED_ARMOR =
 			reg("medicine_armor", () -> new AbstractShapedRecipe.Serializer<>(MedArmorRecipe::new));
-
-	public static final RegistryEntry<BaseRecipe.RecType<DefMagicRecipe, IMagicRecipe<?>, IMagicRecipe.Inv>> RSM_DEF =
-			reg("magic_default", () -> new BaseRecipe.RecType<>(DefMagicRecipe.class, RT_MAGIC));
 
 	public static void register(IEventBus bus) {
 		RECIPE_TYPES.register(bus);

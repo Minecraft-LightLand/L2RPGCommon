@@ -25,16 +25,16 @@ public class NetworkManager {
 			e -> e.create(SkillToServer.class, PLAY_TO_SERVER)
 	);
 
-	public static Stream<Map.Entry<String, BaseConfig>> getConfigs(String id) {
-		return HANDLER.CONFIGS.entrySet().stream()
-				.filter(e -> new ResourceLocation(e.getKey()).getPath().equals(id));
+	public static Stream<Map.Entry<String, BaseConfig>> getConfigs(ConfigType type) {
+		return HANDLER.getConfigs(type.getID());
 	}
 
-	public static BaseConfig getConfig(String id) {
-		return HANDLER.CONFIGS.get(id);
+	public static <T extends BaseConfig> T getConfig(ConfigType type) {
+		return HANDLER.getCachedConfig(type.getID());
 	}
 
 	public static void register() {
+
 	}
 
 }

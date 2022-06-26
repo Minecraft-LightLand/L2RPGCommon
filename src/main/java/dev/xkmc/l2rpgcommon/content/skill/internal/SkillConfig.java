@@ -1,7 +1,9 @@
 package dev.xkmc.l2rpgcommon.content.skill.internal;
 
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
 import dev.xkmc.l2rpgcommon.init.LightLand;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 
 @SerialClass
 public class SkillConfig<T extends SkillData> {
@@ -33,6 +35,34 @@ public class SkillConfig<T extends SkillData> {
 			}
 		}
 		return true;
+	}
+
+	@DataGenOnly
+	public static abstract class ConfigLevelBuilder<C extends SkillConfig<T>, T extends SkillData> {
+
+		protected final int maxLevel;
+		private final Int2IntFunction cooldown;
+
+		public ConfigLevelBuilder(int maxLevel, Int2IntFunction cooldown) {
+			this.maxLevel = maxLevel;
+			this.cooldown = cooldown;
+		}
+
+		protected C build(C config) {
+			config.max_level = maxLevel;
+			config.cooldown = new int[maxLevel];
+			for (int i = 0; i < maxLevel; i++) {
+				build(config, i);
+			}
+			return config;
+		}
+
+		protected void build(C config, int lv) {
+			config.cooldown[lv] = cooldown.applyAsInt(lv);
+		}
+
+		public abstract C build();
+
 	}
 
 }

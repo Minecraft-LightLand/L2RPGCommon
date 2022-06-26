@@ -6,7 +6,7 @@ import dev.xkmc.l2library.util.annotation.DoubleSidedCall;
 import dev.xkmc.l2library.util.annotation.ServerOnly;
 import dev.xkmc.l2rpgcommon.compat.TeamAccessor;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.LLPlayerData;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandVanillaMagic;
+import dev.xkmc.l2rpgcommon.init.registrate.LightlangEffects;
 import dev.xkmc.l2rpgcommon.init.special.LightLandRegistry;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -40,7 +40,7 @@ public abstract class Arcane extends NamedEntry<Arcane> {
 				return false;
 			if (e.getPosition(1).distanceToSqr(center) > radius * radius)
 				return false;
-			return !require_mark || ((LivingEntity) e).hasEffect(LightlandVanillaMagic.ARCANE.get());
+			return !require_mark || ((LivingEntity) e).hasEffect(LightlangEffects.ARCANE.get());
 		}).forEach(e -> strike.strike(w, player, (LivingEntity) e));
 	}
 

@@ -1,7 +1,7 @@
 package dev.xkmc.l2rpgcommon.util;
 
 import dev.xkmc.l2rpgcommon.content.common.item.generic.GenericArmorItem;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandVanillaMagic;
+import dev.xkmc.l2rpgcommon.init.registrate.LightlangEffects;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -25,7 +25,7 @@ public class DamageUtil {
 		MobEffectInstance ins = target.getEffect(MobEffects.DAMAGE_RESISTANCE);
 		if (ins != null) level += (ins.getAmplifier() + 1) * 20;
 		level += EnchantmentHelper.getDamageProtection(target.getArmorSlots(), source) * 4;
-		MobEffectInstance dis = target.getEffect(LightlandVanillaMagic.DISPELL.get());
+		MobEffectInstance dis = target.getEffect(LightlangEffects.DISPELL.get());
 		int dispell = dis == null ? 1 : Math.max(1, 2 << dis.getAmplifier());
 		level /= dispell;
 		if (source.isMagic()) {

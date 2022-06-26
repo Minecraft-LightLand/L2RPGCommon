@@ -3,11 +3,13 @@ package dev.xkmc.l2rpgcommon.content.magic.products.recipe;
 import com.google.common.collect.Maps;
 import dev.xkmc.l2library.base.recipe.BaseRecipe;
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.serial.network.BaseConfig;
 import dev.xkmc.l2rpgcommon.content.magic.products.IMagicProduct;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicElement;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicProductType;
 import dev.xkmc.l2rpgcommon.content.magic.products.info.DisplayInfo;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandRecipe;
+import dev.xkmc.l2rpgcommon.network.ConfigType;
+import dev.xkmc.l2rpgcommon.network.NetworkManager;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -21,7 +23,7 @@ import java.util.Optional;
 @SerialClass
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class IMagicRecipe<R extends IMagicRecipe<R>> extends BaseRecipe<R, IMagicRecipe<?>, IMagicRecipe.Inv> {
+public class IMagicRecipe extends BaseConfig {
 
 	@SerialClass.SerialField
 	public ResourceLocation[] predecessor;
@@ -36,17 +38,16 @@ public class IMagicRecipe<R extends IMagicRecipe<R>> extends BaseRecipe<R, IMagi
 	private MagicElement[] elements;
 	private boolean[][] maps;
 
-	public IMagicRecipe(ResourceLocation id, RecType<R, IMagicRecipe<?>, Inv> fac) {
-		super(id, fac);
+	public IMagicRecipe() {
 	}
 
-	public static List<IMagicRecipe<?>> getAll(Level w) {
-		return w.getRecipeManager().getAllRecipesFor(LightlandRecipe.RT_MAGIC.get());
+	public static List<IMagicRecipe> getAll() {
+		return NetworkManager.getConfigs(ConfigType.MAGIC_DATA).map(e -> (IMagicRecipe) e.getValue()).toList();
 	}
 
-	public static <T> Map<T, IMagicRecipe<?>> getMap(Level w, MagicProductType<T, ?> type) {
-		Map<T, IMagicRecipe<?>> ans = Maps.newLinkedHashMap();
-		getAll(w).stream().filter(r -> r.product_type == type)
+	public static <T> Map<T, IMagicRecipe> getMap(MagicProductType<T, ?> type) {
+		Map<T, IMagicRecipe> ans = Maps.newLinkedHashMap();
+		getAll().stream().filter(r -> r.product_type == type)
 				.forEach(r -> Optional.of(type.getter.apply(r.product_id)).ifPresent((t) -> ans.put(t, r)));
 		return ans;
 	}
@@ -60,36 +61,12 @@ public class IMagicRecipe<R extends IMagicRecipe<R>> extends BaseRecipe<R, IMagi
 		this.maps = maps;
 	}
 
-	@Override
-	public final boolean matches(Inv inv, Level world) {
-		return false;
-	}
-
-	@Override
-	public final ItemStack assemble(Inv inv) {
-		return ItemStack.EMPTY;
-	}
-
-	@Override
-	public final boolean canCraftInDimensions(int r, int c) {
-		return false;
-	}
-
-	@Override
-	public final ItemStack getResultItem() {
-		return ItemStack.EMPTY;
-	}
-
 	public final MagicElement[] getElements() {
 		return elements;
 	}
 
 	public final boolean[][] getGraph() {
 		return maps;
-	}
-
-	public interface Inv extends BaseRecipe.RecInv<IMagicRecipe<?>> {
-
 	}
 
 	@SerialClass
