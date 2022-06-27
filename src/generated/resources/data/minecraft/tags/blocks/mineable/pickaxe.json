@@ -1,0 +1,11 @@
+{
+  "values": [
+    "l2rpgcommon:ritual_core",
+    "l2rpgcommon:ritual_side",
+    "l2rpgcommon:enchant_gold_block",
+    "l2rpgcommon:lead_block",
+    "l2rpgcommon:magicium_block",
+    "l2rpgcommon:layline_charger",
+    "l2rpgcommon:maze_wall"
+  ]
+}

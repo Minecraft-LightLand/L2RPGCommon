@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "l2rpgcommon:block/layroot_body"
+  }
+}

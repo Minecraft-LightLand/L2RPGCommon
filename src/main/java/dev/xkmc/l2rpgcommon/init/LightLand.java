@@ -13,11 +13,9 @@ import dev.xkmc.l2rpgcommon.events.MiscEventHandler;
 import dev.xkmc.l2rpgcommon.init.data.AllTags;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
 import dev.xkmc.l2rpgcommon.init.data.RecipeGen;
+import dev.xkmc.l2rpgcommon.init.data.configs.ConfigGenDispatcher;
 import dev.xkmc.l2rpgcommon.init.registrate.*;
-import dev.xkmc.l2rpgcommon.init.special.ArcaneRegistry;
-import dev.xkmc.l2rpgcommon.init.special.MagicRegistry;
-import dev.xkmc.l2rpgcommon.init.special.SkillRegistry;
-import dev.xkmc.l2rpgcommon.init.special.SpellRegistry;
+import dev.xkmc.l2rpgcommon.init.special.*;
 import dev.xkmc.l2rpgcommon.init.worldgenreg.StructureRegistrate;
 import dev.xkmc.l2rpgcommon.init.worldgenreg.WorldGenRegistrate;
 import dev.xkmc.l2rpgcommon.network.NetworkManager;
@@ -56,6 +54,7 @@ public class LightLand {
 		LightlandParticle.register();
 		WorldGenRegistrate.register();
 		StructureRegistrate.register();
+		LightLandRegistry.register();
 		MagicRegistry.register();
 		ArcaneType.register();
 		ArcaneRegistry.register();
@@ -113,6 +112,7 @@ public class LightLand {
 
 	public static void gatherData(GatherDataEvent event) {
 		LangData.addTranslations(REGISTRATE::addRawLang);
+		event.getGenerator().addProvider(true, new ConfigGenDispatcher(event.getGenerator()));
 	}
 
 	public static void onParticleRegistryEvent(ParticleFactoryRegisterEvent event) {

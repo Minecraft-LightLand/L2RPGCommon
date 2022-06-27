@@ -41,4 +41,8 @@ public class LightLandRegistry {
 		return REGISTRATE.generic(PROFESSION, name, v).defaultLang().register();
 	}
 
+	public static void register(){
+
+	}
+
 }
