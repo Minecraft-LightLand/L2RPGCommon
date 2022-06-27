@@ -7,8 +7,8 @@ import dev.xkmc.l2rpgcommon.content.magic.products.MagicElement;
 import dev.xkmc.l2rpgcommon.content.magic.products.recipe.IMagicRecipe;
 import dev.xkmc.l2rpgcommon.init.LightLand;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandItems;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandMenu;
+import dev.xkmc.l2rpgcommon.init.registrate.LLItems;
+import dev.xkmc.l2rpgcommon.init.registrate.LLMenu;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -42,13 +42,13 @@ public class DisEnchanterRecipeCategory extends BaseRecipeCategory<IMagicRecipe,
 
 	public DisEnchanterRecipeCategory init(IGuiHelper guiHelper) {
 		background = guiHelper.createDrawable(BG, 0, 18, 176, 18);
-		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, LightlandItems.DISENC_BOOK.get().getDefaultInstance());
+		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, LLItems.DISENC_BOOK.get().getDefaultInstance());
 		return this;
 	}
 
 	@Override
 	public Component getTitle() {
-		return LangData.translate(LightlandMenu.getLangKey(LightlandMenu.MT_DISENC.get()));
+		return LangData.translate(LLMenu.getLangKey(LLMenu.MT_DISENC.get()));
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class DisEnchanterRecipeCategory extends BaseRecipeCategory<IMagicRecipe,
 		for (int i = 1; i <= ench.getMaxLevel(); i++) {
 			l0.add(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(ench, i)));
 			l1.add(new ItemStack(Items.GOLD_NUGGET, i));
-			l2.add(new ItemStack(LightlandItems.ENC_GOLD_NUGGET.get(), i));
+			l2.add(new ItemStack(LLItems.ENC_GOLD_NUGGET.get(), i));
 		}
 		builder.addSlot(RecipeIngredientRole.INPUT, 1, 1).addIngredients(VanillaTypes.ITEM_STACK, l0);
 		builder.addSlot(RecipeIngredientRole.INPUT, 19, 1).addIngredients(VanillaTypes.ITEM_STACK, l1);

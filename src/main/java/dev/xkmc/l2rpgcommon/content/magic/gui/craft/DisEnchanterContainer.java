@@ -8,7 +8,7 @@ import dev.xkmc.l2rpgcommon.content.common.capability.player.MagicHolder;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicElement;
 import dev.xkmc.l2rpgcommon.content.magic.products.recipe.IMagicRecipe;
 import dev.xkmc.l2rpgcommon.init.LightLand;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandItems;
+import dev.xkmc.l2rpgcommon.init.registrate.LLItems;
 import dev.xkmc.l2rpgcommon.init.special.LightLandRegistry;
 import dev.xkmc.l2rpgcommon.init.special.MagicRegistry;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -92,7 +92,7 @@ public class DisEnchanterContainer extends BaseContainerMenu<DisEnchanterContain
 				container.setItem(1, ItemStack.EMPTY);
 			} else gold.shrink(arr[0]);
 			if (res.isEmpty()) {
-				container.setItem(2, new ItemStack(LightlandItems.ENC_GOLD_NUGGET.get(), arr[0]));
+				container.setItem(2, new ItemStack(LLItems.ENC_GOLD_NUGGET.get(), arr[0]));
 			} else res.grow(arr[0]);
 			slotsChanged(container);
 			return true;

@@ -2,7 +2,7 @@ package dev.xkmc.l2rpgcommon.content.common.effect;
 
 import dev.xkmc.l2library.base.effects.api.FirstPlayerRenderEffect;
 import dev.xkmc.l2library.util.Proxy;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandParticle;
+import dev.xkmc.l2rpgcommon.init.registrate.LLParticle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.resources.ResourceLocation;
@@ -83,7 +83,7 @@ public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEff
 		float b0 = (float) Math.acos(2 * Math.random() - 1);
 		v0 = v0.xRot(a0).yRot(b0);
 		v1 = v1.xRot(a0).yRot(b0);
-		w.addAlwaysVisibleParticle(LightlandParticle.EMERALD.get(),
+		w.addAlwaysVisibleParticle(LLParticle.EMERALD.get(),
 				vec.x + v0.x,
 				vec.y + v0.y,
 				vec.z + v0.z,

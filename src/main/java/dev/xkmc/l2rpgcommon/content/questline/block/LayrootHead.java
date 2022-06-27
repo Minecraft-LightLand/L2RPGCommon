@@ -1,6 +1,6 @@
 package dev.xkmc.l2rpgcommon.content.questline.block;
 
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandBlocks;
+import dev.xkmc.l2rpgcommon.init.registrate.LLBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -9,8 +9,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import java.util.Random;
 
 public class LayrootHead extends GrowingPlantHeadBlock {
 
@@ -36,7 +34,7 @@ public class LayrootHead extends GrowingPlantHeadBlock {
 
 	@Override
 	protected Block getBodyBlock() {
-		return LightlandBlocks.LAYROOT_BODY.get();
+		return LLBlocks.LAYROOT_BODY.get();
 	}
 
 }

@@ -7,7 +7,7 @@ import dev.xkmc.l2rpgcommon.content.arcane.internal.ArcaneType;
 import dev.xkmc.l2rpgcommon.content.common.capability.restriction.ArmorEnchant;
 import dev.xkmc.l2rpgcommon.content.magic.item.MagicScroll;
 import dev.xkmc.l2rpgcommon.content.magic.spell.internal.Spell;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlangEffects;
+import dev.xkmc.l2rpgcommon.init.registrate.LLEffects;
 import dev.xkmc.l2rpgcommon.network.packets.CapToClient;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -73,17 +73,17 @@ public class MagicAbility {
 				parent.player.hurt(LOAD, 1);
 			}
 			if (load == 2) {
-				add(LightlangEffects.HEAVY.get(), 4);
+				add(LLEffects.HEAVY.get(), 4);
 				add(MobEffects.BLINDNESS, 0);
 				parent.player.hurt(LOAD, 4);
 			}
 			if (load == 3) {
-				add(LightlangEffects.HEAVY.get(), 4);
+				add(LLEffects.HEAVY.get(), 4);
 				add(MobEffects.BLINDNESS, 0);
 				parent.player.hurt(LOAD, 16);
 			}
 			if (load >= 4) {
-				add(LightlangEffects.HEAVY.get(), 4);
+				add(LLEffects.HEAVY.get(), 4);
 				add(MobEffects.BLINDNESS, 0);
 				parent.player.hurt(LOAD, 64);
 			}

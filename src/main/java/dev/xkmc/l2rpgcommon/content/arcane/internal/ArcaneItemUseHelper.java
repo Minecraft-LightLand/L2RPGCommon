@@ -6,7 +6,7 @@ import dev.xkmc.l2rpgcommon.content.arcane.item.ArcaneAxe;
 import dev.xkmc.l2rpgcommon.content.arcane.item.ArcaneSword;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.LLPlayerData;
 import dev.xkmc.l2rpgcommon.events.ItemUseEventHandler;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandBlocks;
+import dev.xkmc.l2rpgcommon.init.registrate.LLBlocks;
 import dev.xkmc.l2rpgcommon.init.special.LightLandRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -177,7 +177,7 @@ public class ArcaneItemUseHelper implements ItemUseEventHandler.ItemClickHandler
 	@Override
 	public void onPlayerRightClickBlock(ItemStack stack, PlayerInteractEvent.RightClickBlock event) {
 		BlockState block = event.getWorld().getBlockState(event.getHitVec().getBlockPos());
-		if (block.is(LightlandBlocks.LAYLINE_CHARGER.get())) {
+		if (block.is(LLBlocks.LAYLINE_CHARGER.get())) {
 			event.setUseBlock(Event.Result.ALLOW);
 			return;
 		}

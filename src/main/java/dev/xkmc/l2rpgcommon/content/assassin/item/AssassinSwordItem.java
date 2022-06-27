@@ -1,6 +1,6 @@
 package dev.xkmc.l2rpgcommon.content.assassin.item;
 
-import dev.xkmc.l2rpgcommon.init.registrate.LightlangEffects;
+import dev.xkmc.l2rpgcommon.init.registrate.LLEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -16,7 +16,7 @@ public class AssassinSwordItem extends SwordItem {
 	@Override
 	public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity user) {
 		if (!user.level.isClientSide()) {
-			target.addEffect(new MobEffectInstance(LightlangEffects.T_CLEAR.get(), 100));
+			target.addEffect(new MobEffectInstance(LLEffects.T_CLEAR.get(), 100));
 		}
 		return super.hurtEnemy(stack, user, target);
 	}

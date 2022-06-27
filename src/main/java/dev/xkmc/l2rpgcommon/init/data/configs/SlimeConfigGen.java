@@ -2,8 +2,8 @@ package dev.xkmc.l2rpgcommon.init.data.configs;
 
 import dev.xkmc.l2library.serial.network.BaseConfig;
 import dev.xkmc.l2rpgcommon.content.questline.mobs.swamp.SlimeProperties;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandItems;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlangEffects;
+import dev.xkmc.l2rpgcommon.init.registrate.LLItems;
+import dev.xkmc.l2rpgcommon.init.registrate.LLEffects;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Items;
 
@@ -56,8 +56,8 @@ public class SlimeConfigGen {
 						.setDuration(100)
 						.setAmplifier(1))
 				.add("armor_reduce", new SlimeProperties.SlimeConfig()
-						.setEffect(LightlangEffects.ARMOR_REDUCE.get())
-						.setDrop(LightlandItems.ACID_SLIME.get())
+						.setEffect(LLEffects.ARMOR_REDUCE.get())
+						.setDrop(LLItems.ACID_SLIME.get())
 						.setWeight(50)
 						.setChance(0.1)
 						.setDuration(100)

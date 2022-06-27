@@ -15,9 +15,9 @@ import dev.xkmc.l2rpgcommon.content.magic.products.MagicElement;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicProduct;
 import dev.xkmc.l2rpgcommon.content.magic.ritual.AbstractRitualRecipe;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandBlocks;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandItems;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandRecipe;
+import dev.xkmc.l2rpgcommon.init.registrate.LLBlocks;
+import dev.xkmc.l2rpgcommon.init.registrate.LLItems;
+import dev.xkmc.l2rpgcommon.init.registrate.LLRecipes;
 import dev.xkmc.l2rpgcommon.init.special.MagicRegistry;
 import dev.xkmc.l2rpgcommon.network.packets.CapToClient;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -46,7 +46,7 @@ import java.util.*;
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class RitualCore {
-	public static final BlockEntityBlockMethod<TE> TILE_ENTITY_SUPPLIER_BUILDER = new BlockEntityBlockMethodImpl<>(LightlandBlocks.TE_RITUAL_CORE, TE.class);
+	public static final BlockEntityBlockMethod<TE> TILE_ENTITY_SUPPLIER_BUILDER = new BlockEntityBlockMethodImpl<>(LLBlocks.TE_RITUAL_CORE, TE.class);
 
 	public static class Activate implements ScheduleTickBlockMethod, OnClickBlockMethod, AnimateTickBlockMethod {
 
@@ -66,7 +66,7 @@ public class RitualCore {
 			if (pl.getMainHandItem().getItem() instanceof MagicWand) {
 				BlockEntity te = level.getBlockEntity(pos);
 				if (te instanceof TE) {
-					MagicProduct<?, ?> magic = LightlandItems.MAGIC_WAND.get().getData(pl, pl.getMainHandItem());
+					MagicProduct<?, ?> magic = LLItems.MAGIC_WAND.get().getData(pl, pl.getMainHandItem());
 					((TE) te).activate((ServerPlayer) pl, magic);
 				}
 				return InteractionResult.SUCCESS;
@@ -123,7 +123,7 @@ public class RitualCore {
 				return;
 			}
 			Inv inv = new Inv(this, list);
-			Optional<AbstractRitualRecipe<?>> r = level.getRecipeManager().getRecipeFor(LightlandRecipe.RT_RITUAL.get(), inv, level);
+			Optional<AbstractRitualRecipe<?>> r = level.getRecipeManager().getRecipeFor(LLRecipes.RT_RITUAL.get(), inv, level);
 			r.ifPresent(e -> {
 				Map<MagicElement, Integer> map = new LinkedHashMap<>();
 				if (e.getMagic() != null) {
@@ -197,7 +197,7 @@ public class RitualCore {
 			List<RitualSide.TE> list = getSide();
 			if (list.size() == 8 && recipe == null) {
 				Inv inv = new Inv(this, list);
-				Optional<AbstractRitualRecipe<?>> r = level.getRecipeManager().getRecipeFor(LightlandRecipe.RT_RITUAL.get(), inv, level);
+				Optional<AbstractRitualRecipe<?>> r = level.getRecipeManager().getRecipeFor(LLRecipes.RT_RITUAL.get(), inv, level);
 				if (r.isPresent()) {
 					recipe = r.get();
 				} else {

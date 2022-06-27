@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "l2rpgcommon:enchant_gold_ingot"
+    },
+    "C": {
+      "item": "l2rpgcommon:enchant_gold_nugget"
+    },
+    "D": {
+      "item": "minecraft:redstone"
+    },
+    "E": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "DED",
+    "CCC"
+  ],
+  "result": {
+    "item": "l2rpgcommon:ritual_core"
+  }
+}

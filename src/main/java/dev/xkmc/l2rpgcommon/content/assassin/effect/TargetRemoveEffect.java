@@ -1,7 +1,7 @@
 package dev.xkmc.l2rpgcommon.content.assassin.effect;
 
 import dev.xkmc.l2rpgcommon.content.common.effect.SkillEffect;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlangEffects;
+import dev.xkmc.l2rpgcommon.init.registrate.LLEffects;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -22,8 +22,8 @@ public class TargetRemoveEffect extends MobEffect implements SkillEffect {
 	public void applyEffectTick(LivingEntity self, int level) {
 		if (self instanceof Mob mob) {
 			LivingEntity old = mob.getTarget();
-			if (old != null && !old.hasEffect(LightlangEffects.T_SINK.get())) {
-				if (level > 0 || old.hasEffect(LightlangEffects.T_HIDE.get()))
+			if (old != null && !old.hasEffect(LLEffects.T_SINK.get())) {
+				if (level > 0 || old.hasEffect(LLEffects.T_HIDE.get()))
 					mob.setTarget(null);
 			}
 		}

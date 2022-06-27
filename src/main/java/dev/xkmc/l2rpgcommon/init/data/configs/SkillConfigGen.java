@@ -6,7 +6,7 @@ import dev.xkmc.l2rpgcommon.content.skill.EffectSkill.EffectSkillBuilder;
 import dev.xkmc.l2rpgcommon.content.skill.EffectSkill.RangeEffect;
 import dev.xkmc.l2rpgcommon.content.skill.ImpactSkill;
 import dev.xkmc.l2rpgcommon.content.skill.MovementSkill;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlangEffects;
+import dev.xkmc.l2rpgcommon.init.registrate.LLEffects;
 import dev.xkmc.l2rpgcommon.init.special.SkillRegistry;
 import dev.xkmc.l2rpgcommon.network.config.SkillDataConfig;
 import net.minecraft.world.effect.MobEffects;
@@ -18,32 +18,32 @@ public class SkillConfigGen {
 	public static void addSkill(BiConsumer<String, BaseConfig> adder) {
 		adder.accept("effects_berserker", new SkillDataConfig()
 				.add(SkillRegistry.NO_KB.get(), new EffectSkillBuilder(3, lv -> 2400)
-						.addEffect(lv -> new Effect(LightlangEffects.NO_KB.get(), 300 * (lv + 2), 0))
+						.addEffect(lv -> new Effect(LLEffects.NO_KB.get(), 300 * (lv + 2), 0))
 						.build())
 				.add(SkillRegistry.BLOOD_THIRST.get(), new EffectSkillBuilder(3, lv -> 1800)
-						.addEffect(lv -> new Effect(LightlangEffects.BLOOD_THURST.get(), 600, lv))
+						.addEffect(lv -> new Effect(LLEffects.BLOOD_THURST.get(), 600, lv))
 						.build())
 				.add(SkillRegistry.ARMOR_BREAKER.get(), new EffectSkillBuilder(3, lv -> 1200)
-						.addEffect(lv -> new Effect(LightlangEffects.ARMOR_BREAKER.get(), 600, lv))
-						.addEffect(lv -> new Effect(LightlangEffects.ARMOR_REDUCE.get(), 600, 0))
+						.addEffect(lv -> new Effect(LLEffects.ARMOR_BREAKER.get(), 600, lv))
+						.addEffect(lv -> new Effect(LLEffects.ARMOR_REDUCE.get(), 600, 0))
 						.build())
 		);
 		adder.accept("effects_archer", new SkillDataConfig()
 				.add(SkillRegistry.QUICK_PULL.get(), new EffectSkillBuilder(3, lv -> 1800)
 						.addEffect(lv -> new Effect(MobEffects.MOVEMENT_SPEED, 600, Math.min(lv, 1)))
 						.addEffect(lv -> new Effect(MobEffects.JUMP, 600, Math.min(lv, 1)))
-						.addEffect(lv -> new Effect(LightlangEffects.QUICK_PULL.get(), 600, lv))
-						.addEffect(lv -> lv < 2 ? null : new Effect(LightlangEffects.RUN_BOW.get(), 600, 0))
+						.addEffect(lv -> new Effect(LLEffects.QUICK_PULL.get(), 600, lv))
+						.addEffect(lv -> lv < 2 ? null : new Effect(LLEffects.RUN_BOW.get(), 600, 0))
 						.build())
 		);
 
 		adder.accept("effects_target", new SkillDataConfig()
 				.add(SkillRegistry.TARGET_HIDE.get(), new EffectSkillBuilder(3, lv -> 2400)
-						.addEffect(lv -> new Effect(LightlangEffects.T_HIDE.get(), lv == 0 ? 600 : 900, lv < 2 ? 0 : 1))
+						.addEffect(lv -> new Effect(LLEffects.T_HIDE.get(), lv == 0 ? 600 : 900, lv < 2 ? 0 : 1))
 						.build())
 				.add(SkillRegistry.TARGET_ATTRACT.get(), new EffectSkillBuilder(3, lv -> 1200)
-						.addEffect(lv -> new Effect(LightlangEffects.T_SINK.get(), 600 + lv * 150, lv))
-						.addRangeEffect(lv -> new RangeEffect(LightlangEffects.T_SOURCE.get(),
+						.addEffect(lv -> new Effect(LLEffects.T_SINK.get(), 600 + lv * 150, lv))
+						.addRangeEffect(lv -> new RangeEffect(LLEffects.T_SOURCE.get(),
 								600 + lv * 150, lv, 10 + lv * 4, true))
 						.build())
 		);

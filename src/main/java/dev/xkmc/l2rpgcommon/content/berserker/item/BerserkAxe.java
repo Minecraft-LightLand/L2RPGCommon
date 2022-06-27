@@ -1,6 +1,6 @@
 package dev.xkmc.l2rpgcommon.content.berserker.item;
 
-import dev.xkmc.l2rpgcommon.init.registrate.LightlangEffects;
+import dev.xkmc.l2rpgcommon.init.registrate.LLEffects;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -24,15 +24,15 @@ public class BerserkAxe extends AxeItem {
 	public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity user) {
 		if (user instanceof ServerPlayer player) {
 			{
-				MobEffectInstance ins = player.getEffect(LightlangEffects.BLOOD_THURST.get());
+				MobEffectInstance ins = player.getEffect(LLEffects.BLOOD_THURST.get());
 				if (ins != null) {
 					player.addEffect(new MobEffectInstance(MobEffects.SATURATION, (ins.getAmplifier() + 1) * 4));
 				}
 			}
 			{
-				MobEffectInstance ins = player.getEffect(LightlangEffects.ARMOR_BREAKER.get());
+				MobEffectInstance ins = player.getEffect(LLEffects.ARMOR_BREAKER.get());
 				if (ins != null) {
-					target.addEffect(new MobEffectInstance(LightlangEffects.ARMOR_REDUCE.get(), 200, ins.getAmplifier()));
+					target.addEffect(new MobEffectInstance(LLEffects.ARMOR_REDUCE.get(), 200, ins.getAmplifier()));
 				}
 			}
 		}

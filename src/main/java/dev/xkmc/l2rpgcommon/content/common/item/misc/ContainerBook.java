@@ -2,7 +2,7 @@ package dev.xkmc.l2rpgcommon.content.common.item.misc;
 
 import dev.xkmc.l2library.repack.registrate.util.entry.MenuEntry;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandMenu;
+import dev.xkmc.l2rpgcommon.init.registrate.LLMenu;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -39,7 +39,7 @@ public class ContainerBook extends Item implements MenuProvider {
 
 	@Override
 	public Component getDisplayName() {
-		return LangData.translate(LightlandMenu.getLangKey(cont.get().get()));
+		return LangData.translate(LLMenu.getLangKey(cont.get().get()));
 	}
 
 	@Nullable

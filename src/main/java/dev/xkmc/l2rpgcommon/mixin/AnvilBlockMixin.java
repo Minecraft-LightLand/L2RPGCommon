@@ -1,6 +1,6 @@
 package dev.xkmc.l2rpgcommon.mixin;
 
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandBlocks;
+import dev.xkmc.l2rpgcommon.init.registrate.LLBlocks;
 import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,7 +13,7 @@ public class AnvilBlockMixin {
 
 	@Inject(method = "damage", at = @At("HEAD"), cancellable = true)
 	private static void injectDamage(BlockState state, CallbackInfoReturnable<BlockState> info) {
-		if (state.getBlock() == LightlandBlocks.ETERNAL_ANVIL.get()) {
+		if (state.getBlock() == LLBlocks.ETERNAL_ANVIL.get()) {
 			info.setReturnValue(state);
 			info.cancel();
 		}

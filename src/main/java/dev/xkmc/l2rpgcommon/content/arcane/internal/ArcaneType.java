@@ -5,7 +5,7 @@ import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2rpgcommon.content.arcane.item.ArcaneAxe;
 import dev.xkmc.l2rpgcommon.content.arcane.item.ArcaneSword;
 import dev.xkmc.l2rpgcommon.init.LightLand;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandItems;
+import dev.xkmc.l2rpgcommon.init.registrate.LLItems;
 import dev.xkmc.l2rpgcommon.init.special.LightLandRegistry;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -35,7 +35,7 @@ public class ArcaneType extends NamedEntry<ArcaneType> {
 		this.weapon = weapon;
 		this.hit = hit;
 		this.mana = mana;
-		stack = (weapon == Weapon.AXE ? LightlandItems.ARCANE_AXE_GILDED : LightlandItems.ARCANE_SWORD_GILDED).get().getDefaultInstance();
+		stack = (weapon == Weapon.AXE ? LLItems.ARCANE_AXE_GILDED : LLItems.ARCANE_SWORD_GILDED).get().getDefaultInstance();
 		if (mana == Mana.ACTIVE) {
 			stack.getOrCreateTag().putBoolean("foil", true);
 		}

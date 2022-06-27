@@ -4,8 +4,8 @@ import dev.xkmc.l2rpgcommon.content.questline.common.mobs.BaseMonster;
 import dev.xkmc.l2rpgcommon.content.questline.common.mobs.SimpleEquipment;
 import dev.xkmc.l2rpgcommon.content.questline.common.mobs.SoundPackage;
 import dev.xkmc.l2rpgcommon.content.questline.common.mobs.SpawnedEquipment;
-import dev.xkmc.l2rpgcommon.init.data.GenItem;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandEntities;
+import dev.xkmc.l2rpgcommon.init.data.templates.GenItem;
+import dev.xkmc.l2rpgcommon.init.registrate.LLEntities;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.random.WeightedEntry;
 import net.minecraft.util.random.WeightedRandomList;
@@ -36,7 +36,7 @@ public class CursedKnightProperties {
 	}
 
 	public static final Set<EntityType<?>> ALLY_TYPE = Set.of(
-			LightlandEntities.ET_CURSED_KNIGHT.get(), LightlandEntities.ET_CURSED_ARCHER.get(), LightlandEntities.ET_CURSED_SHIELD.get()
+			LLEntities.ET_CURSED_KNIGHT.get(), LLEntities.ET_CURSED_ARCHER.get(), LLEntities.ET_CURSED_SHIELD.get()
 	);
 
 	public static final BaseMonster.EntityConfig CONFIG_KNIGHT = new BaseMonster.EntityConfig(MobType.UNDEAD, SOUND_ZOMBIE,

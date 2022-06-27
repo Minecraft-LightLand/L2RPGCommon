@@ -1,6 +1,6 @@
 package dev.xkmc.l2rpgcommon.content.questline.world;
 
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandEntities;
+import dev.xkmc.l2rpgcommon.init.registrate.LLEntities;
 import dev.xkmc.l2rpgcommon.init.worldgenreg.WorldGenRegistrate;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.placement.CavePlacements;
@@ -32,8 +32,8 @@ public class LaylineCaveBiome {
 		mobs.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.BAT, 10, 8, 8));
 		mobs.addSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GLOW_SQUID, 10, 4, 6));
 
-		mobs.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(LightlandEntities.ET_LAYLINE_ZOMBIE.get(), 100, 4, 4));
-		mobs.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(LightlandEntities.ET_LAYLINE_SKELETON.get(), 100, 4, 4));
+		mobs.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(LLEntities.ET_LAYLINE_ZOMBIE.get(), 100, 4, 4));
+		mobs.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(LLEntities.ET_LAYLINE_SKELETON.get(), 100, 4, 4));
 		mobs.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 100, 4, 4));
 		mobs.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 100, 4, 4));
 		mobs.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 100, 4, 4));

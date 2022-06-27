@@ -9,8 +9,8 @@ import dev.xkmc.l2rpgcommon.content.magic.ritual.PotionBoostRecipe;
 import dev.xkmc.l2rpgcommon.content.magic.ritual.PotionSpellRecipe;
 import dev.xkmc.l2rpgcommon.init.LightLand;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandBlocks;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandItems;
+import dev.xkmc.l2rpgcommon.init.registrate.LLBlocks;
+import dev.xkmc.l2rpgcommon.init.registrate.LLItems;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -44,7 +44,7 @@ public class MagicCraftRecipeCategory extends BaseRecipeCategory<AbstractRitualR
 
 	public MagicCraftRecipeCategory init(IGuiHelper guiHelper) {
 		background = guiHelper.createDrawable(BG, 0, 36, 145, 54);
-		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, LightlandBlocks.B_RITUAL_CORE.get().asItem().getDefaultInstance());
+		icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, LLBlocks.B_RITUAL_CORE.get().asItem().getDefaultInstance());
 		return this;
 	}
 
@@ -78,7 +78,7 @@ public class MagicCraftRecipeCategory extends BaseRecipeCategory<AbstractRitualR
 				}
 			}
 		}
-		MagicWand wand = LightlandItems.MAGIC_WAND.get();
+		MagicWand wand = LLItems.MAGIC_WAND.get();
 		ItemStack wand_stack = wand.getDefaultInstance();
 		IMagicRecipe magic = recipe.getMagic() == null ? null : CapProxy.getHandler().magicHolder.getRecipe(recipe.getMagic());
 		if (magic != null) {

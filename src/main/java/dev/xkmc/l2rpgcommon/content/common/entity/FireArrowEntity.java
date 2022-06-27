@@ -1,6 +1,6 @@
 package dev.xkmc.l2rpgcommon.content.common.entity;
 
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandEntities;
+import dev.xkmc.l2rpgcommon.init.registrate.LLEntities;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,7 +15,7 @@ public class FireArrowEntity extends Arrow {
 	}
 
 	public FireArrowEntity(Level world, LivingEntity owner) {
-		this(LightlandEntities.ET_FIRE_ARROW.get(), world);
+		this(LLEntities.ET_FIRE_ARROW.get(), world);
 		this.setOwner(owner);
 	}
 

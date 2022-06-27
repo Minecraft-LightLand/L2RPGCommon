@@ -3,7 +3,7 @@ package dev.xkmc.l2rpgcommon.content.magic.block;
 import dev.xkmc.l2library.block.impl.BlockEntityBlockMethodImpl;
 import dev.xkmc.l2library.block.one.BlockEntityBlockMethod;
 import dev.xkmc.l2library.serial.SerialClass;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandBlocks;
+import dev.xkmc.l2rpgcommon.init.registrate.LLBlocks;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -14,7 +14,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class RitualSide {
-	public static final BlockEntityBlockMethod<TE> TILE_ENTITY_SUPPLIER_BUILDER = new BlockEntityBlockMethodImpl<TE>(LightlandBlocks.TE_RITUAL_SIDE, TE.class);
+	public static final BlockEntityBlockMethod<TE> TILE_ENTITY_SUPPLIER_BUILDER = new BlockEntityBlockMethodImpl<TE>(LLBlocks.TE_RITUAL_SIDE, TE.class);
 
 	@SerialClass
 	public static class TE extends RitualTE {

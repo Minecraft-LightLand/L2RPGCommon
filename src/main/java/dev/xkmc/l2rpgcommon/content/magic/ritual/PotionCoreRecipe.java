@@ -3,7 +3,7 @@ package dev.xkmc.l2rpgcommon.content.magic.ritual;
 import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2rpgcommon.content.magic.block.RitualCore;
 import dev.xkmc.l2rpgcommon.content.magic.block.RitualSide;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandRecipe;
+import dev.xkmc.l2rpgcommon.init.registrate.LLRecipes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -21,7 +21,7 @@ import java.util.Map;
 public class PotionCoreRecipe extends AbstractRitualRecipe<PotionCoreRecipe> {
 
 	public PotionCoreRecipe(ResourceLocation id) {
-		super(id, LightlandRecipe.RSP_CORE.get());
+		super(id, LLRecipes.RSP_CORE.get());
 	}
 
 	@Override

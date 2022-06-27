@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "l2rpgcommon:enchant_gold_nugget"
+    },
+    "C": {
+      "item": "l2rpgcommon:steel_nugget"
+    },
+    "S": {
+      "item": "l2rpgcommon:layline_head"
+    }
+  },
+  "pattern": [
+    "CSC",
+    "SAS",
+    "CSC"
+  ],
+  "result": {
+    "item": "l2rpgcommon:layline_ingot"
+  }
+}

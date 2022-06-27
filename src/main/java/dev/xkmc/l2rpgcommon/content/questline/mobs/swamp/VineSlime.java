@@ -2,8 +2,8 @@ package dev.xkmc.l2rpgcommon.content.questline.mobs.swamp;
 
 import dev.xkmc.l2library.repack.registrate.providers.loot.RegistrateEntityLootTables;
 import dev.xkmc.l2library.util.data.LootTableTemplate;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandBlocks;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandItems;
+import dev.xkmc.l2rpgcommon.init.registrate.LLBlocks;
+import dev.xkmc.l2rpgcommon.init.registrate.LLItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -24,7 +24,7 @@ public class VineSlime extends MaterialSlime<VineSlime> {
 				.withPool(LootTableTemplate.getPool(1, 0)
 						.add(LootTableTemplate.getItem(Items.VINE, 0, 1)))
 				.withPool(LootTableTemplate.getPool(1, 0)
-						.add(LootTableTemplate.getItem(LightlandItems.DIRTY_SLIME.get(), 1))
+						.add(LootTableTemplate.getItem(LLItems.DIRTY_SLIME.get(), 1))
 						.when(LootTableTemplate.chance(0.2f))
 						.when(LootTableTemplate.byPlayer())));
 	}
@@ -59,9 +59,9 @@ public class VineSlime extends MaterialSlime<VineSlime> {
 			if (!source.isExplosion() && !source.isMagic()) {
 				BlockPos pos = le.blockPosition();
 				if (level.getBlockState(pos).isAir())
-					level.setBlockAndUpdate(pos, LightlandBlocks.SLIME_VINE.getDefaultState());
+					level.setBlockAndUpdate(pos, LLBlocks.SLIME_VINE.getDefaultState());
 				else if (level.getBlockState(pos.above()).isAir())
-					level.setBlockAndUpdate(pos.above(), LightlandBlocks.SLIME_VINE.getDefaultState());
+					level.setBlockAndUpdate(pos.above(), LLBlocks.SLIME_VINE.getDefaultState());
 			}
 		}
 	}

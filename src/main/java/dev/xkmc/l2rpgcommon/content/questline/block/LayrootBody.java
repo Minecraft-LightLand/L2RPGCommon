@@ -1,6 +1,6 @@
 package dev.xkmc.l2rpgcommon.content.questline.block;
 
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandBlocks;
+import dev.xkmc.l2rpgcommon.init.registrate.LLBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
@@ -24,7 +24,7 @@ public class LayrootBody extends GrowingPlantBodyBlock {
 
 	@Override
 	protected GrowingPlantHeadBlock getHeadBlock() {
-		return LightlandBlocks.LAYROOT_HEAD.get();
+		return LLBlocks.LAYROOT_HEAD.get();
 	}
 
 }

@@ -2,7 +2,7 @@ package dev.xkmc.l2rpgcommon.content.magic.ritual;
 
 import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2rpgcommon.content.magic.block.RitualCore;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandRecipe;
+import dev.xkmc.l2rpgcommon.init.registrate.LLRecipes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.ItemStack;
@@ -24,7 +24,7 @@ public class PotionBoostRecipe extends AbstractLevelRitualRecipe<PotionBoostReci
 	public int modify_level;
 
 	public PotionBoostRecipe(ResourceLocation id) {
-		super(id, LightlandRecipe.RSP_BOOST.get());
+		super(id, LLRecipes.RSP_BOOST.get());
 	}
 
 	public void assemble(RitualCore.Inv inv, int level) {

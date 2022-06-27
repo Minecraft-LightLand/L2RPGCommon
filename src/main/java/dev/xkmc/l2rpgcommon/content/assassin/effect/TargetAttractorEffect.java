@@ -1,7 +1,7 @@
 package dev.xkmc.l2rpgcommon.content.assassin.effect;
 
 import dev.xkmc.l2rpgcommon.content.common.effect.SkillEffect;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlangEffects;
+import dev.xkmc.l2rpgcommon.init.registrate.LLEffects;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.Entity;
@@ -30,9 +30,9 @@ public class TargetAttractorEffect extends MobEffect implements SkillEffect {
 			if (e.distanceToSqr(self) > radius * radius) continue;
 			LivingEntity le = mob.getTarget();
 			if (le != null) {
-				if (le.hasEffect(LightlangEffects.T_SINK.get())) continue;
+				if (le.hasEffect(LLEffects.T_SINK.get())) continue;
 			}
-			if (mob.hasEffect(LightlangEffects.T_SOURCE.get()) || e.distanceToSqr(self) < ar * ar) {
+			if (mob.hasEffect(LLEffects.T_SOURCE.get()) || e.distanceToSqr(self) < ar * ar) {
 				mob.setTarget(self);
 			}
 		}

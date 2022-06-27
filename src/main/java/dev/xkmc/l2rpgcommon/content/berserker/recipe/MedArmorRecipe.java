@@ -2,7 +2,7 @@ package dev.xkmc.l2rpgcommon.content.berserker.recipe;
 
 import dev.xkmc.l2library.base.recipe.AbstractShapedRecipe;
 import dev.xkmc.l2rpgcommon.content.berserker.item.MedicineItem;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandRecipe;
+import dev.xkmc.l2rpgcommon.init.registrate.LLRecipes;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
@@ -60,7 +60,7 @@ public class MedArmorRecipe extends AbstractShapedRecipe<MedArmorRecipe> {
 
 	@Override
 	public RecipeSerializer<?> getSerializer() {
-		return LightlandRecipe.RSC_MED_ARMOR.get();
+		return LLRecipes.RSC_MED_ARMOR.get();
 	}
 
 }

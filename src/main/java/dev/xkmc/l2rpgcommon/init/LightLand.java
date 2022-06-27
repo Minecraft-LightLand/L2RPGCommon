@@ -12,7 +12,7 @@ import dev.xkmc.l2rpgcommon.events.ItemUseEventHandler;
 import dev.xkmc.l2rpgcommon.events.MiscEventHandler;
 import dev.xkmc.l2rpgcommon.init.data.AllTags;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
-import dev.xkmc.l2rpgcommon.init.data.RecipeGen;
+import dev.xkmc.l2rpgcommon.init.data.recipe.RecipeGen;
 import dev.xkmc.l2rpgcommon.init.data.configs.ConfigGenDispatcher;
 import dev.xkmc.l2rpgcommon.init.registrate.*;
 import dev.xkmc.l2rpgcommon.init.special.*;
@@ -45,13 +45,13 @@ public class LightLand {
 
 	private static void registerRegistrates(IEventBus bus) {
 		ForgeMod.enableMilkFluid();
-		LightlandBlocks.register();
-		LightlandEntities.register();
-		LightlandItems.register();
-		LightlandMenu.register();
-		LightlandRecipe.register(bus);
-		LightlangEffects.register();
-		LightlandParticle.register();
+		LLBlocks.register();
+		LLEntities.register();
+		LLItems.register();
+		LLMenu.register();
+		LLRecipes.register(bus);
+		LLEffects.register();
+		LLParticle.register();
 		WorldGenRegistrate.register();
 		StructureRegistrate.register();
 		LightLandRegistry.register();
@@ -78,11 +78,11 @@ public class LightLand {
 
 	private static void registerModBusEvents(IEventBus bus) {
 		bus.addListener(LightLand::setup);
-		bus.addListener(LightLandClient::clientSetup);
+		bus.addListener(LLClient::clientSetup);
 		bus.addListener(EventPriority.LOWEST, LightLand::gatherData);
 		bus.addListener(LightLand::onParticleRegistryEvent);
 		bus.addListener(LightLand::registerCaps);
-		bus.addListener(LightlandEntities::registerEntityAttributes);
+		bus.addListener(LLEntities::registerEntityAttributes);
 	}
 
 	private static void registerCommands() {
@@ -96,7 +96,7 @@ public class LightLand {
 		FMLJavaModLoadingContext ctx = FMLJavaModLoadingContext.get();
 		IEventBus bus = ctx.getModEventBus();
 		registerModBusEvents(bus);
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> LightLandClient.onCtorClient(bus, MinecraftForge.EVENT_BUS));
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> LLClient.onCtorClient(bus, MinecraftForge.EVENT_BUS));
 		registerRegistrates(bus);
 		registerForgeEvents();
 		registerCommands();
@@ -105,7 +105,7 @@ public class LightLand {
 	private static void setup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
 			EffectAddUtil.init();
-			LightlangEffects.registerBrewingRecipe();
+			LLEffects.registerBrewingRecipe();
 		});
 		StructureRegistrate.commonSetup(event);
 	}
@@ -116,7 +116,7 @@ public class LightLand {
 	}
 
 	public static void onParticleRegistryEvent(ParticleFactoryRegisterEvent event) {
-		LightlandParticle.registerClient();
+		LLParticle.registerClient();
 	}
 
 	public static void registerCaps(RegisterCapabilitiesEvent event) {
