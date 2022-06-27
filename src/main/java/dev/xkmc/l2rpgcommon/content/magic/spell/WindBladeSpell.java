@@ -1,9 +1,11 @@
 package dev.xkmc.l2rpgcommon.content.magic.spell;
 
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.l2rpgcommon.content.common.entity.SpellEntity;
 import dev.xkmc.l2rpgcommon.content.common.entity.WindBladeEntity;
+import dev.xkmc.l2rpgcommon.content.magic.item.MagicScroll;
 import dev.xkmc.l2rpgcommon.content.magic.spell.internal.ActivationConfig;
 import dev.xkmc.l2rpgcommon.content.magic.spell.internal.SimpleSpell;
 import dev.xkmc.l2rpgcommon.content.magic.spell.internal.SpellConfig;
@@ -71,10 +73,31 @@ public class WindBladeSpell extends SimpleSpell<WindBladeSpell.Config> {
 		public float damage, distance, velocity;
 
 		@SerialClass.SerialField
-		public SpellDisplay spell_time;
-
-		@SerialClass.SerialField
 		public SpellEntity.SpellPlane plane;
+
+	}
+
+	@DataGenOnly
+	public static class Builder extends SpellConfig.SpellConfigBuilder<Builder, Config> {
+
+		public Builder(MagicScroll.ScrollType type, int duration, int mana_cost, int spell_load, SpellConfig.SpellDisplay display) {
+			super(new Config(), type, duration, mana_cost, spell_load, display);
+		}
+
+		public Builder set(SpellEntity.SpellPlane plane, int period, int normal, float damage, float distance, float velocity) {
+			config.plane = plane;
+			config.period = period;
+			config.normal = normal;
+			config.damage = damage;
+			config.distance = distance;
+			config.velocity = velocity;
+			return this;
+		}
+
+		public Builder setOffset(int... offsets) {
+			config.offset = offsets;
+			return this;
+		}
 
 	}
 

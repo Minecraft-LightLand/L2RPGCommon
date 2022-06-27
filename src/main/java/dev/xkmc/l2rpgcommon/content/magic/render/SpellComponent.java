@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Vector3f;
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
 import dev.xkmc.l2rpgcommon.network.config.SpellEntityConfig;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -47,6 +48,36 @@ public class SpellComponent {
 		@OnlyIn(Dist.CLIENT)
 		public float get(float tick) {
 			return value + amplitude * (float) Math.sin((tick - dt) * 2 * Math.PI / period) + delta * tick;
+		}
+
+		public static Value constant(float val) {
+			Value ans = new Value();
+			ans.value = val;
+			return ans;
+		}
+
+		public static Value linear(float val, float delta) {
+			Value ans = new Value();
+			ans.value = val;
+			ans.delta = delta;
+			return ans;
+		}
+
+		public static Value sin(float val, float amplitude, float period) {
+			Value ans = new Value();
+			ans.value = val;
+			ans.amplitude = amplitude;
+			ans.period = period;
+			return ans;
+		}
+
+		public static Value sin(float val, float amplitude, float period, float dt) {
+			Value ans = new Value();
+			ans.value = val;
+			ans.amplitude = amplitude;
+			ans.period = period;
+			ans.dt = dt;
+			return ans;
 		}
 
 	}
@@ -106,6 +137,22 @@ public class SpellComponent {
 					alp).endVertex();
 		}
 
+		@Deprecated
+		public Stroke() {
+
+		}
+
+		@DataGenOnly
+		public Stroke(int vertex, int cycle, String color, float width, float radius, float z, float angle) {
+			this.vertex = vertex;
+			this.cycle = cycle;
+			this.color = color;
+			this.width = width;
+			this.radius = radius;
+			this.z = z;
+			this.angle = angle;
+		}
+
 	}
 
 	@SerialClass
@@ -154,9 +201,31 @@ public class SpellComponent {
 			return val == null ? def : val.get(handle.tick);
 		}
 
+		@Deprecated
+		public Layer() {
+
+		}
+
+		@DataGenOnly
+		public Layer(Value z_offset, Value scale, Value radius, Value rotation, Value alpha) {
+			this.z_offset = z_offset;
+			this.scale = scale;
+			this.radius = radius;
+			this.rotation = rotation;
+			this.alpha = alpha;
+		}
+
+		@DataGenOnly
+		public Layer add(int repeat, ResourceLocation... sub) {
+			for (int i = 0; i < repeat; i++) {
+				for (ResourceLocation s : sub) {
+					children.add(s.toString());
+				}
+			}
+			return this;
+		}
 
 	}
-
 
 	@OnlyIn(Dist.CLIENT)
 	public static class RenderHandle {
@@ -174,6 +243,18 @@ public class SpellComponent {
 			this.tick = tick;
 			this.light = light;
 		}
+	}
+
+	@DataGenOnly
+	public SpellComponent addStroke(Stroke stroke) {
+		strokes.add(stroke);
+		return this;
+	}
+
+	@DataGenOnly
+	public SpellComponent addLayer(Layer layer) {
+		layers.add(layer);
+		return this;
 	}
 
 }

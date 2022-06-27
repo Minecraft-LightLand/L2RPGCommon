@@ -2,8 +2,10 @@ package dev.xkmc.l2rpgcommon.content.magic.spell;
 
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
 import dev.xkmc.l2rpgcommon.compat.TeamAccessor;
 import dev.xkmc.l2rpgcommon.content.common.entity.SpellEntity;
+import dev.xkmc.l2rpgcommon.content.magic.item.MagicScroll;
 import dev.xkmc.l2rpgcommon.content.magic.spell.internal.ActivationConfig;
 import dev.xkmc.l2rpgcommon.content.magic.spell.internal.SimpleSpell;
 import dev.xkmc.l2rpgcommon.content.magic.spell.internal.SpellConfig;
@@ -63,9 +65,18 @@ public class WaterTrapSpell extends SimpleSpell<WaterTrapSpell.Config> {
 		@SerialClass.SerialField
 		public float radius;
 
-		@SerialClass.SerialField
-		public SpellDisplay spell_time;
+	}
 
+	@DataGenOnly
+	public static class Builder extends SpellConfig.SpellConfigBuilder<Builder, Config> {
+
+		public Builder(MagicScroll.ScrollType type, int duration, int mana_cost, int spell_load,
+					   SpellConfig.SpellDisplay display, int effect_time, int effect_level, float radius) {
+			super(new Config(), type, duration, mana_cost, spell_load, display);
+			config.effect_time = effect_time;
+			config.effect_level = effect_level;
+			config.radius = radius;
+		}
 	}
 
 }

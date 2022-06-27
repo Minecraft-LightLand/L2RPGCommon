@@ -2,6 +2,8 @@ package dev.xkmc.l2rpgcommon.network.config;
 
 import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2library.serial.network.BaseConfig;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
+import dev.xkmc.l2rpgcommon.content.magic.products.MagicProductType;
 import dev.xkmc.l2rpgcommon.content.magic.products.info.TypeConfig;
 import dev.xkmc.l2rpgcommon.network.ConfigType;
 import dev.xkmc.l2rpgcommon.network.NetworkManager;
@@ -21,6 +23,12 @@ public class ProductTypeConfig extends BaseConfig {
 	public static TypeConfig getConfig(ResourceLocation rl) {
 		ProductTypeConfig base = NetworkManager.getConfig(ConfigType.PRODUCT_TYPE);
 		return base.map.get(rl.toString());
+	}
+
+	@DataGenOnly
+	public ProductTypeConfig add(MagicProductType<?, ?> type, TypeConfig config) {
+		map.put(type.getID(), config);
+		return this;
 	}
 
 }

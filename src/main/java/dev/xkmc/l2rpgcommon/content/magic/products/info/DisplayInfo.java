@@ -20,6 +20,10 @@ public class DisplayInfo {
 	@SerialClass.SerialField
 	public Item icon = Items.PAPER;
 
+	public DisplayInfo(){
+
+	}
+
 	public float getX() {
 		return x * SCALE;
 	}

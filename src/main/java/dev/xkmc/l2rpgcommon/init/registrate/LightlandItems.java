@@ -216,7 +216,7 @@ public class LightlandItems {
 
 	// -------- berserker --------
 	public static final ItemEntry<MedicineLeather> MEDICINE_LEATHER, KING_MED_LEATHER;
-	public static final ItemEntry<MedicineArmor>[] MEDICINE_ARMOR, KING_MED_ARMOR;
+	public static final ArmorItems<MedicineArmor> MEDICINE_ARMOR, KING_MED_ARMOR;
 
 	static {
 		MEDICINE_LEATHER = REGISTRATE.item("medicine_leather", p -> new MedicineLeather(14, p))
@@ -249,14 +249,8 @@ public class LightlandItems {
 	public static void register() {
 	}
 
-	@SuppressWarnings({"rawtypes", "unsafe", "unchecked"})
-	public static <T extends ArmorItem> ItemEntry<T>[] genArmor(String id, BiFunction<EquipmentSlot, Item.Properties, T> sup, Function<ItemBuilder<T, L2Registrate>, ItemBuilder<T, L2Registrate>> func) {
-		ItemEntry[] ans = new ItemEntry[4];
-		ans[0] = func.apply(REGISTRATE.item(id + "_helmet", p -> sup.apply(EquipmentSlot.HEAD, p))).defaultLang().register();
-		ans[1] = func.apply(REGISTRATE.item(id + "_chestplate", p -> sup.apply(EquipmentSlot.CHEST, p))).defaultLang().register();
-		ans[2] = func.apply(REGISTRATE.item(id + "_leggings", p -> sup.apply(EquipmentSlot.LEGS, p))).defaultLang().register();
-		ans[3] = func.apply(REGISTRATE.item(id + "_boots", p -> sup.apply(EquipmentSlot.FEET, p))).defaultLang().register();
-		return ans;
+	public static <T extends ArmorItem> ArmorItems<T> genArmor(String id, BiFunction<EquipmentSlot, Item.Properties, T> sup, Function<ItemBuilder<T, L2Registrate>, ItemBuilder<T, L2Registrate>> func) {
+		return new ArmorItems<>(REGISTRATE, id, sup, func);
 	}
 
 	public static <T extends Item> void createDoubleLayerModel(DataGenContext<Item, T> ctx, RegistrateItemModelProvider pvd) {
@@ -269,9 +263,18 @@ public class LightlandItems {
 		return REGISTRATE.item(id, Item::new).defaultModel().defaultLang().register();
 	}
 
-	public static class ArmorItems {
+	public static class ArmorItems<T extends ArmorItem> {
 
+		public final String prefix;
+		public final ItemEntry[] armors = new ItemEntry[4];
 
+		public ArmorItems(L2Registrate reg, String id, BiFunction<EquipmentSlot, Item.Properties, T> sup, Function<ItemBuilder<T, L2Registrate>, ItemBuilder<T, L2Registrate>> func) {
+			this.prefix = reg.getModid() + ":" + id;
+			armors[0] = func.apply(reg.item(id + "_helmet", p -> sup.apply(EquipmentSlot.HEAD, p))).defaultLang().register();
+			armors[1] = func.apply(reg.item(id + "_chestplate", p -> sup.apply(EquipmentSlot.CHEST, p))).defaultLang().register();
+			armors[2] = func.apply(reg.item(id + "_leggings", p -> sup.apply(EquipmentSlot.LEGS, p))).defaultLang().register();
+			armors[3] = func.apply(reg.item(id + "_boots", p -> sup.apply(EquipmentSlot.FEET, p))).defaultLang().register();
+		}
 
 	}
 

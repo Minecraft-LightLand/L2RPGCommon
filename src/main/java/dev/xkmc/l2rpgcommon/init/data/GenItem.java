@@ -138,6 +138,10 @@ public class GenItem {
 			return LightlandItems.GEN_ITEM[ordinal()][4 + tool.ordinal()].get();
 		}
 
+		public String armorPrefix() {
+			return LightLand.MODID + ":" + id;
+		}
+
 	}
 
 	public enum Tools {

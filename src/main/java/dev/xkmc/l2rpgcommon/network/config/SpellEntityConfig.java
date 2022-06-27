@@ -2,6 +2,7 @@ package dev.xkmc.l2rpgcommon.network.config;
 
 import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2library.serial.network.BaseConfig;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
 import dev.xkmc.l2library.util.code.Wrappers;
 import dev.xkmc.l2rpgcommon.content.magic.render.SpellComponent;
 import dev.xkmc.l2rpgcommon.network.ConfigType;
@@ -23,4 +24,9 @@ public class SpellEntityConfig extends BaseConfig {
 		return Wrappers.cast(config.map.get(rl.toString()));
 	}
 
+	@DataGenOnly
+	public SpellEntityConfig add(ResourceLocation id, SpellComponent comp) {
+		map.put(id.toString(), comp);
+		return this;
+	}
 }

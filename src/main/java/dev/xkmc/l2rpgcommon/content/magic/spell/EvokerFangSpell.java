@@ -1,7 +1,9 @@
 package dev.xkmc.l2rpgcommon.content.magic.spell;
 
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
 import dev.xkmc.l2rpgcommon.content.common.entity.SpellEntity;
+import dev.xkmc.l2rpgcommon.content.magic.item.MagicScroll;
 import dev.xkmc.l2rpgcommon.content.magic.spell.internal.ActivationConfig;
 import dev.xkmc.l2rpgcommon.content.magic.spell.internal.SimpleSpell;
 import dev.xkmc.l2rpgcommon.content.magic.spell.internal.SpellConfig;
@@ -9,6 +11,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.EvokerFangs;
 import net.minecraft.world.level.Level;
+
+import java.util.ArrayList;
 
 public class EvokerFangSpell extends SimpleSpell<EvokerFangSpell.Config> {
 
@@ -47,9 +51,6 @@ public class EvokerFangSpell extends SimpleSpell<EvokerFangSpell.Config> {
 		@SerialClass.SerialField
 		public Layer[] layers;
 
-		@SerialClass.SerialField
-		public SpellDisplay spell_time;
-
 	}
 
 	@SerialClass
@@ -61,6 +62,40 @@ public class EvokerFangSpell extends SimpleSpell<EvokerFangSpell.Config> {
 		@SerialClass.SerialField
 		public double angle, radius;
 
+		@Deprecated
+		public Layer() {
+
+		}
+
+		@DataGenOnly
+		public Layer(int count, int delay, double angle, double radius) {
+			this.count = count;
+			this.delay = delay;
+			this.angle = angle;
+			this.radius = radius;
+		}
+
+	}
+
+	@DataGenOnly
+	public static class EvokerFangBuilder extends SpellConfig.SpellConfigBuilder<EvokerFangBuilder, Config> {
+
+		private final ArrayList<Layer> list = new ArrayList<>();
+
+		public EvokerFangBuilder(MagicScroll.ScrollType type, int duration, int mana_cost, int spell_load, SpellConfig.SpellDisplay display) {
+			super(new Config(), type, duration, mana_cost, spell_load, display);
+		}
+
+		public EvokerFangBuilder addLayer(int count, int delay, double angle, double radius) {
+			list.add(new Layer(count, delay, angle, radius));
+			return this;
+		}
+
+		@Override
+		public Config end() {
+			config.layers = list.toArray(new Layer[0]);
+			return config;
+		}
 	}
 
 }

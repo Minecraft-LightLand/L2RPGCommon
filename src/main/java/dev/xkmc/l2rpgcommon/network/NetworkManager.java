@@ -2,14 +2,26 @@ package dev.xkmc.l2rpgcommon.network;
 
 import dev.xkmc.l2library.serial.network.BaseConfig;
 import dev.xkmc.l2library.serial.network.PacketHandlerWithConfig;
+import dev.xkmc.l2rpgcommon.content.common.capability.restriction.ArmorEnchant;
+import dev.xkmc.l2rpgcommon.content.common.capability.restriction.ArmorWeight;
+import dev.xkmc.l2rpgcommon.content.questline.mobs.swamp.SlimeProperties;
 import dev.xkmc.l2rpgcommon.init.LightLand;
+import dev.xkmc.l2rpgcommon.network.config.ProductTypeConfig;
+import dev.xkmc.l2rpgcommon.network.config.SkillDataConfig;
+import dev.xkmc.l2rpgcommon.network.config.SpellDataConfig;
+import dev.xkmc.l2rpgcommon.network.config.SpellEntityConfig;
 import dev.xkmc.l2rpgcommon.network.packets.CapToClient;
 import dev.xkmc.l2rpgcommon.network.packets.CapToServer;
 import dev.xkmc.l2rpgcommon.network.packets.EmptyRightClickToServer;
 import dev.xkmc.l2rpgcommon.network.packets.SkillToServer;
 import net.minecraft.resources.ResourceLocation;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import static net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT;
@@ -34,7 +46,33 @@ public class NetworkManager {
 	}
 
 	public static void register() {
+		HANDLER.addCachedConfig(ConfigType.ARMOR_WEIGHT.getID(), s -> {
+			List<ArmorWeight> list = s.map(e -> (ArmorWeight) e).toList();
+			ArmorWeight ans = new ArmorWeight();
+			ans.entries = BaseConfig.overrideMap(list, e -> e.entries);
+			ans.materials = BaseConfig.overrideMap(list, e -> e.materials);
+			ans.suffixes = BaseConfig.collectList(list, e -> e.suffixes);
+			return ans;
+		});
+		addSimpleMapConfig(ConfigType.ARMOR_ENCHANT, ArmorEnchant::new, e -> e.map, (e, map) -> e.map = map);
+		addSimpleMapConfig(ConfigType.CONFIG_SKILL, SkillDataConfig::new, e -> e.map, (e, map) -> e.map = map);
+		addSimpleMapConfig(ConfigType.CONFIG_SPELL, SpellDataConfig::new, e -> e.map, (e, map) -> e.map = map);
+		addSimpleMapConfig(ConfigType.PRODUCT_TYPE, ProductTypeConfig::new, e -> e.map, (e, map) -> e.map = map);
+		addSimpleMapConfig(ConfigType.CONFIG_SPELL_ENTITY, SpellEntityConfig::new, e -> e.map, (e, map) -> e.map = map);
+		addSimpleMapConfig(ConfigType.POTION_SLIME_DROP, SlimeProperties::new, e -> e.map, (e, map) -> e.map = map);
+	}
 
+	@SuppressWarnings("unchecked")
+	private static <C extends BaseConfig, K, T> void addSimpleMapConfig(ConfigType type,
+																		Supplier<C> con,
+																		Function<C, HashMap<K, T>> get,
+																		BiConsumer<C, HashMap<K, T>> set) {
+		HANDLER.addCachedConfig(type.getID(), s -> {
+			List<C> list = s.map(e -> (C) e).toList();
+			C ans = con.get();
+			set.accept(ans, BaseConfig.overrideMap(list, get));
+			return ans;
+		});
 	}
 
 }

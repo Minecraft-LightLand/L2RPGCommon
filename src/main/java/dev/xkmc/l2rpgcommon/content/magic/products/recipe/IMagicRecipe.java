@@ -1,9 +1,9 @@
 package dev.xkmc.l2rpgcommon.content.magic.products.recipe;
 
 import com.google.common.collect.Maps;
-import dev.xkmc.l2library.base.recipe.BaseRecipe;
 import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2library.serial.network.BaseConfig;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
 import dev.xkmc.l2rpgcommon.content.magic.products.IMagicProduct;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicElement;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicProductType;
@@ -12,8 +12,6 @@ import dev.xkmc.l2rpgcommon.network.ConfigType;
 import dev.xkmc.l2rpgcommon.network.NetworkManager;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -38,7 +36,27 @@ public class IMagicRecipe extends BaseConfig {
 	private MagicElement[] elements;
 	private boolean[][] maps;
 
+	@Deprecated
 	public IMagicRecipe() {
+	}
+
+	@DataGenOnly
+	public IMagicRecipe(MagicProductType<?, ?> type, ResourceLocation id, DisplayInfo screen) {
+		this.product_type = type;
+		this.product_id = id;
+		this.screen = screen;
+	}
+
+	@DataGenOnly
+	public IMagicRecipe setPredecessors(ResourceLocation... pred) {
+		this.predecessor = pred;
+		return this;
+	}
+
+	@DataGenOnly
+	public IMagicRecipe addElemRequirement(ElementalMastery... elem) {
+		this.elemental_mastery = elem;
+		return this;
 	}
 
 	public static List<IMagicRecipe> getAll() {

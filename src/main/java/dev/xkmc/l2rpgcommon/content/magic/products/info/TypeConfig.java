@@ -22,4 +22,14 @@ public class TypeConfig {
 		return background;
 	}
 
+	@Deprecated
+	public TypeConfig() {
+
+	}
+
+	public TypeConfig(Item icon, ResourceLocation background) {
+		this.icon = icon;
+		this.background = background;
+	}
+
 }

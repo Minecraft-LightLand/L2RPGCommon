@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @SerialClass
@@ -54,13 +55,13 @@ public class ArmorWeight extends BaseConfig {
 	}
 
 	@SerialClass.SerialField
-	public final HashMap<String, Entry> entries = new HashMap<>();
+	public HashMap<String, Entry> entries = new HashMap<>();
 
 	@SerialClass.SerialField
 	public HashMap<String, String> materials = new HashMap<>();
 
 	@SerialClass.SerialField
-	public String[] suffixes;
+	public ArrayList<String> suffixes;
 
 	@SerialClass
 	public static class Entry {

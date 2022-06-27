@@ -1,10 +1,12 @@
 package dev.xkmc.l2rpgcommon.content.magic.spell;
 
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
 import dev.xkmc.l2library.util.raytrace.RayTraceUtil;
 import dev.xkmc.l2rpgcommon.content.common.entity.FireArrowEntity;
 import dev.xkmc.l2rpgcommon.content.common.entity.MagicFireBallEntity;
 import dev.xkmc.l2rpgcommon.content.common.entity.SpellEntity;
+import dev.xkmc.l2rpgcommon.content.magic.item.MagicScroll;
 import dev.xkmc.l2rpgcommon.content.magic.spell.internal.ActivationConfig;
 import dev.xkmc.l2rpgcommon.content.magic.spell.internal.SimpleSpell;
 import dev.xkmc.l2rpgcommon.content.magic.spell.internal.SpellConfig;
@@ -83,8 +85,34 @@ public class FireArrowSpell extends SimpleSpell<FireArrowSpell.Config> {
 		@SerialClass.SerialField
 		public float damage, distance, velocity, radius, size;
 
-		@SerialClass.SerialField
-		public SpellDisplay spell_time;
+	}
+
+	@DataGenOnly
+	public static class Builder extends SpellConfig.SpellConfigBuilder<Builder, Config> {
+
+		public Builder(MagicScroll.ScrollType type, int duration, int mana_cost, int spell_load, SpellConfig.SpellDisplay display) {
+			super(new Config(), type, duration, mana_cost, spell_load, display);
+		}
+
+		public Builder set(int period, int repeat, float radius, float distance, float velocity) {
+			config.period = period;
+			config.repeat = repeat;
+			config.radius = radius;
+			config.distance = distance;
+			config.velocity = velocity;
+			return this;
+		}
+
+		public Config fireball(int explosion, float size) {
+			config.explosion = explosion;
+			config.size = size;
+			return config;
+		}
+
+		public Config arrow(float damage) {
+			config.damage = damage;
+			return config;
+		}
 
 	}
 

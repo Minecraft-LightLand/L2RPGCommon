@@ -1,8 +1,10 @@
 package dev.xkmc.l2rpgcommon.content.magic.products.recipe;
 
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.util.annotation.DataGenOnly;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicElement;
-import dev.xkmc.l2rpgcommon.init.registrate.LightlandRecipe;
+import dev.xkmc.l2rpgcommon.content.magic.products.MagicProductType;
+import dev.xkmc.l2rpgcommon.content.magic.products.info.DisplayInfo;
 import net.minecraft.resources.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
 
@@ -16,6 +18,28 @@ public class DefMagicRecipe extends IMagicRecipe {
 	public TreeMap<String, MagicElement> elements = new TreeMap<>();
 	@SerialClass.SerialField
 	public String[] flows;
+
+	@Deprecated
+	public DefMagicRecipe() {
+		super();
+	}
+
+	@DataGenOnly
+	public DefMagicRecipe(MagicProductType<?, ?> type, ResourceLocation id, DisplayInfo screen) {
+		super(type, id, screen);
+	}
+
+	@DataGenOnly
+	public DefMagicRecipe addElement(String id, MagicElement elem) {
+		this.elements.put(id, elem);
+		return this;
+	}
+
+	@DataGenOnly
+	public DefMagicRecipe setFlow(String... flows) {
+		this.flows = flows;
+		return this;
+	}
 
 	private static boolean flowRegex(char[] chars, String s0, String s1, boolean[][] bools, boolean bidirect) {
 		int[] i0 = new int[s0.length()];

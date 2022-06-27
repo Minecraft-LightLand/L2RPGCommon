@@ -18,7 +18,7 @@ public class SpellRegistry {
 	public static final RegistryEntry<WaterTrapSpell> WATER_TRAP_1 = reg("water_trap_1", WaterTrapSpell::new);
 	public static final RegistryEntry<FireArrowSpell> FIRE_RAIN = reg("fire_rain", FireArrowSpell::new);
 	public static final RegistryEntry<FireArrowSpell> EXPLOSION_RAIN = reg("explosion_rain", FireArrowSpell::new);
-	public static final RegistryEntry<FireArrowSpell> FIRE_RFIRE_EXPLOSIONAIN = reg("fire_explosion", FireArrowSpell::new);
+	public static final RegistryEntry<FireArrowSpell> FIRE_EXPLOSION = reg("fire_explosion", FireArrowSpell::new);
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public static <T extends Spell<?, ?>> RegistryEntry<T> reg(String id, NonNullSupplier<T> sup) {

@@ -3,6 +3,8 @@ package dev.xkmc.l2rpgcommon.init.data.configs;
 import dev.xkmc.l2library.serial.network.BaseConfig;
 import dev.xkmc.l2rpgcommon.content.common.capability.restriction.ArmorEnchant;
 import dev.xkmc.l2rpgcommon.content.common.capability.restriction.ArmorWeight;
+import dev.xkmc.l2rpgcommon.init.data.GenItem;
+import dev.xkmc.l2rpgcommon.init.registrate.LightlandItems;
 import net.minecraft.world.item.enchantment.Enchantments;
 
 import java.util.function.BiConsumer;
@@ -36,16 +38,16 @@ public class ArmorConfigGen {
 				.add("minecraft:netherite", 80, 30)
 				.add("minecraft:turtle_helmet", 0, 200));
 		adder.accept("lightland", new ArmorWeight()
-				.add("l2rpgcommon:medicine_leather", 30, 0)
-				.add("l2rpgcommon:king_leather", 30, 0)
-				.add("l2rpgcommon:steel", 70, 0)
-				.add("l2rpgcommon:layroot", 500, 0)
-				.add("l2rpgcommon:layline", 50, 0)
-				.add("l2rpgcommon:oldroot", 50, 0)
-				.add("l2rpgcommon:knightsteel", 70, 0)
-				.add("l2rpgcommon:dispellium", 70, 0)
-				.add("l2rpgcommon:heavysteel", 100, 0)
-				.add("l2rpgcommon:ethernium", 70, 0));
+				.add(LightlandItems.MEDICINE_ARMOR.prefix, 30, 0)
+				.add(LightlandItems.KING_MED_ARMOR.prefix, 30, 0)
+				.add(GenItem.Mats.STEEL.armorPrefix(), 70, 0)
+				.add(GenItem.Mats.LAYROOT.armorPrefix(), 50, 0)
+				.add(GenItem.Mats.LAYLINE.armorPrefix(), 50, 0)
+				.add(GenItem.Mats.OLDROOT.armorPrefix(), 60, 0)
+				.add(GenItem.Mats.KNIGHTSTEEL.armorPrefix(), 70, 0)
+				.add(GenItem.Mats.DISPELLIUM.armorPrefix(), 70, 0)
+				.add(GenItem.Mats.HEAVYSTEEL.armorPrefix(), 100, 0)
+				.add(GenItem.Mats.ETHERNIUM.armorPrefix(), 70, 0));
 	}
 
 }
