@@ -1,0 +1,46 @@
+{
+  "_class": "dev.xkmc.l2rpgcommon.content.common.capability.restriction.ArmorWeight",
+  "entries": {
+    "l2rpgcommon:dispellium": {
+      "extra_weight": 0,
+      "ingredient_weight": 70
+    },
+    "l2rpgcommon:ethernium": {
+      "extra_weight": 0,
+      "ingredient_weight": 70
+    },
+    "l2rpgcommon:heavysteel": {
+      "extra_weight": 0,
+      "ingredient_weight": 100
+    },
+    "l2rpgcommon:king_leather": {
+      "extra_weight": 0,
+      "ingredient_weight": 30
+    },
+    "l2rpgcommon:knightsteel": {
+      "extra_weight": 0,
+      "ingredient_weight": 70
+    },
+    "l2rpgcommon:layline": {
+      "extra_weight": 0,
+      "ingredient_weight": 50
+    },
+    "l2rpgcommon:layroot": {
+      "extra_weight": 0,
+      "ingredient_weight": 50
+    },
+    "l2rpgcommon:medicine_leather": {
+      "extra_weight": 0,
+      "ingredient_weight": 30
+    },
+    "l2rpgcommon:oldroot": {
+      "extra_weight": 0,
+      "ingredient_weight": 60
+    },
+    "l2rpgcommon:steel": {
+      "extra_weight": 0,
+      "ingredient_weight": 70
+    }
+  },
+  "materials": {}
+}

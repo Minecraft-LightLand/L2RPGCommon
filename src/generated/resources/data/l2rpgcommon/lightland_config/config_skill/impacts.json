@@ -1,0 +1,53 @@
+{
+  "_class": "dev.xkmc.l2rpgcommon.network.config.SkillDataConfig",
+  "map": {
+    "l2rpgcommon:impact_attract": {
+      "_class": "dev.xkmc.l2rpgcommon.content.skill.ImpactSkill$Config",
+      "cooldown": [
+        200,
+        200,
+        200
+      ],
+      "damage": [
+        10.0,
+        15.0,
+        20.0
+      ],
+      "impact": [
+        -1.0,
+        -2.0,
+        -3.0
+      ],
+      "max_level": 3,
+      "radius": [
+        6.0,
+        8.0,
+        10.0
+      ]
+    },
+    "l2rpgcommon:impact_repel": {
+      "_class": "dev.xkmc.l2rpgcommon.content.skill.ImpactSkill$Config",
+      "cooldown": [
+        200,
+        200,
+        200
+      ],
+      "damage": [
+        10.0,
+        15.0,
+        20.0
+      ],
+      "impact": [
+        1.0,
+        2.0,
+        3.0
+      ],
+      "max_level": 3,
+      "radius": [
+        6.0,
+        8.0,
+        10.0
+      ]
+    }
+  }
+}

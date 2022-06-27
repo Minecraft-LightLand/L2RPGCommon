@@ -1,0 +1,131 @@
+{
+  "_class": "dev.xkmc.l2rpgcommon.network.config.SkillDataConfig",
+  "map": {
+    "l2rpgcommon:armor_breaker": {
+      "_class": "dev.xkmc.l2rpgcommon.content.skill.EffectSkill$Config",
+      "cooldown": [
+        1200,
+        1200,
+        1200
+      ],
+      "effects": [
+        [
+          {
+            "amplifier": 0,
+            "duration": 600,
+            "id": "l2rpgcommon:armor_breaker"
+          },
+          {
+            "amplifier": 0,
+            "duration": 600,
+            "id": "l2rpgcommon:armor_reduce"
+          }
+        ],
+        [
+          {
+            "amplifier": 1,
+            "duration": 600,
+            "id": "l2rpgcommon:armor_breaker"
+          },
+          {
+            "amplifier": 0,
+            "duration": 600,
+            "id": "l2rpgcommon:armor_reduce"
+          }
+        ],
+        [
+          {
+            "amplifier": 2,
+            "duration": 600,
+            "id": "l2rpgcommon:armor_breaker"
+          },
+          {
+            "amplifier": 0,
+            "duration": 600,
+            "id": "l2rpgcommon:armor_reduce"
+          }
+        ]
+      ],
+      "max_level": 3,
+      "range_effects": [
+        [],
+        [],
+        []
+      ]
+    },
+    "l2rpgcommon:blood_thirst": {
+      "_class": "dev.xkmc.l2rpgcommon.content.skill.EffectSkill$Config",
+      "cooldown": [
+        1800,
+        1800,
+        1800
+      ],
+      "effects": [
+        [
+          {
+            "amplifier": 0,
+            "duration": 600,
+            "id": "l2rpgcommon:blood_thirst"
+          }
+        ],
+        [
+          {
+            "amplifier": 1,
+            "duration": 600,
+            "id": "l2rpgcommon:blood_thirst"
+          }
+        ],
+        [
+          {
+            "amplifier": 2,
+            "duration": 600,
+            "id": "l2rpgcommon:blood_thirst"
+          }
+        ]
+      ],
+      "max_level": 3,
+      "range_effects": [
+        [],
+        [],
+        []
+      ]
+    },
+    "l2rpgcommon:no_knockback": {
+      "_class": "dev.xkmc.l2rpgcommon.content.skill.EffectSkill$Config",
+      "cooldown": [
+        2400,
+        2400,
+        2400
+      ],
+      "effects": [
+        [
+          {
+            "amplifier": 0,
+            "duration": 600,
+            "id": "l2rpgcommon:no_knockback"
+          }
+        ],
+        [
+          {
+            "amplifier": 0,
+            "duration": 900,
+            "id": "l2rpgcommon:no_knockback"
+          }
+        ],
+        [
+          {
+            "amplifier": 0,
+            "duration": 1200,
+            "id": "l2rpgcommon:no_knockback"
+          }
+        ]
+      ],
+      "max_level": 3,
+      "range_effects": [
+        [],
+        [],
+        []
+      ]
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "_class": "dev.xkmc.l2rpgcommon.network.config.SkillDataConfig",
+  "map": {
+    "l2rpgcommon:quick_pull": {
+      "_class": "dev.xkmc.l2rpgcommon.content.skill.EffectSkill$Config",
+      "cooldown": [
+        1800,
+        1800,
+        1800
+      ],
+      "effects": [
+        [
+          {
+            "amplifier": 0,
+            "duration": 600,
+            "id": "minecraft:speed"
+          },
+          {
+            "amplifier": 0,
+            "duration": 600,
+            "id": "minecraft:jump_boost"
+          },
+          {
+            "amplifier": 0,
+            "duration": 600,
+            "id": "l2rpgcommon:quick_pull"
+          }
+        ],
+        [
+          {
+            "amplifier": 1,
+            "duration": 600,
+            "id": "minecraft:speed"
+          },
+          {
+            "amplifier": 1,
+            "duration": 600,
+            "id": "minecraft:jump_boost"
+          },
+          {
+            "amplifier": 1,
+            "duration": 600,
+            "id": "l2rpgcommon:quick_pull"
+          }
+        ],
+        [
+          {
+            "amplifier": 1,
+            "duration": 600,
+            "id": "minecraft:speed"
+          },
+          {
+            "amplifier": 1,
+            "duration": 600,
+            "id": "minecraft:jump_boost"
+          },
+          {
+            "amplifier": 2,
+            "duration": 600,
+            "id": "l2rpgcommon:quick_pull"
+          },
+          {
+            "amplifier": 0,
+            "duration": 600,
+            "id": "l2rpgcommon:run_bow"
+          }
+        ]
+      ],
+      "max_level": 3,
+      "range_effects": [
+        [],
+        [],
+        []
+      ]
+    }
+  }
+}

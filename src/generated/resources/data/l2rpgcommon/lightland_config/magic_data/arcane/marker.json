@@ -1,0 +1,29 @@
+{
+  "_class": "dev.xkmc.l2rpgcommon.content.magic.products.recipe.DefMagicRecipe",
+  "elemental_mastery": [
+    {
+      "element": "l2rpgcommon:quint",
+      "level": 1
+    }
+  ],
+  "elements": {
+    "A": "l2rpgcommon:fire",
+    "B": "l2rpgcommon:water",
+    "C": "l2rpgcommon:quint",
+    "D": "l2rpgcommon:air",
+    "E": "l2rpgcommon:earth",
+    "F": "l2rpgcommon:quint"
+  },
+  "flows": [
+    "ABCDEF|"
+  ],
+  "product_id": "l2rpgcommon:marker",
+  "product_type": "l2rpgcommon:arcane",
+  "screen": {
+    "type": "TASK",
+    "SCALE": 1.0,
+    "icon": "minecraft:paper",
+    "x": 3,
+    "y": 0
+  }
+}

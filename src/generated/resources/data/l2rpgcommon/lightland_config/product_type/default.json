@@ -1,0 +1,25 @@
+{
+  "_class": "dev.xkmc.l2rpgcommon.network.config.ProductTypeConfig",
+  "map": {
+    "l2rpgcommon:arcane": {
+      "background": "l2rpgcommon:textures/block/ritual_iron.png",
+      "icon": "l2rpgcommon:gilded_arcane_axe"
+    },
+    "l2rpgcommon:craft": {
+      "background": "l2rpgcommon:textures/block/ritual_iron.png",
+      "icon": "minecraft:crafting_table"
+    },
+    "l2rpgcommon:effect": {
+      "background": "l2rpgcommon:textures/block/ritual_iron.png",
+      "icon": "minecraft:glass_bottle"
+    },
+    "l2rpgcommon:enchantment": {
+      "background": "l2rpgcommon:textures/block/ritual_iron.png",
+      "icon": "minecraft:enchanted_book"
+    },
+    "l2rpgcommon:spell": {
+      "background": "l2rpgcommon:textures/block/ritual_iron.png",
+      "icon": "l2rpgcommon:spell_card"
+    }
+  }
+}
