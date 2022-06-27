@@ -1,0 +1,20 @@
+{
+  "_class": "dev.xkmc.l2rpgcommon.content.magic.products.recipe.DefMagicRecipe",
+  "elements": {
+    "A": "l2rpgcommon:earth",
+    "B": "l2rpgcommon:earth",
+    "C": "l2rpgcommon:water"
+  },
+  "flows": [
+    "AB<->C"
+  ],
+  "product_id": "minecraft:diorite",
+  "product_type": "l2rpgcommon:craft",
+  "screen": {
+    "type": "TASK",
+    "SCALE": 1.0,
+    "icon": "minecraft:paper",
+    "x": 3,
+    "y": -2
+  }
+}

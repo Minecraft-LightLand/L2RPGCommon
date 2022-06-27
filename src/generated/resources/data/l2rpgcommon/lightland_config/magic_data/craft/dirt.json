@@ -1,0 +1,19 @@
+{
+  "_class": "dev.xkmc.l2rpgcommon.content.magic.products.recipe.DefMagicRecipe",
+  "elements": {
+    "A": "l2rpgcommon:earth",
+    "B": "l2rpgcommon:water"
+  },
+  "flows": [
+    "A->B"
+  ],
+  "product_id": "minecraft:dirt",
+  "product_type": "l2rpgcommon:craft",
+  "screen": {
+    "type": "TASK",
+    "SCALE": 1.0,
+    "icon": "minecraft:paper",
+    "x": -1,
+    "y": -2
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "_class": "dev.xkmc.l2rpgcommon.content.magic.products.recipe.DefMagicRecipe",
+  "elemental_mastery": [
+    {
+      "element": "l2rpgcommon:air",
+      "level": 1
+    }
+  ],
+  "elements": {
+    "A": "l2rpgcommon:fire",
+    "B": "l2rpgcommon:earth",
+    "C": "l2rpgcommon:air",
+    "D": "l2rpgcommon:air",
+    "E": "l2rpgcommon:air",
+    "F": "l2rpgcommon:air"
+  },
+  "flows": [
+    "A->B",
+    "B->CDEF",
+    "CDEF->A"
+  ],
+  "predecessor": [
+    "l2rpgcommon:spell/blade_side"
+  ],
+  "product_id": "l2rpgcommon:blade_front",
+  "product_type": "l2rpgcommon:spell",
+  "screen": {
+    "type": "TASK",
+    "SCALE": 1.0,
+    "icon": "minecraft:paper",
+    "x": 0,
+    "y": -2
+  }
+}

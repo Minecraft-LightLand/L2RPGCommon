@@ -1,0 +1,34 @@
+{
+  "_class": "dev.xkmc.l2rpgcommon.content.magic.products.recipe.DefMagicRecipe",
+  "elemental_mastery": [
+    {
+      "element": "l2rpgcommon:fire",
+      "level": 1
+    }
+  ],
+  "elements": {
+    "A": "l2rpgcommon:earth",
+    "B": "l2rpgcommon:air",
+    "C": "l2rpgcommon:air",
+    "D": "l2rpgcommon:fire",
+    "E": "l2rpgcommon:fire",
+    "F": "l2rpgcommon:fire"
+  },
+  "flows": [
+    "A->BC",
+    "BC->DEF",
+    "DEF->A"
+  ],
+  "predecessor": [
+    "l2rpgcommon:spell/fire_rain"
+  ],
+  "product_id": "l2rpgcommon:explosion_rain",
+  "product_type": "l2rpgcommon:spell",
+  "screen": {
+    "type": "TASK",
+    "SCALE": 1.0,
+    "icon": "minecraft:paper",
+    "x": 0,
+    "y": -1
+  }
+}

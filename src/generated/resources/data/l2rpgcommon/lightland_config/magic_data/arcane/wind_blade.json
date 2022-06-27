@@ -1,0 +1,32 @@
+{
+  "_class": "dev.xkmc.l2rpgcommon.content.magic.products.recipe.DefMagicRecipe",
+  "elemental_mastery": [
+    {
+      "element": "l2rpgcommon:quint",
+      "level": 1
+    }
+  ],
+  "elements": {
+    "A": "l2rpgcommon:water",
+    "B": "l2rpgcommon:earth",
+    "C": "l2rpgcommon:quint",
+    "D": "l2rpgcommon:quint",
+    "E": "l2rpgcommon:fire",
+    "F": "l2rpgcommon:fire"
+  },
+  "flows": [
+    "A->B",
+    "B->CD",
+    "CD->EF",
+    "EF->A"
+  ],
+  "product_id": "l2rpgcommon:wind_blade",
+  "product_type": "l2rpgcommon:arcane",
+  "screen": {
+    "type": "TASK",
+    "SCALE": 1.0,
+    "icon": "minecraft:paper",
+    "x": 0,
+    "y": 0
+  }
+}

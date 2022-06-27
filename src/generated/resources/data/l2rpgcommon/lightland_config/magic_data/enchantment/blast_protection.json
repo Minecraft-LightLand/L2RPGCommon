@@ -1,0 +1,28 @@
+{
+  "_class": "dev.xkmc.l2rpgcommon.content.magic.products.recipe.DefMagicRecipe",
+  "elemental_mastery": [
+    {
+      "element": "l2rpgcommon:water",
+      "level": 1
+    }
+  ],
+  "elements": {
+    "A": "l2rpgcommon:earth",
+    "B": "l2rpgcommon:earth",
+    "C": "l2rpgcommon:earth",
+    "D": "l2rpgcommon:water",
+    "E": "l2rpgcommon:water"
+  },
+  "flows": [
+    "ABC<->DE"
+  ],
+  "product_id": "minecraft:blast_protection",
+  "product_type": "l2rpgcommon:enchantment",
+  "screen": {
+    "type": "TASK",
+    "SCALE": 1.0,
+    "icon": "minecraft:paper",
+    "x": -2,
+    "y": 1
+  }
+}

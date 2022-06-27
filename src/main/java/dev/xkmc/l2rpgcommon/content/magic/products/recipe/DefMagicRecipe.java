@@ -30,8 +30,12 @@ public class DefMagicRecipe extends IMagicRecipe {
 	}
 
 	@DataGenOnly
-	public DefMagicRecipe addElement(String id, MagicElement elem) {
-		this.elements.put(id, elem);
+	public DefMagicRecipe addElements(MagicElement... elems) {
+		char a = 'A';
+		for (MagicElement elem : elems) {
+			this.elements.put("" + a, elem);
+			a++;
+		}
 		return this;
 	}
 

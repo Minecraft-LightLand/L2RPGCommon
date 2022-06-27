@@ -1,0 +1,28 @@
+{
+  "_class": "dev.xkmc.l2rpgcommon.content.magic.products.recipe.DefMagicRecipe",
+  "elemental_mastery": [
+    {
+      "element": "l2rpgcommon:quint",
+      "level": 1
+    }
+  ],
+  "elements": {
+    "A": "l2rpgcommon:fire",
+    "B": "l2rpgcommon:water",
+    "C": "l2rpgcommon:air",
+    "D": "l2rpgcommon:earth",
+    "E": "l2rpgcommon:quint"
+  },
+  "flows": [
+    "ABCDE|"
+  ],
+  "product_id": "l2rpgcommon:thunder_sword",
+  "product_type": "l2rpgcommon:arcane",
+  "screen": {
+    "type": "TASK",
+    "SCALE": 1.0,
+    "icon": "minecraft:paper",
+    "x": 2,
+    "y": 0
+  }
+}

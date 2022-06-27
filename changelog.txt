@@ -1,4 +1,4 @@
-completed Convert Magic Recipe to Config
+Convert Magic Recipe to Config
 TODO Add Custom Ingredient for Potion and Enchantment
 TODO Add Data Gen for Recipes and Configs
 Add Armor Entry for weight data gen
@@ -8,7 +8,7 @@ Armor Weight
 Armor Enchant
 Skill
 Spell
-TODO Spell Entity
-TODO Product Type
+Spell Entity
+Product Type
 TODO Magic Recipe
 Slime Drops

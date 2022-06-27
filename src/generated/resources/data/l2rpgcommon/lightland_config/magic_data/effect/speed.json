@@ -1,0 +1,34 @@
+{
+  "_class": "dev.xkmc.l2rpgcommon.content.magic.products.recipe.DefMagicRecipe",
+  "elemental_mastery": [
+    {
+      "element": "l2rpgcommon:air",
+      "level": 1
+    }
+  ],
+  "elements": {
+    "A": "l2rpgcommon:air",
+    "B": "l2rpgcommon:air",
+    "C": "l2rpgcommon:water",
+    "D": "l2rpgcommon:water",
+    "E": "l2rpgcommon:fire",
+    "F": "l2rpgcommon:fire"
+  },
+  "flows": [
+    "A->C",
+    "B->D",
+    "C->E",
+    "D->F",
+    "E->A",
+    "F->B"
+  ],
+  "product_id": "minecraft:speed",
+  "product_type": "l2rpgcommon:effect",
+  "screen": {
+    "type": "TASK",
+    "SCALE": 1.0,
+    "icon": "minecraft:paper",
+    "x": 1,
+    "y": -1
+  }
+}
