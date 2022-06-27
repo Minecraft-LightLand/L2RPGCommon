@@ -23,7 +23,6 @@
   "product_type": "l2rpgcommon:effect",
   "screen": {
     "type": "TASK",
-    "SCALE": 1.0,
     "icon": "minecraft:paper",
     "x": 3,
     "y": -1

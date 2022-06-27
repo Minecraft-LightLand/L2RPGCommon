@@ -228,7 +228,7 @@ public class MagicRecipeGen {
 		x = -1;
 		{
 			con.apply(SpellRegistry.FANG_ROUND.get(), getPos(),
-					r -> r.addElements(w, a, a, a).setFlow("A<->BCC")
+					r -> r.addElements(w, a, a, a).setFlow("A<->BCD")
 							.addElemRequirement(new IMagicRecipe.ElementalMastery(a, 1))
 			);
 

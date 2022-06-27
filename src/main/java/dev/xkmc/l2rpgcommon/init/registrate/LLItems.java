@@ -266,7 +266,7 @@ public class LLItems {
 	public static class ArmorItems<T extends ArmorItem> {
 
 		public final String prefix;
-		public final ItemEntry[] armors = new ItemEntry[4];
+		public final ItemEntry<T>[] armors = new ItemEntry[4];
 
 		public ArmorItems(L2Registrate reg, String id, BiFunction<EquipmentSlot, Item.Properties, T> sup, Function<ItemBuilder<T, L2Registrate>, ItemBuilder<T, L2Registrate>> func) {
 			this.prefix = reg.getModid() + ":" + id;

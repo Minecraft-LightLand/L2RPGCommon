@@ -20,7 +20,6 @@
   "product_type": "l2rpgcommon:enchantment",
   "screen": {
     "type": "TASK",
-    "SCALE": 1.0,
     "icon": "minecraft:paper",
     "x": 0,
     "y": 0

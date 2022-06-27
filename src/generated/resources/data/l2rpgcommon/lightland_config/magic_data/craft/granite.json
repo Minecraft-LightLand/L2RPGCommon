@@ -13,7 +13,6 @@
   "product_type": "l2rpgcommon:craft",
   "screen": {
     "type": "TASK",
-    "SCALE": 1.0,
     "icon": "minecraft:paper",
     "x": 4,
     "y": -2

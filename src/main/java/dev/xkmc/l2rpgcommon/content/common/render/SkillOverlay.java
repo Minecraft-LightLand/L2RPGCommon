@@ -75,7 +75,7 @@ public class SkillOverlay {
 		builder.vertex(x, y + h, 0.0D).color(r, g, b, a).endVertex();
 		builder.vertex(x + w, y + h, 0.0D).color(r, g, b, a).endVertex();
 		builder.vertex(x + w, y, 0.0D).color(r, g, b, a).endVertex();
-		BufferUploader.draw(builder.end());
+		BufferUploader.drawWithShader(builder.end());
 	}
 
 	public static void renderText(ForgeIngameGui gui, PoseStack mStack, String s, int cx, int cy) {

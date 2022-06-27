@@ -14,6 +14,7 @@ import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -24,15 +25,16 @@ import java.util.Optional;
 public class IMagicRecipe extends BaseConfig {
 
 	@SerialClass.SerialField
-	public ResourceLocation[] predecessor;
+	public ArrayList<ResourceLocation> predecessor = new ArrayList<>();
 	@SerialClass.SerialField
-	public ElementalMastery[] elemental_mastery;
+	public ArrayList<ElementalMastery> elemental_mastery = new ArrayList<>();
 	@SerialClass.SerialField
 	public MagicProductType<?, ?> product_type;
 	@SerialClass.SerialField
 	public ResourceLocation product_id;
 	@SerialClass.SerialField
 	public DisplayInfo screen;
+
 	private MagicElement[] elements;
 	private boolean[][] maps;
 
@@ -49,13 +51,13 @@ public class IMagicRecipe extends BaseConfig {
 
 	@DataGenOnly
 	public IMagicRecipe setPredecessors(ResourceLocation... pred) {
-		this.predecessor = pred;
+		this.predecessor = new ArrayList<>(List.of(pred));
 		return this;
 	}
 
 	@DataGenOnly
 	public IMagicRecipe addElemRequirement(ElementalMastery... elem) {
-		this.elemental_mastery = elem;
+		this.elemental_mastery = new ArrayList<>(List.of(elem));
 		return this;
 	}
 

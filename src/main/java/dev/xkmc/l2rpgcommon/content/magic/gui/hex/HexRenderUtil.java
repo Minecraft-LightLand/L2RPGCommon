@@ -28,7 +28,7 @@ public class HexRenderUtil {
 	static boolean focus = false;
 
 	static void common_end() {
-		BufferUploader.draw(builder.end());
+		BufferUploader.drawWithShader(builder.end());
 		ca = 1;
 		op = null;
 	}
@@ -258,7 +258,7 @@ public class HexRenderUtil {
 		c.accept(4);
 		c.accept(3);
 
-		BufferUploader.draw(builder.end());
+		BufferUploader.drawWithShader(builder.end());
 	}
 
 }

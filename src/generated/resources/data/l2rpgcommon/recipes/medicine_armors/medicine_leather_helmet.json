@@ -1,0 +1,15 @@
+{
+  "type": "l2rpgcommon:medicine_armor",
+  "key": {
+    "A": {
+      "item": "l2rpgcommon:medicine_leather"
+    }
+  },
+  "pattern": [
+    "A A",
+    "A A"
+  ],
+  "result": {
+    "item": "l2rpgcommon:medicine_leather_helmet"
+  }
+}

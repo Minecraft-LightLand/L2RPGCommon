@@ -61,7 +61,7 @@ public class ArmorWeight extends BaseConfig {
 	public HashMap<String, String> materials = new HashMap<>();
 
 	@SerialClass.SerialField
-	public ArrayList<String> suffixes;
+	public ArrayList<String> suffixes = new ArrayList<>();
 
 	public record Entry(int ingredient_weight, int extra_weight) {
 

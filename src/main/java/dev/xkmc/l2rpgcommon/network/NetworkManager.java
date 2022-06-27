@@ -47,7 +47,7 @@ public class NetworkManager {
 
 	public static void register() {
 		HANDLER.addCachedConfig(ConfigType.ARMOR_WEIGHT.getID(), s -> {
-			List<ArmorWeight> list = s.map(e -> (ArmorWeight) e).toList();
+			List<ArmorWeight> list = s.map(e -> (ArmorWeight) e.getValue()).toList();
 			ArmorWeight ans = new ArmorWeight();
 			ans.entries = BaseConfig.overrideMap(list, e -> e.entries);
 			ans.materials = BaseConfig.overrideMap(list, e -> e.materials);
@@ -68,7 +68,7 @@ public class NetworkManager {
 																		Function<C, HashMap<K, T>> get,
 																		BiConsumer<C, HashMap<K, T>> set) {
 		HANDLER.addCachedConfig(type.getID(), s -> {
-			List<C> list = s.map(e -> (C) e).toList();
+			List<C> list = s.map(e -> (C) e.getValue()).toList();
 			C ans = con.get();
 			set.accept(ans, BaseConfig.overrideMap(list, get));
 			return ans;

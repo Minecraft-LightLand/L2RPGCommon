@@ -1,5 +1,6 @@
 package dev.xkmc.l2rpgcommon.init.data.recipe;
 
+import dev.xkmc.l2library.base.recipe.ResultTagShapedBuilder;
 import dev.xkmc.l2library.repack.registrate.providers.RegistrateRecipeProvider;
 import dev.xkmc.l2library.repack.registrate.util.DataIngredient;
 import dev.xkmc.l2library.repack.registrate.util.entry.BlockEntry;
@@ -14,11 +15,17 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.List;
 import java.util.function.BiFunction;
 
 public class RecipeGen {
@@ -77,7 +84,6 @@ public class RecipeGen {
 					.save(pvd, getID(LLBlocks.SLIME_VINE.get().asItem()));
 		}
 
-
 		currentFolder = "magic_misc/";
 		// magic misc
 		{
@@ -105,6 +111,32 @@ public class RecipeGen {
 					.define('B', LLItems.ENC_GOLD_NUGGET.get())
 					.save(pvd, getID(LLItems.SPELL_SCROLL.get()));
 		}
+
+		currentFolder = "medicine_effects/";
+		// medicine leather
+		{
+			medicine(pvd, Items.BLUE_ORCHID, MobEffects.ABSORPTION, 0, 200);
+			medicine(pvd, Items.AZURE_BLUET, MobEffects.DIG_SPEED, 2, 200);
+			medicine(pvd, Items.LILY_OF_THE_VALLEY, MobEffects.HEAL, 0, 1);
+			medicine(pvd, Items.OXEYE_DAISY, MobEffects.REGENERATION, 1, 200);
+			medicine(pvd, Items.ALLIUM, MobEffects.DAMAGE_RESISTANCE, 1, 100);
+			medicine(pvd, Items.DANDELION, MobEffects.SATURATION, 0, 10);
+			medicine(pvd, Items.CORNFLOWER, MobEffects.MOVEMENT_SPEED, 1, 100);
+			medicine(pvd, Items.POPPY, MobEffects.DAMAGE_BOOST, 1, 100);
+		}
+
+		currentFolder = "medicine_armors/";
+		// medicine armor
+		{
+			unlock(pvd, new MedArmorBuilder(LLItems.KING_MED_LEATHER.get(), 8)::unlockedBy, LLItems.KING_LEATHER.get())
+					.pattern("XXX").pattern("XOX").pattern("XXX")
+					.define('X', LLItems.MEDICINE_LEATHER.get())
+					.define('O', LLItems.KING_LEATHER.get())
+					.save(pvd, getID(LLItems.KING_MED_LEATHER.get()));
+			medArmor(pvd, LLItems.MEDICINE_LEATHER.get(), LLItems.MEDICINE_ARMOR);
+			medArmor(pvd, LLItems.KING_MED_LEATHER.get(), LLItems.KING_MED_ARMOR);
+		}
+
 
 	}
 
@@ -171,6 +203,30 @@ public class RecipeGen {
 
 	private static <T> T unlock(RegistrateRecipeProvider pvd, BiFunction<String, InventoryChangeTrigger.TriggerInstance, T> func, Item item) {
 		return func.apply("has_" + pvd.safeName(item), DataIngredient.items(item).getCritereon(pvd));
+	}
+
+	/* special */
+
+	private static void medicine(RegistrateRecipeProvider pvd, Item flower, MobEffect eff, int amp, int duration) {
+		Item item = LLItems.MEDICINE_LEATHER.get();
+		ItemStack stack = new ItemStack(item);
+		MobEffectInstance ins = new MobEffectInstance(eff, duration, amp);
+		PotionUtils.setCustomEffects(stack, List.of(ins));
+		unlock(pvd, new ResultTagShapedBuilder(stack)::unlockedBy, flower)
+				.pattern("FVF").pattern("FLF").pattern("FVF").define('V', Items.VINE)
+				.define('F', flower).define('L', Items.LEATHER)
+				.save(pvd, new ResourceLocation(LightLand.MODID, currentFolder + ForgeRegistries.MOB_EFFECTS.getKey(eff).getPath()));
+	}
+
+	private static void medArmor(RegistrateRecipeProvider pvd, Item input, LLItems.ArmorItems<?> out) {
+		unlock(pvd, new MedArmorBuilder(out.armors[0].get(), 1)::unlockedBy, input)
+				.pattern("A A").pattern("A A").define('A', input).save(pvd, getID(out.armors[0].get()));
+		unlock(pvd, new MedArmorBuilder(out.armors[1].get(), 1)::unlockedBy, input)
+				.pattern("AAA").pattern("A A").pattern("A A").define('A', input).save(pvd, getID(out.armors[1].get()));
+		unlock(pvd, new MedArmorBuilder(out.armors[2].get(), 1)::unlockedBy, input)
+				.pattern("A A").pattern("AAA").pattern("AAA").define('A', input).save(pvd, getID(out.armors[2].get()));
+		unlock(pvd, new MedArmorBuilder(out.armors[3].get(), 1)::unlockedBy, input)
+				.pattern("AAA").pattern("A A").define('A', input).save(pvd, getID(out.armors[3].get()));
 	}
 
 }

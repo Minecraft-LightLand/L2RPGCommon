@@ -13,13 +13,12 @@
     "D": "l2rpgcommon:air"
   },
   "flows": [
-    "A<->BCC"
+    "A<->BCD"
   ],
   "product_id": "l2rpgcommon:fang_round",
   "product_type": "l2rpgcommon:spell",
   "screen": {
     "type": "TASK",
-    "SCALE": 1.0,
     "icon": "minecraft:paper",
     "x": -1,
     "y": 0

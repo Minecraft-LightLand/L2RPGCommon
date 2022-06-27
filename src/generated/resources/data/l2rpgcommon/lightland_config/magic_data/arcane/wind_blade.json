@@ -24,7 +24,6 @@
   "product_type": "l2rpgcommon:arcane",
   "screen": {
     "type": "TASK",
-    "SCALE": 1.0,
     "icon": "minecraft:paper",
     "x": 0,
     "y": 0
