@@ -34,8 +34,8 @@ public class FireArrowSpell extends SimpleSpell<FireArrowSpell.Config> {
 		SpellEntity e = new SpellEntity(world);
 		e.setData(activation, config.spell_time);
 		e.setAction(spell -> {
-			int t = spell.tickCount - config.spell_time.setup;
-			if (t < 0 || t > config.spell_time.duration - config.spell_time.close)
+			int t = spell.tickCount - config.spell_time.setup();
+			if (t < 0 || t > config.spell_time.duration() - config.spell_time.close())
 				return;
 			if (t % config.period != 0)
 				return;

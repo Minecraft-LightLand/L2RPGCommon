@@ -61,7 +61,7 @@ public class MagicHolder {
 
 	private boolean isUnlocked(IMagicRecipe r) {
 		for (IMagicRecipe.ElementalMastery elem : r.elemental_mastery)
-			if (getElementalMastery(elem.element) < elem.level)
+			if (getElementalMastery(elem.element()) < elem.level())
 				return false;
 		for (ResourceLocation rl : r.predecessor) {
 			IMagicRecipe recipe = recipe_cache.get(rl);

@@ -34,7 +34,7 @@ public class WaterTrapSpell extends SimpleSpell<WaterTrapSpell.Config> {
 		SpellEntity e = new SpellEntity(world);
 		e.setData(activation, config.spell_time);
 		e.setAction(spell -> {
-			int t = spell.tickCount - config.spell_time.setup;
+			int t = spell.tickCount - config.spell_time.setup();
 			if (t != 0)
 				return;
 			world.getEntities(player, new AABB(spell.blockPosition()).inflate(config.radius),

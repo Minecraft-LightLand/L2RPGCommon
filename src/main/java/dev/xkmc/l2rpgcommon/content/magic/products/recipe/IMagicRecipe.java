@@ -87,14 +87,7 @@ public class IMagicRecipe extends BaseConfig {
 		return maps;
 	}
 
-	@SerialClass
-	public static class ElementalMastery {
-
-		@SerialClass.SerialField
-		public MagicElement element;
-
-		@SerialClass.SerialField
-		public int level;
+	public record ElementalMastery(MagicElement element, int level) {
 
 	}
 

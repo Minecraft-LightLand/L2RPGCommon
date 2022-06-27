@@ -1,35 +1,13 @@
 package dev.xkmc.l2rpgcommon.content.magic.products.info;
 
-import dev.xkmc.l2library.serial.SerialClass;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-@SerialClass
-public class TypeConfig {
-
-	@SerialClass.SerialField
-	public Item icon;
-
-	@SerialClass.SerialField
-	public ResourceLocation background;
+public record TypeConfig(Item icon, ResourceLocation background) {
 
 	public ItemStack getIcon() {
 		return icon.getDefaultInstance();
-	}
-
-	public ResourceLocation getBackground() {
-		return background;
-	}
-
-	@Deprecated
-	public TypeConfig() {
-
-	}
-
-	public TypeConfig(Item icon, ResourceLocation background) {
-		this.icon = icon;
-		this.background = background;
 	}
 
 }

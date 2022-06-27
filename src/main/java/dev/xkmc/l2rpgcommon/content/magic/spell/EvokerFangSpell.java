@@ -53,27 +53,7 @@ public class EvokerFangSpell extends SimpleSpell<EvokerFangSpell.Config> {
 
 	}
 
-	@SerialClass
-	public static class Layer {
-
-		@SerialClass.SerialField
-		public int count, delay;
-
-		@SerialClass.SerialField
-		public double angle, radius;
-
-		@Deprecated
-		public Layer() {
-
-		}
-
-		@DataGenOnly
-		public Layer(int count, int delay, double angle, double radius) {
-			this.count = count;
-			this.delay = delay;
-			this.angle = angle;
-			this.radius = radius;
-		}
+	public record Layer(int count, int delay, double angle, double radius) {
 
 	}
 

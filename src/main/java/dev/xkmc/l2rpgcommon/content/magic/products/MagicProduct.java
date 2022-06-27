@@ -125,10 +125,10 @@ public class MagicProduct<I, P extends MagicProduct<I, P>> extends IMagicProduct
 		list.add(LangData.get(getState()));
 		if (!unlocked()) {
 			for (IMagicRecipe.ElementalMastery em : recipe.elemental_mastery) {
-				if (h.magicHolder.getElementalMastery(em.element) < em.level)
+				if (h.magicHolder.getElementalMastery(em.element()) < em.level())
 					list.add(LangData.IDS.GUI_TREE_ELEM_PRE.get()
-							.append(em.element.getDesc())
-							.append(LangData.IDS.GUI_TREE_ELEM_POST.get(em.level))
+							.append(em.element().getDesc())
+							.append(LangData.IDS.GUI_TREE_ELEM_POST.get(em.level()))
 							.withStyle(ChatFormatting.RED));
 			}
 		}

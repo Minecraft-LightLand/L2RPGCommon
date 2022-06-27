@@ -17,7 +17,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,63 +25,11 @@ import java.util.function.IntFunction;
 
 public class EffectSkill extends Skill<EffectSkill.Config, SkillData> {
 
-	@SerialClass
-	public static class Effect {
-
-		@SerialClass.SerialField
-		public MobEffect id;
-
-		@SerialClass.SerialField
-		public int duration;
-
-		@SerialClass.SerialField
-		public int amplifier;
-
-		@Deprecated
-		public Effect() {
-
-		}
-
-		@DataGenOnly
-		public Effect(MobEffect eff, int duration, int amplifier) {
-			this.id = eff;
-			this.duration = duration;
-			this.amplifier = amplifier;
-		}
+	public record Effect(MobEffect id, int duration, int amplifier) {
 
 	}
 
-	@SerialClass
-	public static class RangeEffect {
-
-		@SerialClass.SerialField
-		public MobEffect id;
-
-		@SerialClass.SerialField
-		public int duration;
-
-		@SerialClass.SerialField
-		public int amplifier;
-
-		@SerialClass.SerialField
-		public double range;
-
-		@SerialClass.SerialField
-		public boolean for_enemy;
-
-		@Deprecated
-		public RangeEffect() {
-
-		}
-
-		@DataGenOnly
-		public RangeEffect(MobEffect id, int duration, int amplifier, double range, boolean for_enemy) {
-			this.id = id;
-			this.duration = duration;
-			this.amplifier = amplifier;
-			this.range = range;
-			this.for_enemy = for_enemy;
-		}
+	public record RangeEffect(MobEffect id, int duration, int amplifier, double range, boolean for_enemy) {
 
 	}
 

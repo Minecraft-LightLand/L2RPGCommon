@@ -82,17 +82,7 @@ public class SpellComponent {
 
 	}
 
-	@SerialClass
-	public static class Stroke {
-
-		@SerialClass.SerialField
-		public int vertex, cycle = 1;
-
-		@SerialClass.SerialField
-		public String color;
-
-		@SerialClass.SerialField
-		public float width, radius, z, angle;
+	public record Stroke(int vertex, int cycle, String color, float width, float radius, float z, float angle) {
 
 		@OnlyIn(Dist.CLIENT)
 		public void render(RenderHandle handle) {
@@ -135,22 +125,6 @@ public class SpellComponent {
 					col >> 8 & 0xff,
 					col & 0xff,
 					alp).endVertex();
-		}
-
-		@Deprecated
-		public Stroke() {
-
-		}
-
-		@DataGenOnly
-		public Stroke(int vertex, int cycle, String color, float width, float radius, float z, float angle) {
-			this.vertex = vertex;
-			this.cycle = cycle;
-			this.color = color;
-			this.width = width;
-			this.radius = radius;
-			this.z = z;
-			this.angle = angle;
 		}
 
 	}

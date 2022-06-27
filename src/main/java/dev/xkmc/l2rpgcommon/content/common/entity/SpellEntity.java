@@ -59,14 +59,14 @@ public class SpellEntity extends BaseEntity {
 			pos = pos.add(0, player.getEyeHeight(), 0);
 			pos = RayTraceUtil.getRayTerm(pos, xr, yr, 0.5);
 		}
-		setData(pos.x, pos.y, pos.z, spell.duration, spell.setup, spell.close, xr, yr, spell.id);
+		setData(pos.x, pos.y, pos.z, spell.duration(), spell.setup(), spell.close(), xr, yr, spell.id());
 	}
 
 	public void setData(ActivationConfig act, SpellConfig.SpellDisplay spell) {
 		Vec3 pos = act.target == null ? act.pos : act.target.position().add(0, act.target.getBbHeight() / 2, 0);
 		pos = pos.add(0, 1e-3, 0);
 		float xr = -90;
-		setData(pos.x, pos.y, pos.z, spell.duration, spell.setup, spell.close, xr, 0, spell.id);
+		setData(pos.x, pos.y, pos.z, spell.duration(), spell.setup(), spell.close(), xr, 0, spell.id());
 	}
 
 	public void setAction(Consumer<SpellEntity> cons) {

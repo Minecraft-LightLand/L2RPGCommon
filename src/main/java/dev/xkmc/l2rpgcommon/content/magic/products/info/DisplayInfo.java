@@ -6,23 +6,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-@SerialClass
-public class DisplayInfo {
+public record DisplayInfo(int x, int y, FrameType type, Item icon) {
 
 	public static final float SCALE = 1;
-
-	@SerialClass.SerialField
-	public int x, y;
-
-	@SerialClass.SerialField
-	public FrameType type = FrameType.TASK;
-
-	@SerialClass.SerialField
-	public Item icon = Items.PAPER;
-
-	public DisplayInfo(){
-
-	}
 
 	public float getX() {
 		return x * SCALE;

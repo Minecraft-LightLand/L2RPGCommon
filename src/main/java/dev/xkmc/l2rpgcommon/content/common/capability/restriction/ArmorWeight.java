@@ -63,24 +63,7 @@ public class ArmorWeight extends BaseConfig {
 	@SerialClass.SerialField
 	public ArrayList<String> suffixes;
 
-	@SerialClass
-	public static class Entry {
-
-		@SerialClass.SerialField
-		public int ingredient_weight;
-
-		@SerialClass.SerialField
-		public int extra_weight;
-
-		@Deprecated
-		public Entry() {
-
-		}
-
-		private Entry(int ingredient, int extra) {
-			ingredient_weight = ingredient;
-			extra_weight = extra;
-		}
+	public record Entry(int ingredient_weight, int extra_weight) {
 
 	}
 

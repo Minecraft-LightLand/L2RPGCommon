@@ -73,7 +73,7 @@ public class MagicTreeGui<I, P extends MagicProduct<I, P>> extends GuiComponent 
 		RenderSystem.depthFunc(518);
 		fill(matrix, 234, 113, 0, 0, -16777216);
 		RenderSystem.depthFunc(515);
-		ResourceLocation rl = display.getBackground();
+		ResourceLocation rl = display.background();
 		RenderSystem.setShaderTexture(0, rl != null ? rl : TextureManager.INTENTIONAL_MISSING_TEXTURE);
 		int i = Mth.floor(this.scrollX);
 		int j = Mth.floor(this.scrollY);

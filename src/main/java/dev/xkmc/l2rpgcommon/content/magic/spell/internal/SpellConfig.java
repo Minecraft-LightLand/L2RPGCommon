@@ -46,27 +46,7 @@ public class SpellConfig {
 		return TagCodec.fromTag(TagCodec.toTag(new CompoundTag(), config), config.getClass());
 	}
 
-	@SerialClass
-	public static class SpellDisplay {
-
-		@SerialClass.SerialField
-		public String id;
-
-		@SerialClass.SerialField
-		public int duration, setup, close;
-
-		@Deprecated
-		public SpellDisplay() {
-
-		}
-
-		@DataGenOnly
-		public SpellDisplay(String id, int duration, int setup, int close) {
-			this.id = id;
-			this.duration = duration;
-			this.setup = setup;
-			this.close = close;
-		}
+	public record SpellDisplay(String id, int duration, int setup, int close) {
 
 	}
 
