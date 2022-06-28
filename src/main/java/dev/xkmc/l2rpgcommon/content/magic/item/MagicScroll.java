@@ -57,9 +57,10 @@ public class MagicScroll extends Item implements IGlowingTarget {
 		PotionUtils.setCustomEffects(stack, list);
 	}
 
-	public static void setTarget(TargetType type, ItemStack stack) {
+	public static ItemStack setTarget(TargetType type, ItemStack stack) {
 		CompoundTag tag = stack.getOrCreateTagElement("spell");
 		tag.putString("target", type.name());
+		return stack;
 	}
 
 	public static TargetType getTarget(ItemStack stack) {
@@ -71,9 +72,10 @@ public class MagicScroll extends Item implements IGlowingTarget {
 		}
 	}
 
-	public static void setRadius(double radius, ItemStack stack) {
+	public static ItemStack setRadius(double radius, ItemStack stack) {
 		CompoundTag tag = stack.getOrCreateTagElement("spell");
 		tag.putDouble("radius", radius);
+		return stack;
 	}
 
 	public static double getRadius(ItemStack stack) {

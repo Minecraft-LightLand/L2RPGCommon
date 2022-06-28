@@ -1,0 +1,73 @@
+{
+  "type": "l2rpgcommon:ritual_default",
+  "core": {
+    "input": {
+      "item": "l2rpgcommon:knightsteel_ingot"
+    },
+    "output": {
+      "item": "l2rpgcommon:eternium_ingot"
+    }
+  },
+  "side": [
+    {
+      "input": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:mending",
+        "minLevel": 1
+      }
+    },
+    {
+      "input": {
+        "item": "l2rpgcommon:layline_ingot"
+      },
+      "output": {
+        "item": "l2rpgcommon:layroot_ingot"
+      }
+    },
+    {
+      "input": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:unbreaking",
+        "minLevel": 3
+      }
+    },
+    {
+      "input": {
+        "item": "l2rpgcommon:layline_ingot"
+      },
+      "output": {
+        "item": "l2rpgcommon:layroot_ingot"
+      }
+    },
+    {
+      "input": {
+        "item": "l2rpgcommon:layline_ingot"
+      },
+      "output": {
+        "item": "l2rpgcommon:layroot_ingot"
+      }
+    },
+    {
+      "input": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:infinity",
+        "minLevel": 1
+      }
+    },
+    {
+      "input": {
+        "item": "l2rpgcommon:layline_ingot"
+      },
+      "output": {
+        "item": "l2rpgcommon:layroot_ingot"
+      }
+    },
+    {
+      "input": {
+        "type": "l2library:enchantment",
+        "enchantment": "minecraft:protection",
+        "minLevel": 4
+      }
+    }
+  ]
+}

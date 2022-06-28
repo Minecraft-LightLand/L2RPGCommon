@@ -1,0 +1,55 @@
+{
+  "type": "l2rpgcommon:ritual_potion_modify",
+  "core": {
+    "input": {
+      "item": "l2rpgcommon:potion_core"
+    },
+    "output": {
+      "item": "l2rpgcommon:potion_core",
+      "nbt": "{spell:{target:\"ENEMY\"}}"
+    }
+  },
+  "radius": 0.0,
+  "side": [
+    {
+      "input": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:spider_eye"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:glowstone_dust"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:glowstone_dust"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:spider_eye"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    }
+  ]
+}

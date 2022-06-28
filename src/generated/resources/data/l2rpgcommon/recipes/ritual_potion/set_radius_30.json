@@ -1,0 +1,61 @@
+{
+  "type": "l2rpgcommon:ritual_potion_modify",
+  "core": {
+    "input": {
+      "item": "l2rpgcommon:potion_core"
+    },
+    "output": {
+      "item": "l2rpgcommon:potion_core",
+      "nbt": "{spell:{radius:30.0d}}"
+    }
+  },
+  "radius": 0.0,
+  "side": [
+    {
+      "input": {
+        "item": "minecraft:gunpowder"
+      }
+    },
+    {
+      "input": {
+        "item": "l2rpgcommon:enchant_melon"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:gunpowder"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:dragon_breath"
+      },
+      "output": {
+        "item": "minecraft:glass_bottle"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:dragon_breath"
+      },
+      "output": {
+        "item": "minecraft:glass_bottle"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:gunpowder"
+      }
+    },
+    {
+      "input": {
+        "item": "l2rpgcommon:enchant_melon"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:gunpowder"
+      }
+    }
+  ]
+}

@@ -12,6 +12,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -51,7 +52,7 @@ public class AbstractRitualRecipe<R extends AbstractRitualRecipe<R>> extends Bas
 			ItemStack stack = inv.getItem(i);
 			if (!stack.isEmpty()) {
 				Optional<Entry> entry = temp.stream().filter(e -> e.test(stack)).findFirst();
-				if (!entry.isPresent())
+				if (entry.isEmpty())
 					return false;
 				temp.remove(entry.get());
 			}
@@ -99,61 +100,17 @@ public class AbstractRitualRecipe<R extends AbstractRitualRecipe<R>> extends Bas
 	public static class Entry {
 
 		@SerialClass.SerialField
-		public ItemStack input = ItemStack.EMPTY;
+		public Ingredient input = Ingredient.EMPTY;
 
 		@SerialClass.SerialField
 		public ItemStack output = ItemStack.EMPTY;
 
 		public boolean test(ItemStack stack) {
-			if (input.getItem() == Items.SHULKER_BOX &&
-					input.getTagElement("BlockEntityTag") != null) {
-				if (stack.getItem() instanceof BlockItem &&
-						((BlockItem) stack.getItem()).getBlock() instanceof ShulkerBoxBlock &&
-						stack.getTagElement("BlockEntityTag") != null) {
-					NonNullList<ItemStack> list_a = NonNullList.withSize(27, ItemStack.EMPTY);
-					ContainerHelper.loadAllItems(input.getOrCreateTagElement("BlockEntityTag"), list_a);
-					NonNullList<ItemStack> list_b = NonNullList.withSize(27, ItemStack.EMPTY);
-					ContainerHelper.loadAllItems(stack.getOrCreateTagElement("BlockEntityTag"), list_b);
-					Pair<Item, Integer> stack_a = aggregate(list_a);
-					Pair<Item, Integer> stack_b = aggregate(list_b);
-					if (stack_a == null || stack_b == null || stack_a.getFirst() != stack_b.getFirst()) {
-						return false;
-					}
-					return stack_b.getSecond() >= stack_a.getSecond();
-				}
-				return false;
-			}
-			if (input.getItem() == Items.ENCHANTED_BOOK) {
-				if (stack.getItem() != input.getItem())
-					return false;
-				for (Map.Entry<Enchantment, Integer> ent : EnchantmentHelper.getEnchantments(input).entrySet()) {
-					Integer i = EnchantmentHelper.getEnchantments(stack).get(ent.getKey());
-					if (i == null || i < ent.getValue())
-						return false;
-				}
-				return true;
-			}
-			return stack.getItem() == input.getItem();
+			return input.test(stack);
 		}
 
 		@SuppressWarnings("ConstantConditions")
 		public ItemStack getOutput(ItemStack stack) {
-			if (input.getItem() == Items.SHULKER_BOX &&
-					input.getTagElement("BlockEntityTag") != null) {
-				if (stack.getItem() instanceof BlockItem &&
-						((BlockItem) stack.getItem()).getBlock() instanceof ShulkerBoxBlock &&
-						stack.getTagElement("BlockEntityTag") != null) {
-					NonNullList<ItemStack> list_a = NonNullList.withSize(27, ItemStack.EMPTY);
-					ContainerHelper.loadAllItems(input.getOrCreateTagElement("BlockEntityTag"), list_a);
-					NonNullList<ItemStack> list_b = NonNullList.withSize(27, ItemStack.EMPTY);
-					ContainerHelper.loadAllItems(stack.getOrCreateTagElement("BlockEntityTag"), list_b);
-					Pair<Item, Integer> stack_a = aggregate(list_a);
-					Pair<Item, Integer> stack_b = aggregate(list_b);
-					ItemStack ans = stack.copy();
-					ContainerHelper.saveAllItems(ans.getOrCreateTagElement("BlockEntityTag"), fill(stack_b.getFirst(), stack_b.getSecond() - stack_a.getSecond()));
-					return ans;
-				}
-			}
 			return output.copy();
 		}
 

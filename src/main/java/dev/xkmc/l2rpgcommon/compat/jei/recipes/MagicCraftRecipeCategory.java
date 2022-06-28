@@ -25,6 +25,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -62,10 +63,10 @@ public class MagicCraftRecipeCategory extends BaseRecipeCategory<AbstractRitualR
 		entry.add(4, recipe.core);
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				ItemStack item = specialProcess(recipe, entry.get(i * 3 + j).input, i * 3 + j == 4);
+				Ingredient item = entry.get(i * 3 + j).input;
 				if (!item.isEmpty()) {
 					builder.addSlot(RecipeIngredientRole.INPUT, j * 18 + 1, i * 18 + 1)
-							.addIngredient(VanillaTypes.ITEM_STACK, item);
+							.addIngredients(item);
 				}
 			}
 		}

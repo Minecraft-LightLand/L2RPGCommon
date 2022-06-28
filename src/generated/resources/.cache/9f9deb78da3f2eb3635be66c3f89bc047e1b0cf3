@@ -1,6 +1,6 @@
-// 1.19	2022-06-28T00:19:51.391407	Light Json Config Generator
+// 1.19	2022-06-28T09:37:56.759704	Light Json Config Generator
 afdcc04512101eb28c8c2e39f9e3bdd814572f37 data/l2rpgcommon/lightland_config/armor_enchant/vanilla.json
-0c57ee9390932d5ab3042caa72d3a9753cb0cc3f data/l2rpgcommon/lightland_config/armor_weight/lightland.json
+cd87d338fd1bd36ffb6328b7a31aa784615e2f04 data/l2rpgcommon/lightland_config/armor_weight/lightland.json
 260d5987a9f55a5e90038ba4e9f1c766dcb176bf data/l2rpgcommon/lightland_config/armor_weight/vanilla.json
 93a0f9378c25bf098ac5cc8f5b70625ebde068cf data/l2rpgcommon/lightland_config/config_skill/effects_archer.json
 ca8bcd8c33966671ed4eb3af3e3cce5f782f5980 data/l2rpgcommon/lightland_config/config_skill/effects_berserker.json

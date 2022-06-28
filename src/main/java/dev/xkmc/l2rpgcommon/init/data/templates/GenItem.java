@@ -97,7 +97,7 @@ public class GenItem {
 						new float[]{1f, 0.7f, 0.8f, 1f, 2f}, 14),
 				new ArmorStats(30, new int[]{3, 5, 6, 3}, 3, 0.2f, 9),
 				TOOL_DEF, ARMOR_DEF, new ExtraToolConfig(), new ExtraArmorConfig()),
-		ETHERNIUM("ethernium", 2, SoundEvents.ARMOR_EQUIP_IRON,
+		ETERNIUM("eternium", 2, SoundEvents.ARMOR_EQUIP_IRON,
 				new ToolStats(9999, 6, new int[]{6, 9, 4, 4, 1},
 						new float[]{1.6f, 0.9f, 1f, 1.2f, 3f}, 18),
 				new ArmorStats(9999, new int[]{2, 5, 6, 2}, 0, 0, 19),

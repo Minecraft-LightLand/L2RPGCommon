@@ -30,7 +30,7 @@ public abstract class ResourceOrganizer {
         new ItemFileOrganizer();
         new BlockFileOrganizer();
         //new ArmorFileOrganizer();
-        new RecipeFileOrganizer();
+        //new RecipeFileOrganizer();
         new AssetMisc();
         new DataMisc();
         new ConfigFileOrganizer();

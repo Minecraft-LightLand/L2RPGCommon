@@ -47,7 +47,7 @@ public class ArmorConfigGen {
 				.add(GenItem.Mats.KNIGHTSTEEL.armorPrefix(), 70, 0)
 				.add(GenItem.Mats.DISPELLIUM.armorPrefix(), 70, 0)
 				.add(GenItem.Mats.HEAVYSTEEL.armorPrefix(), 100, 0)
-				.add(GenItem.Mats.ETHERNIUM.armorPrefix(), 70, 0));
+				.add(GenItem.Mats.ETERNIUM.armorPrefix(), 70, 0));
 	}
 
 }

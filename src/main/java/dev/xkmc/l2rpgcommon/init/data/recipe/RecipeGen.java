@@ -6,7 +6,12 @@ import dev.xkmc.l2library.repack.registrate.util.DataIngredient;
 import dev.xkmc.l2library.repack.registrate.util.entry.BlockEntry;
 import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.repack.registrate.util.nullness.NonNullSupplier;
+import dev.xkmc.l2rpgcommon.content.magic.item.MagicScroll;
 import dev.xkmc.l2rpgcommon.init.LightLand;
+import dev.xkmc.l2rpgcommon.init.data.recipe.ritual.BasicRitualBuilder;
+import dev.xkmc.l2rpgcommon.init.data.recipe.ritual.PotionCoreBuilder;
+import dev.xkmc.l2rpgcommon.init.data.recipe.ritual.PotionModifyBuilder;
+import dev.xkmc.l2rpgcommon.init.data.recipe.ritual.PotionSpellBuilder;
 import dev.xkmc.l2rpgcommon.init.data.templates.GenItem;
 import dev.xkmc.l2rpgcommon.init.registrate.LLBlocks;
 import dev.xkmc.l2rpgcommon.init.registrate.LLItems;
@@ -22,6 +27,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -52,7 +59,6 @@ public class RecipeGen {
 		}
 
 		currentFolder = "magic_food/";
-		// enchanted food
 		{
 			circle(pvd, Items.APPLE, LLItems.ENC_GOLD_INGOT.get(), LLItems.APPLE.get(), 1);
 			circle(pvd, Items.CARROT, LLItems.ENC_GOLD_NUGGET.get(), LLItems.CARROT.get(), 1);
@@ -61,14 +67,13 @@ public class RecipeGen {
 					LLItems.ENC_GOLD_NUGGET.get()).pattern(" G ").pattern("ABA")
 					.define('G', LLItems.ENC_GOLD_NUGGET.get())
 					.define('A', Items.WHEAT).define('B', Items.COCOA_BEANS)
-					.save(pvd, new ResourceLocation(LightLand.MODID, currentFolder + "enchanted_cookie_craft"));
+					.save(pvd, getID(LLItems.COOKIE.get(), "_fast"));
 			unlock(pvd, new ShapelessRecipeBuilder(LLItems.MELON.get(), 1)::unlockedBy,
 					LLItems.ENC_GOLD_NUGGET.get()).requires(LLItems.ENC_GOLD_NUGGET.get())
 					.requires(Items.MELON_SLICE).save(pvd, getID(LLItems.MELON.get()));
 		}
 
 		currentFolder = "quest_line/";
-		// quest line
 		{
 			full(pvd, GenItem.Mats.STEEL.getIngot(), LLItems.KNIGHT_SCRAP.get(), Items.GOLD_NUGGET, GenItem.Mats.HEAVYSTEEL.getIngot(), 1);
 			full(pvd, LLItems.ENC_GOLD_NUGGET.get(), LLBlocks.LAYLINE_HEAD.get().asItem(), GenItem.Mats.STEEL.getNugget(), GenItem.Mats.LAYLINE.getIngot(), 1);
@@ -85,7 +90,6 @@ public class RecipeGen {
 		}
 
 		currentFolder = "magic_misc/";
-		// magic misc
 		{
 			unlock(pvd, new ShapedRecipeBuilder(LLBlocks.B_RITUAL_CORE.get(), 1)::unlockedBy,
 					LLItems.ENC_GOLD_INGOT.get()).pattern("BBB").pattern("DED").pattern("CCC")
@@ -113,7 +117,6 @@ public class RecipeGen {
 		}
 
 		currentFolder = "medicine_effects/";
-		// medicine leather
 		{
 			medicine(pvd, Items.BLUE_ORCHID, MobEffects.ABSORPTION, 0, 200);
 			medicine(pvd, Items.AZURE_BLUET, MobEffects.DIG_SPEED, 2, 200);
@@ -126,7 +129,6 @@ public class RecipeGen {
 		}
 
 		currentFolder = "medicine_armors/";
-		// medicine armor
 		{
 			unlock(pvd, new MedArmorBuilder(LLItems.KING_MED_LEATHER.get(), 8)::unlockedBy, LLItems.KING_LEATHER.get())
 					.pattern("XXX").pattern("XOX").pattern("XXX")
@@ -137,7 +139,123 @@ public class RecipeGen {
 			medArmor(pvd, LLItems.KING_MED_LEATHER.get(), LLItems.KING_MED_ARMOR);
 		}
 
+		currentFolder = "ritual/";
+		{
+			unlock(pvd, new BasicRitualBuilder()::unlockedBy, GenItem.Mats.KNIGHTSTEEL.getIngot())
+					.setCore(Ingredient.of(GenItem.Mats.KNIGHTSTEEL.getIngot()),
+							GenItem.Mats.ETERNIUM.getIngot().getDefaultInstance())
+					.setSides(Ingredient.of(GenItem.Mats.LAYLINE.getIngot()),
+							GenItem.Mats.LAYROOT.getIngot().getDefaultInstance(), 1, 3, 4, 6)
+					.setSide(Enchantments.MENDING, 1, 0)
+					.setSide(Enchantments.UNBREAKING, 3, 2)
+					.setSide(Enchantments.INFINITY_ARROWS, 1, 5)
+					.setSide(Enchantments.ALL_DAMAGE_PROTECTION, 4, 7)
+					.save(pvd, getID(GenItem.Mats.ETERNIUM.getIngot()));
 
+			unlock(pvd, new BasicRitualBuilder()::unlockedBy, GenItem.Mats.LAYLINE.getIngot())
+					.setCore(Ingredient.of(GenItem.Mats.LAYLINE.getIngot()),
+							LLItems.MAGICIUM_INGOT.get().getDefaultInstance())
+					.setSides(Ingredient.of(LLItems.ENC_GOLD_INGOT.get()),
+							Items.GOLD_INGOT.getDefaultInstance(), 0, 2, 5, 7)
+					.setSide(Enchantments.ALL_DAMAGE_PROTECTION, 4, 3)
+					.setSide(Enchantments.UNBREAKING, 3, 4)
+					.save(pvd, getID(LLItems.MAGICIUM_INGOT.get()));
+		}
+
+		currentFolder = "ritual_potion/";
+		{
+			unlock(pvd, new PotionCoreBuilder()::unlockedBy, Items.DIAMOND)
+					.setCore(Ingredient.of(Items.DIAMOND),
+							LLItems.POTION_CORE.asStack())
+					.setSides(Items.NETHER_WART, 0, 2)
+					.setSides(Items.REDSTONE, 3, 4)
+					.setSides(Items.GLOWSTONE_DUST, 5, 7)
+					.setSides(Items.BLAZE_POWDER, 6)
+					.setSides(Items.POTION, Items.GLASS_BOTTLE, 1)
+					.save(pvd, getID(LLItems.POTION_CORE.get(), "_1"));
+
+			unlock(pvd, new PotionCoreBuilder()::unlockedBy, Items.DIAMOND)
+					.setCore(Ingredient.of(Items.DIAMOND),
+							LLItems.POTION_CORE.asStack())
+					.setSides(Items.NETHER_STAR, 1)
+					.setSides(Items.NETHER_WART, 3, 4, 6)
+					.setSides(Items.POTION, Items.GLASS_BOTTLE, 0, 2, 5, 7)
+					.save(pvd, getID(LLItems.POTION_CORE.get(), "_4"));
+
+			unlock(pvd, new PotionSpellBuilder()::unlockedBy, LLItems.POTION_CORE.get())
+					.setCore(Ingredient.of(LLItems.POTION_CORE.get()), Items.DIAMOND.getDefaultInstance())
+					.setSides(LLItems.SPELL_CARD.get(), 0, 1, 2, 3, 4, 5, 6, 7)
+					.save(pvd, getID(LLItems.SPELL_CARD.get()));
+
+			unlock(pvd, new PotionModifyBuilder()::unlockedBy, LLItems.POTION_CORE.get())
+					.setCore(Ingredient.of(LLItems.POTION_CORE.get()),
+							MagicScroll.setTarget(MagicScroll.TargetType.ALLY, LLItems.POTION_CORE.asStack()))
+					.setSides(Items.LAPIS_LAZULI, 0, 2, 5, 7)
+					.setSides(Items.REDSTONE, 3, 4)
+					.setSides(Items.GOLDEN_CARROT, 1, 6)
+					.save(pvd, getID("set_ally"));
+
+			unlock(pvd, new PotionModifyBuilder()::unlockedBy, LLItems.POTION_CORE.get())
+					.setCore(Ingredient.of(LLItems.POTION_CORE.get()),
+							MagicScroll.setTarget(MagicScroll.TargetType.ENEMY, LLItems.POTION_CORE.asStack()))
+					.setSides(Items.LAPIS_LAZULI, 0, 2, 5, 7)
+					.setSides(Items.GLOWSTONE_DUST, 3, 4)
+					.setSides(Items.SPIDER_EYE, 1, 6)
+					.save(pvd, getID("set_enemy"));
+
+			unlock(pvd, new PotionModifyBuilder()::unlockedBy, LLItems.POTION_CORE.get())
+					.setCore(Ingredient.of(LLItems.POTION_CORE.get()),
+							MagicScroll.setRadius(10, LLItems.POTION_CORE.asStack()))
+					.setSides(Items.GUNPOWDER, 0, 1, 2, 3, 4, 5, 6, 7)
+					.save(pvd, getID("set_radius_10"));
+
+			unlock(pvd, new PotionModifyBuilder()::unlockedBy, LLItems.POTION_CORE.get())
+					.setCore(Ingredient.of(LLItems.POTION_CORE.get()),
+							MagicScroll.setRadius(20, LLItems.POTION_CORE.asStack()))
+					.setSides(Items.GUNPOWDER, 1, 3, 4, 6)
+					.setSides(LLItems.COOKIE.get(), 0, 2, 5, 7)
+					.save(pvd, getID("set_radius_20"));
+
+			unlock(pvd, new PotionModifyBuilder()::unlockedBy, LLItems.POTION_CORE.get())
+					.setCore(Ingredient.of(LLItems.POTION_CORE.get()),
+							MagicScroll.setRadius(30, LLItems.POTION_CORE.asStack()))
+					.setSides(Items.GUNPOWDER, 0, 2, 5, 7)
+					.setSides(LLItems.MELON.get(), 1, 6)
+					.setSides(Items.DRAGON_BREATH, Items.GLASS_BOTTLE, 3, 4)
+					.save(pvd, getID("set_radius_30"));
+
+			unlock(pvd, new PotionModifyBuilder()::unlockedBy, LLItems.POTION_CORE.get())
+					.setCore(Ingredient.of(LLItems.POTION_CORE.get()),
+							MagicScroll.setRadius(40, LLItems.POTION_CORE.asStack()))
+					.setSides(Items.TNT, 3, 4)
+					.setSides(LLItems.CARROT.get(), 1)
+					.setSides(Items.DIAMOND, 6)
+					.setSides(Items.DRAGON_BREATH, Items.GLASS_BOTTLE, 0, 2, 5, 7)
+					.save(pvd, getID("set_radius_40"));
+		}
+
+		currentFolder = "ritual_effects/";
+		{
+
+		}
+
+		currentFolder = "ritual_enchantments/";
+		{
+
+		}
+
+	}
+
+	private static ResourceLocation getID(Item item) {
+		return new ResourceLocation(LightLand.MODID, currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath());
+	}
+
+	private static ResourceLocation getID(Item item, String suffix) {
+		return new ResourceLocation(LightLand.MODID, currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath() + suffix);
+	}
+
+	private static ResourceLocation getID(String suffix) {
+		return new ResourceLocation(LightLand.MODID, currentFolder + suffix);
 	}
 
 	private static void cross(RegistrateRecipeProvider pvd, Item core, Item side, Item out, int count) {
@@ -152,10 +270,6 @@ public class RecipeGen {
 				.pattern("CSC").pattern("SAS").pattern("CSC")
 				.define('A', core).define('S', side).define('C', corner)
 				.save(pvd, getID(out));
-	}
-
-	private static ResourceLocation getID(Item item) {
-		return new ResourceLocation(LightLand.MODID, currentFolder + ForgeRegistries.ITEMS.getKey(item).getPath());
 	}
 
 	private static void circle(RegistrateRecipeProvider pvd, Item core, Item side, Item out, int count) {
