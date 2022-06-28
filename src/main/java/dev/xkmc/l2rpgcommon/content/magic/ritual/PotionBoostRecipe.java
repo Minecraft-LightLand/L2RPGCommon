@@ -4,6 +4,7 @@ import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2rpgcommon.content.magic.block.RitualCore;
 import dev.xkmc.l2rpgcommon.init.registrate.LLRecipes;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionUtils;
@@ -18,7 +19,7 @@ import java.util.List;
 public class PotionBoostRecipe extends AbstractLevelRitualRecipe<PotionBoostRecipe> {
 
 	@SerialClass.SerialField
-	public ResourceLocation effect;
+	public MobEffect effect;
 
 	@SerialClass.SerialField
 	public int modify_level;
@@ -31,9 +32,7 @@ public class PotionBoostRecipe extends AbstractLevelRitualRecipe<PotionBoostReci
 		ItemStack stack = inv.core.getItem(0).copy();
 		List<MobEffectInstance> list = new ArrayList<>();
 		for (MobEffectInstance ins : PotionUtils.getCustomEffects(stack)) {
-			ResourceLocation rl = ForgeRegistries.MOB_EFFECTS.getKey(ins.getEffect());
-			assert rl != null;
-			if (rl.equals(effect)) {
+			if (effect == ins.getEffect()) {
 				if (ins.getAmplifier() < level) {
 					if (modify_level == -1)
 						continue;

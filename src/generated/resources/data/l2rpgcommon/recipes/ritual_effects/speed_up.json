@@ -1,0 +1,67 @@
+{
+  "type": "l2rpgcommon:ritual_potion_boost",
+  "core": {
+    "input": {
+      "type": "l2library:mob_effect",
+      "effect": "minecraft:speed",
+      "min_level": 0,
+      "min_time": 1
+    },
+    "output": {
+      "item": "l2rpgcommon:potion_core",
+      "nbt": "{CustomPotionEffects:[{Ambient:0b,Amplifier:1b,CurativeItems:[{Count:1b,id:\"minecraft:milk_bucket\"}],Duration:1,Id:1,ShowIcon:1b,ShowParticles:1b,\"forge:id\":\"minecraft:speed\"}]}"
+    }
+  },
+  "effect": "minecraft:speed",
+  "levels": [
+    100,
+    50,
+    37,
+    30,
+    26
+  ],
+  "magic_recipe": "l2rpgcommon:magic_data/effects/speed",
+  "modify_level": 1,
+  "side": [
+    {
+      "input": {
+        "item": "minecraft:glowstone_dust"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:sugar"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:glowstone_dust"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:nether_wart"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:nether_wart"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:glowstone_dust"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:sugar"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:glowstone_dust"
+      }
+    }
+  ]
+}

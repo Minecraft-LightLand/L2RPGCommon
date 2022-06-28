@@ -1,5 +1,6 @@
 package dev.xkmc.l2rpgcommon.init.data.recipe;
 
+import dev.xkmc.l2library.base.ingredients.MobEffectIngredient;
 import dev.xkmc.l2library.base.recipe.ResultTagShapedBuilder;
 import dev.xkmc.l2library.repack.registrate.providers.RegistrateRecipeProvider;
 import dev.xkmc.l2library.repack.registrate.util.DataIngredient;
@@ -8,10 +9,7 @@ import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2library.repack.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2rpgcommon.content.magic.item.MagicScroll;
 import dev.xkmc.l2rpgcommon.init.LightLand;
-import dev.xkmc.l2rpgcommon.init.data.recipe.ritual.BasicRitualBuilder;
-import dev.xkmc.l2rpgcommon.init.data.recipe.ritual.PotionCoreBuilder;
-import dev.xkmc.l2rpgcommon.init.data.recipe.ritual.PotionModifyBuilder;
-import dev.xkmc.l2rpgcommon.init.data.recipe.ritual.PotionSpellBuilder;
+import dev.xkmc.l2rpgcommon.init.data.recipe.ritual.*;
 import dev.xkmc.l2rpgcommon.init.data.templates.GenItem;
 import dev.xkmc.l2rpgcommon.init.registrate.LLBlocks;
 import dev.xkmc.l2rpgcommon.init.registrate.LLItems;
@@ -236,6 +234,15 @@ public class RecipeGen {
 
 		currentFolder = "ritual_effects/";
 		{
+			potionBoost(pvd, MobEffects.MOVEMENT_SPEED, Items.SUGAR, Items.NETHER_WART, 100, 50, 37, 30, 26);
+			potionBoost(pvd, MobEffects.MOVEMENT_SLOWDOWN, Items.SUGAR, Items.FERMENTED_SPIDER_EYE, 100, 36, 31, 26, 21, 16);
+			potionBoost(pvd, MobEffects.DAMAGE_BOOST, Items.BLAZE_POWDER, Items.NETHER_WART, 100, 40, 30, 27, 26);
+			potionBoost(pvd, MobEffects.WEAKNESS, Items.FERMENTED_SPIDER_EYE, Items.NETHER_WART, 100, 50, 24, 19);
+			potionBoost(pvd, MobEffects.REGENERATION, Items.GHAST_TEAR, Items.NETHER_WART, 100, 60, 57);
+			potionBoost(pvd, MobEffects.POISON, Items.SPIDER_EYE, Items.NETHER_WART, 100, 50, 35, 24);
+			potionBoost(pvd, MobEffects.DAMAGE_RESISTANCE, Items.SHULKER_SHELL, Items.NETHER_WART, 100, 50, 35, 21);
+			potionBoost(pvd, MobEffects.HEAL, Items.MELON_SLICE, Items.NETHER_WART, 100, 50, 35, 25);
+			potionBoost(pvd, MobEffects.HARM, Items.MELON_SLICE, Items.FERMENTED_SPIDER_EYE, 100, 50, 35, 24);
 
 		}
 
@@ -329,7 +336,7 @@ public class RecipeGen {
 		unlock(pvd, new ResultTagShapedBuilder(stack)::unlockedBy, flower)
 				.pattern("FVF").pattern("FLF").pattern("FVF").define('V', Items.VINE)
 				.define('F', flower).define('L', Items.LEATHER)
-				.save(pvd, new ResourceLocation(LightLand.MODID, currentFolder + ForgeRegistries.MOB_EFFECTS.getKey(eff).getPath()));
+				.save(pvd, getID(ForgeRegistries.MOB_EFFECTS.getKey(eff).getPath()));
 	}
 
 	private static void medArmor(RegistrateRecipeProvider pvd, Item input, LLItems.ArmorItems<?> out) {
@@ -341,6 +348,34 @@ public class RecipeGen {
 				.pattern("A A").pattern("AAA").pattern("AAA").define('A', input).save(pvd, getID(out.armors[2].get()));
 		unlock(pvd, new MedArmorBuilder(out.armors[3].get(), 1)::unlockedBy, input)
 				.pattern("AAA").pattern("A A").define('A', input).save(pvd, getID(out.armors[3].get()));
+	}
+
+	private static void potionBoost(RegistrateRecipeProvider pvd, MobEffect eff, Item a, Item b, int... levels) {
+		potionUp(pvd, eff, a, b, levels);
+		potionDown(pvd, eff, a, b, levels);
+	}
+
+	private static void potionUp(RegistrateRecipeProvider pvd, MobEffect eff, Item a, Item b, int... levels) {
+		String path = ForgeRegistries.MOB_EFFECTS.getKey(eff).getPath();
+		ResourceLocation rl = new ResourceLocation(LightLand.MODID, "magic_data/effects/" + path);
+		unlock(pvd, new PotionBoostBuilder(eff, 1, rl, levels)::unlockedBy, LLItems.POTION_CORE.get())
+				.setCore(new MobEffectIngredient(LLItems.POTION_CORE.get(), eff, 0, 1),
+						PotionUtils.setCustomEffects(LLItems.POTION_CORE.asStack(),
+								List.of(new MobEffectInstance(eff, 1, 1))))
+				.setSides(Items.GLOWSTONE_DUST, 0, 2, 5, 7)
+				.setSides(a, 1, 6).setSides(b, 3, 4)
+				.save(pvd, getID(path + "_up"));
+	}
+
+	private static void potionDown(RegistrateRecipeProvider pvd, MobEffect eff, Item a, Item b, int... levels) {
+		String path = ForgeRegistries.MOB_EFFECTS.getKey(eff).getPath();
+		ResourceLocation rl = new ResourceLocation(LightLand.MODID, "magic_data/effects/" + path);
+		unlock(pvd, new PotionBoostBuilder(eff, -1, rl, levels)::unlockedBy, LLItems.POTION_CORE.get())
+				.setCore(new MobEffectIngredient(LLItems.POTION_CORE.get(), eff, 0, 1),
+						LLItems.POTION_CORE.asStack())
+				.setSides(Items.REDSTONE, 0, 2, 5, 7)
+				.setSides(a, 1, 6).setSides(b, 3, 4)
+				.save(pvd, getID(path + "_down"));
 	}
 
 }

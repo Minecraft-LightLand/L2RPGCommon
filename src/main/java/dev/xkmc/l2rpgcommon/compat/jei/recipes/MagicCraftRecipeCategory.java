@@ -26,7 +26,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
@@ -93,7 +92,7 @@ public class MagicCraftRecipeCategory extends BaseRecipeCategory<AbstractRitualR
 			if (isCore) {
 				stack = stack.copy();
 				List<MobEffectInstance> list = PotionUtils.getCustomEffects(stack);
-				MobEffect eff = ForgeRegistries.MOB_EFFECTS.getValue(((PotionBoostRecipe) sl).effect);
+				MobEffect eff = ((PotionBoostRecipe) sl).effect;
 				list = list.stream().map(e -> {
 					if (e.getEffect() != eff) {
 						return new MobEffectInstance(eff, e.getDuration(), e.getAmplifier());

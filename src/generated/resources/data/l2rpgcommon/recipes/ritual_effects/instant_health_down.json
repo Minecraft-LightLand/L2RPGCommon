@@ -1,0 +1,65 @@
+{
+  "type": "l2rpgcommon:ritual_potion_boost",
+  "core": {
+    "input": {
+      "type": "l2library:mob_effect",
+      "effect": "minecraft:instant_health",
+      "min_level": 0,
+      "min_time": 1
+    },
+    "output": {
+      "item": "l2rpgcommon:potion_core"
+    }
+  },
+  "effect": "minecraft:instant_health",
+  "levels": [
+    100,
+    50,
+    35,
+    25
+  ],
+  "magic_recipe": "l2rpgcommon:magic_data/effects/instant_health",
+  "modify_level": -1,
+  "side": [
+    {
+      "input": {
+        "item": "minecraft:redstone"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:melon_slice"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:redstone"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:nether_wart"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:nether_wart"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:redstone"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:melon_slice"
+      }
+    },
+    {
+      "input": {
+        "item": "minecraft:redstone"
+      }
+    }
+  ]
+}
