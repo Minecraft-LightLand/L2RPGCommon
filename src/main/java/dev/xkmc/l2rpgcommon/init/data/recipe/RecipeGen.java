@@ -241,8 +241,8 @@ public class RecipeGen {
 			potionBoost(pvd, MobEffects.REGENERATION, Items.GHAST_TEAR, Items.NETHER_WART, 100, 60, 57);
 			potionBoost(pvd, MobEffects.POISON, Items.SPIDER_EYE, Items.NETHER_WART, 100, 50, 35, 24);
 			potionBoost(pvd, MobEffects.DAMAGE_RESISTANCE, Items.SHULKER_SHELL, Items.NETHER_WART, 100, 50, 35, 21);
-			potionBoost(pvd, MobEffects.HEAL, Items.MELON_SLICE, Items.NETHER_WART, 100, 50, 35, 25);
-			potionBoost(pvd, MobEffects.HARM, Items.MELON_SLICE, Items.FERMENTED_SPIDER_EYE, 100, 50, 35, 24);
+			potionBoost(pvd, MobEffects.HEAL, Items.GLISTERING_MELON_SLICE, Items.NETHER_WART, 100, 50, 35, 25);
+			potionBoost(pvd, MobEffects.HARM, Items.GLISTERING_MELON_SLICE, Items.FERMENTED_SPIDER_EYE, 100, 50, 35, 24);
 
 		}
 
@@ -357,7 +357,7 @@ public class RecipeGen {
 
 	private static void potionUp(RegistrateRecipeProvider pvd, MobEffect eff, Item a, Item b, int... levels) {
 		String path = ForgeRegistries.MOB_EFFECTS.getKey(eff).getPath();
-		ResourceLocation rl = new ResourceLocation(LightLand.MODID, "magic_data/effects/" + path);
+		ResourceLocation rl = new ResourceLocation(LightLand.MODID, "magic_data/effect/" + path);
 		unlock(pvd, new PotionBoostBuilder(eff, 1, rl, levels)::unlockedBy, LLItems.POTION_CORE.get())
 				.setCore(new MobEffectIngredient(LLItems.POTION_CORE.get(), eff, 0, 1),
 						PotionUtils.setCustomEffects(LLItems.POTION_CORE.asStack(),
@@ -369,7 +369,7 @@ public class RecipeGen {
 
 	private static void potionDown(RegistrateRecipeProvider pvd, MobEffect eff, Item a, Item b, int... levels) {
 		String path = ForgeRegistries.MOB_EFFECTS.getKey(eff).getPath();
-		ResourceLocation rl = new ResourceLocation(LightLand.MODID, "magic_data/effects/" + path);
+		ResourceLocation rl = new ResourceLocation(LightLand.MODID, "magic_data/effect/" + path);
 		unlock(pvd, new PotionBoostBuilder(eff, -1, rl, levels)::unlockedBy, LLItems.POTION_CORE.get())
 				.setCore(new MobEffectIngredient(LLItems.POTION_CORE.get(), eff, 0, 1),
 						LLItems.POTION_CORE.asStack())

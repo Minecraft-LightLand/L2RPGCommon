@@ -30,14 +30,14 @@
       "input": {
         "type": "l2library:enchantment",
         "enchantment": "minecraft:protection",
-        "minLevel": 4
+        "min_level": 4
       }
     },
     {
       "input": {
         "type": "l2library:enchantment",
         "enchantment": "minecraft:unbreaking",
-        "minLevel": 3
+        "min_level": 3
       }
     },
     {

@@ -4,6 +4,7 @@
     "input": {
       "type": "l2library:mob_effect",
       "effect": "minecraft:regeneration",
+      "item": "l2rpgcommon:potion_core",
       "min_level": 0,
       "min_time": 1
     },
@@ -17,7 +18,7 @@
     60,
     57
   ],
-  "magic_recipe": "l2rpgcommon:magic_data/effects/regeneration",
+  "magic_recipe": "l2rpgcommon:magic_data/effect/regeneration",
   "modify_level": -1,
   "side": [
     {

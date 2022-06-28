@@ -4,6 +4,7 @@
     "input": {
       "type": "l2library:mob_effect",
       "effect": "minecraft:poison",
+      "item": "l2rpgcommon:potion_core",
       "min_level": 0,
       "min_time": 1
     },
@@ -18,7 +19,7 @@
     35,
     24
   ],
-  "magic_recipe": "l2rpgcommon:magic_data/effects/poison",
+  "magic_recipe": "l2rpgcommon:magic_data/effect/poison",
   "modify_level": -1,
   "side": [
     {

@@ -13,7 +13,7 @@
       "input": {
         "type": "l2library:enchantment",
         "enchantment": "minecraft:mending",
-        "minLevel": 1
+        "min_level": 1
       }
     },
     {
@@ -28,7 +28,7 @@
       "input": {
         "type": "l2library:enchantment",
         "enchantment": "minecraft:unbreaking",
-        "minLevel": 3
+        "min_level": 3
       }
     },
     {
@@ -51,7 +51,7 @@
       "input": {
         "type": "l2library:enchantment",
         "enchantment": "minecraft:infinity",
-        "minLevel": 1
+        "min_level": 1
       }
     },
     {
@@ -66,7 +66,7 @@
       "input": {
         "type": "l2library:enchantment",
         "enchantment": "minecraft:protection",
-        "minLevel": 4
+        "min_level": 4
       }
     }
   ]

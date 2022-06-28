@@ -4,6 +4,7 @@
     "input": {
       "type": "l2library:mob_effect",
       "effect": "minecraft:instant_damage",
+      "item": "l2rpgcommon:potion_core",
       "min_level": 0,
       "min_time": 1
     },
@@ -19,7 +20,7 @@
     35,
     24
   ],
-  "magic_recipe": "l2rpgcommon:magic_data/effects/instant_damage",
+  "magic_recipe": "l2rpgcommon:magic_data/effect/instant_damage",
   "modify_level": 1,
   "side": [
     {
@@ -29,7 +30,7 @@
     },
     {
       "input": {
-        "item": "minecraft:melon_slice"
+        "item": "minecraft:glistering_melon_slice"
       }
     },
     {
@@ -54,7 +55,7 @@
     },
     {
       "input": {
-        "item": "minecraft:melon_slice"
+        "item": "minecraft:glistering_melon_slice"
       }
     },
     {

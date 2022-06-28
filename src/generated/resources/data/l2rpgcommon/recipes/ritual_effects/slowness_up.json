@@ -4,6 +4,7 @@
     "input": {
       "type": "l2library:mob_effect",
       "effect": "minecraft:slowness",
+      "item": "l2rpgcommon:potion_core",
       "min_level": 0,
       "min_time": 1
     },
@@ -21,7 +22,7 @@
     21,
     16
   ],
-  "magic_recipe": "l2rpgcommon:magic_data/effects/slowness",
+  "magic_recipe": "l2rpgcommon:magic_data/effect/slowness",
   "modify_level": 1,
   "side": [
     {

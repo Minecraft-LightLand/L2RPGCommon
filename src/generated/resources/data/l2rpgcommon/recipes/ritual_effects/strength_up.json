@@ -4,6 +4,7 @@
     "input": {
       "type": "l2library:mob_effect",
       "effect": "minecraft:strength",
+      "item": "l2rpgcommon:potion_core",
       "min_level": 0,
       "min_time": 1
     },
@@ -20,7 +21,7 @@
     27,
     26
   ],
-  "magic_recipe": "l2rpgcommon:magic_data/effects/strength",
+  "magic_recipe": "l2rpgcommon:magic_data/effect/strength",
   "modify_level": 1,
   "side": [
     {
