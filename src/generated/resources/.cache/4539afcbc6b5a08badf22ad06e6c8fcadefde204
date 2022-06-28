@@ -1,4 +1,4 @@
-// 1.19	2022-06-28T12:07:45.882542	Registrate Provider for l2rpgcommon [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19	2022-06-28T13:23:51.682054	Registrate Provider for l2rpgcommon [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 8d33ff775ab2d8d40509e25310bbcc1916c2afcd assets/l2rpgcommon/blockstates/dispellium_block.json
 6465c6ed277f426d912494cfefe90685d2505a7a assets/l2rpgcommon/blockstates/enchant_gold_block.json
 d7a8641c42c93bfa5a3ecc3100b670f4ad90e984 assets/l2rpgcommon/blockstates/eternal_anvil.json
@@ -13,12 +13,15 @@ eff4a8032c9eaa678439a5ab9520fc1237027696 assets/l2rpgcommon/blockstates/layline_
 ea6bd143a799d3bfd363a24f24e64ce8d0a65674 assets/l2rpgcommon/blockstates/layroot_head.json
 6b4023ca8ddc9c52cc5c8bda2ac5a9e252b2a987 assets/l2rpgcommon/blockstates/lead_block.json
 43e9a4e0637c3ec1453d9953e736e6f1d273042b assets/l2rpgcommon/blockstates/magicium_block.json
+eb9a1de073e7ef8d3977bc7d3f1d97ef01ced30d assets/l2rpgcommon/blockstates/maze_wall.json
 1a5d741341cf169900a158bc9fe7cf00f3abb4ae assets/l2rpgcommon/blockstates/oldroot_block.json
+3767df01ab181d0f663679b462a0edcf49b3dd80 assets/l2rpgcommon/blockstates/ritual_core.json
+123983815fcb2e99db1a8f1ad9ec0feb0391fde6 assets/l2rpgcommon/blockstates/ritual_side.json
 81e21d4646c171ae0e138ad6abb87ddfc7f0c52a assets/l2rpgcommon/blockstates/slime_carpet.json
 c4fcc73f22e844664d477bd49b184b44a0f3199b assets/l2rpgcommon/blockstates/slime_vine.json
 60ddfd1ebd4b1891a0ab14612cb8ad2ac729465d assets/l2rpgcommon/blockstates/steel_block.json
-e8f43db82e22e1e24cd327d6724f5c69a6c78da6 assets/l2rpgcommon/lang/en_ud.json
-576c4b0eaf525ec4ac678baa8d3e1458773297c8 assets/l2rpgcommon/lang/en_us.json
+6998e99b40fb5406578ce04f91dbf425e4112d50 assets/l2rpgcommon/lang/en_ud.json
+569c11e7029c99042bb141b20638ec43f39fe7a7 assets/l2rpgcommon/lang/en_us.json
 251ccc535ebb524942120a22eb2b0712f4dee68f assets/l2rpgcommon/models/block/dispellium_block.json
 2d65f34dca60b7e533ab95d5423cb6eb07a8cc05 assets/l2rpgcommon/models/block/enchant_gold_block.json
 9c9a8fcc0fe537da5794094e45fc4ca8d397d73f assets/l2rpgcommon/models/block/eternal_anvil.json
@@ -33,6 +36,7 @@ de866b9a224302e95b9381d0a5759c6de700abf5 assets/l2rpgcommon/models/block/layline
 896a8fa86f31c9812a2fa9fc33bd2dd8870557c0 assets/l2rpgcommon/models/block/layroot_head.json
 639d3da30ccaae15949d3d7837293eff0d7cc217 assets/l2rpgcommon/models/block/lead_block.json
 30712cc8791c8d7244c07b1d982d5aa9d8c91771 assets/l2rpgcommon/models/block/magicium_block.json
+d74eb9d215ef42350e4d3fc22760f557f99ba82a assets/l2rpgcommon/models/block/maze_block_in.json
 8c23b916dd4370d17b8f74b3036dd29a20f02913 assets/l2rpgcommon/models/block/oldroot_block.json
 8119782dd116742d0775f1aa4a762ac443d8bb63 assets/l2rpgcommon/models/block/slime_carpet.json
 48f96928133214fc371d97914f4feafed3295c11 assets/l2rpgcommon/models/block/slime_vine.json
@@ -160,7 +164,7 @@ a4feafd67af1b1ab0018b5c897461b17ebf101ea assets/l2rpgcommon/models/item/magic_wa
 0aeb6a499b85c8b2416770136c95b4ae764cd4ac assets/l2rpgcommon/models/item/magicium_block.json
 fa265be891f3cebbf8d64032e7f747099e250e20 assets/l2rpgcommon/models/item/magicium_ingot.json
 c5e45b758dfb2ab4c18474eefb341d63766d1849 assets/l2rpgcommon/models/item/magicium_nugget.json
-fc449c14ae4c97954f3bbcf928eedaeae9f1da7d assets/l2rpgcommon/models/item/maze_wall.json
+7d6f365edfb23d6b53372d9c2dacf49f7b70a49d assets/l2rpgcommon/models/item/maze_wall.json
 042dfc6a8fc0a9fe8b244a1515de9d1ba4d3bce6 assets/l2rpgcommon/models/item/medicine_leather.json
 ebf2bfde996d1a5f63317b48dac5e1561bc21b47 assets/l2rpgcommon/models/item/medicine_leather_boots.json
 75f78858deb3735bf0a14be4a52a7bef3d95da12 assets/l2rpgcommon/models/item/medicine_leather_chestplate.json

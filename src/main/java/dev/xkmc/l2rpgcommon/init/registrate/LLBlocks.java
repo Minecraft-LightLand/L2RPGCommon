@@ -13,6 +13,7 @@ import dev.xkmc.l2rpgcommon.content.questline.block.*;
 import dev.xkmc.l2rpgcommon.init.LightLand;
 import dev.xkmc.l2rpgcommon.init.data.templates.GenItem;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.Block;
@@ -20,8 +21,15 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WebBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
+
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
 /**
  * handles blocks and block entities
@@ -61,12 +69,14 @@ public class LLBlocks {
 			B_RITUAL_CORE = LightLand.REGISTRATE.block("ritual_core",
 							(p) -> DelegateBlock.newBaseBlock(PEDESTAL, RitualCore.ACTIVATE, RitualCore.CLICK,
 									BlockProxy.TRIGGER, RitualCore.TILE_ENTITY_SUPPLIER_BUILDER))
-					.blockstate((a, b) -> {
-					}).tag(BlockTags.MINEABLE_WITH_PICKAXE).defaultLoot().defaultLang().simpleItem().register();
+					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.getEntry(), pvd.models().getExistingFile(
+							new ResourceLocation(LightLand.MODID, "block/ritual_core"))))
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE).defaultLoot().defaultLang().simpleItem().register();
 			B_RITUAL_SIDE = LightLand.REGISTRATE.block("ritual_side",
 							(p) -> DelegateBlock.newBaseBlock(PEDESTAL, RitualCore.CLICK, RitualSide.TILE_ENTITY_SUPPLIER_BUILDER))
-					.blockstate((a, b) -> {
-					}).tag(BlockTags.MINEABLE_WITH_PICKAXE).defaultLoot().defaultLang().simpleItem().register();
+					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.getEntry(), pvd.models().getExistingFile(
+							new ResourceLocation(LightLand.MODID, "block/ritual_side"))))
+					.tag(BlockTags.MINEABLE_WITH_PICKAXE).defaultLoot().defaultLang().simpleItem().register();
 			TE_RITUAL_CORE = LightLand.REGISTRATE.blockEntity("ritual_core", RitualCore.TE::new)
 					.validBlock(B_RITUAL_CORE).renderer(() -> RitualRenderer::new).register();
 			TE_RITUAL_SIDE = LightLand.REGISTRATE.blockEntity("ritual_side", RitualSide.TE::new)
@@ -125,10 +135,29 @@ public class LLBlocks {
 			MAZE_WALL = LightLand.REGISTRATE.block("maze_wall", p -> DelegateBlock.newBaseBlock(BP_METAL,
 							MazeWallBlock.NEIGHBOR, MazeWallBlock.ALL_DIRE_STATE))
 					.blockstate((ctx, pvd) -> {
+						ModelFile in = pvd.models().withExistingParent("maze_block_in", "block/template_single_face")
+								.texture("texture", new ResourceLocation(LightLand.MODID, "block/maze_block_in"));
+						ModelFile out = pvd.models().withExistingParent("maze_block_in", "block/template_single_face")
+								.texture("texture", new ResourceLocation(LightLand.MODID, "block/maze_block_out"));
+						var builder = pvd.getMultipartBuilder(ctx.getEntry());
+						BiConsumer<BooleanProperty, Function<
+								ConfiguredModel.Builder<MultiPartBlockStateBuilder.PartBuilder>,
+								ConfiguredModel.Builder<MultiPartBlockStateBuilder.PartBuilder>>> func = (prop, axis) -> {
+							axis.apply(builder.part().modelFile(in)).addModel().condition(prop, true).end();
+							axis.apply(builder.part().modelFile(out)).addModel().condition(prop, false).end();
+						};
+						func.accept(BlockStateProperties.NORTH, model -> model);
+						func.accept(BlockStateProperties.EAST, model -> model.rotationY(90));
+						func.accept(BlockStateProperties.SOUTH, model -> model.rotationY(180));
+						func.accept(BlockStateProperties.WEST, model -> model.rotationY(270));
+						func.accept(BlockStateProperties.UP, model -> model.rotationX(270));
+						func.accept(BlockStateProperties.DOWN, model -> model.rotationX(90));
 					}).loot((table, block) -> table.accept((rl, b) -> b.build()))
 					.tag(BlockTags.WITHER_IMMUNE, BlockTags.DRAGON_IMMUNE)
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_DIAMOND_TOOL)
-					.defaultLang().simpleItem().register();
+					.defaultLang().item().model((ctx, pvd) -> pvd.withExistingParent(ctx.getName(), "block/cube_all")
+							.texture("all", new ResourceLocation(LightLand.MODID, "block/maze_block_out")))
+					.build().register();
 		}
 	}
 

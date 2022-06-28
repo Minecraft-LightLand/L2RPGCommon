@@ -111,7 +111,7 @@ public class MazeWallBlock {
 				BlockStateProperties.NORTH, BlockStateProperties.SOUTH,
 				BlockStateProperties.WEST, BlockStateProperties.EAST};
 
-		private static final Map<Direction, BooleanProperty> MAP = Map.of(
+		public static final Map<Direction, BooleanProperty> MAP = Map.of(
 				Direction.DOWN, BlockStateProperties.DOWN,
 				Direction.UP, BlockStateProperties.UP,
 				Direction.NORTH, BlockStateProperties.NORTH,
