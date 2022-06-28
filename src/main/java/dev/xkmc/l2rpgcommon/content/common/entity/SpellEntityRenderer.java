@@ -25,9 +25,12 @@ public class SpellEntityRenderer extends EntityRenderer<SpellEntity> {
 		float scale = entity.getSize(partial);
 		matrix.scale(scale / 16f, scale / 16f, scale / 16f);
 		SpellComponent component = entity.getComponent();
-		if (component != null) component.render(handle);
+		if (component != null) {
+			component.render(handle);
+		}
 		matrix.popPose();
 		super.render(entity, yRot, partial, matrix, buffer, light);
+
 	}
 
 	@Override

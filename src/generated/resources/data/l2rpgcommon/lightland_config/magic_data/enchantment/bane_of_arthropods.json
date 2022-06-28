@@ -20,6 +20,7 @@
     "F->CD",
     "CD->AB"
   ],
+  "predecessor": [],
   "product_id": "minecraft:bane_of_arthropods",
   "product_type": "l2rpgcommon:enchantment",
   "screen": {

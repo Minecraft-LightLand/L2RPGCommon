@@ -30,5 +30,6 @@
       "ingredient_weight": 0
     }
   },
-  "materials": {}
+  "materials": {},
+  "suffixes": []
 }

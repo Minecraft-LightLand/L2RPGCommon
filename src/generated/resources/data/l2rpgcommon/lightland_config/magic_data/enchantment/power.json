@@ -17,6 +17,7 @@
   "flows": [
     "ABDE<->CF"
   ],
+  "predecessor": [],
   "product_id": "minecraft:power",
   "product_type": "l2rpgcommon:enchantment",
   "screen": {

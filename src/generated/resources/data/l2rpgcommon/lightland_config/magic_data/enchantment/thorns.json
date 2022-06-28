@@ -19,6 +19,7 @@
     "BC->DEF",
     "DEF->A"
   ],
+  "predecessor": [],
   "product_id": "minecraft:thorns",
   "product_type": "l2rpgcommon:enchantment",
   "screen": {

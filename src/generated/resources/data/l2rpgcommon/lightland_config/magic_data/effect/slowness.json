@@ -20,6 +20,7 @@
     "B->D",
     "D->A"
   ],
+  "predecessor": [],
   "product_id": "minecraft:slowness",
   "product_type": "l2rpgcommon:effect",
   "screen": {

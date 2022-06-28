@@ -54,18 +54,18 @@
           "angle": 0.0,
           "color": "0xFFFF0000",
           "cycle": 1,
-          "radius": 1.0,
+          "radius": 48.0,
           "vertex": 64,
-          "width": 48.0,
+          "width": 1.0,
           "z": 0.0
         },
         {
           "angle": 0.0,
           "color": "0xFFFF0000",
           "cycle": 2,
-          "radius": 1.0,
+          "radius": 47.0,
           "vertex": 7,
-          "width": 47.0,
+          "width": 1.0,
           "z": 0.0
         }
       ]
@@ -77,18 +77,18 @@
           "angle": 0.0,
           "color": "0xFFFF0000",
           "cycle": 1,
-          "radius": 1.0,
+          "radius": 9.0,
           "vertex": 28,
-          "width": 9.0,
+          "width": 1.0,
           "z": 0.0
         },
         {
           "angle": 0.0,
           "color": "0xFFFF0000",
           "cycle": 2,
-          "radius": 1.0,
+          "radius": 8.0,
           "vertex": 7,
-          "width": 8.0,
+          "width": 1.0,
           "z": 0.0
         }
       ]

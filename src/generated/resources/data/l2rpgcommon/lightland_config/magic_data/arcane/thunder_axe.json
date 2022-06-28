@@ -15,6 +15,7 @@
   "flows": [
     "ABCD|"
   ],
+  "predecessor": [],
   "product_id": "l2rpgcommon:thunder_axe",
   "product_type": "l2rpgcommon:arcane",
   "screen": {

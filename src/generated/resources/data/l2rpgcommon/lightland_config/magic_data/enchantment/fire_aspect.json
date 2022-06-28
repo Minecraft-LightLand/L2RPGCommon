@@ -19,6 +19,7 @@
     "E->F",
     "F->ABCD"
   ],
+  "predecessor": [],
   "product_id": "minecraft:fire_aspect",
   "product_type": "l2rpgcommon:enchantment",
   "screen": {

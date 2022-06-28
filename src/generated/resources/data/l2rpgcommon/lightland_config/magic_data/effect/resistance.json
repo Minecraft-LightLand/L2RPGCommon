@@ -23,6 +23,7 @@
     "E->F",
     "D->E"
   ],
+  "predecessor": [],
   "product_id": "minecraft:resistance",
   "product_type": "l2rpgcommon:effect",
   "screen": {

@@ -15,6 +15,7 @@
   "flows": [
     "A<->BCD"
   ],
+  "predecessor": [],
   "product_id": "l2rpgcommon:fang_round",
   "product_type": "l2rpgcommon:spell",
   "screen": {

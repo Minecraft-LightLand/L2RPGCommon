@@ -18,6 +18,7 @@
     "CD->E",
     "E->AB"
   ],
+  "predecessor": [],
   "product_id": "minecraft:smite",
   "product_type": "l2rpgcommon:enchantment",
   "screen": {

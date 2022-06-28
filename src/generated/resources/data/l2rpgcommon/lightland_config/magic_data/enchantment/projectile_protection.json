@@ -19,6 +19,7 @@
     "CD->EF",
     "EF->AB"
   ],
+  "predecessor": [],
   "product_id": "minecraft:projectile_protection",
   "product_type": "l2rpgcommon:enchantment",
   "screen": {

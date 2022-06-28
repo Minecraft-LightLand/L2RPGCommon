@@ -18,6 +18,7 @@
     "BC->DE",
     "DE->A"
   ],
+  "predecessor": [],
   "product_id": "l2rpgcommon:fire_rain",
   "product_type": "l2rpgcommon:spell",
   "screen": {

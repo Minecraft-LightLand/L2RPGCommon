@@ -17,6 +17,7 @@
   "flows": [
     "ABCDEF|"
   ],
+  "predecessor": [],
   "product_id": "l2rpgcommon:marker",
   "product_type": "l2rpgcommon:arcane",
   "screen": {

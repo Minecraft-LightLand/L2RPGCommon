@@ -16,6 +16,7 @@
   "flows": [
     "AB<->CDE"
   ],
+  "predecessor": [],
   "product_id": "l2rpgcommon:water_trap_0",
   "product_type": "l2rpgcommon:spell",
   "screen": {

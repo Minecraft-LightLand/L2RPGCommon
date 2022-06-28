@@ -16,6 +16,7 @@
   "flows": [
     "ABCDE|"
   ],
+  "predecessor": [],
   "product_id": "l2rpgcommon:thunder_sword",
   "product_type": "l2rpgcommon:arcane",
   "screen": {

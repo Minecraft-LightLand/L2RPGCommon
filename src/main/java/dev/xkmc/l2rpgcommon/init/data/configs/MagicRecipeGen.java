@@ -43,7 +43,7 @@ public class MagicRecipeGen {
 										Function<DefMagicRecipe, IMagicRecipe> func) {
 		assert rl != null;
 		String path = prefix + "/" + rl.getPath();
-		ResourceLocation id = new ResourceLocation(LightLand.MODID, path);
+		ResourceLocation id = new ResourceLocation(LightLand.MODID, "magic_data/" + path);
 		DefMagicRecipe config = new DefMagicRecipe(type, rl, screen);
 		adder.accept(path, func.apply(config));
 		return id;

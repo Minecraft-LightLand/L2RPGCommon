@@ -20,6 +20,7 @@
     "E->CD",
     "F->AB"
   ],
+  "predecessor": [],
   "product_id": "minecraft:feather_falling",
   "product_type": "l2rpgcommon:enchantment",
   "screen": {

@@ -20,7 +20,7 @@
     "CDEF->A"
   ],
   "predecessor": [
-    "l2rpgcommon:spell/blade_side"
+    "l2rpgcommon:magic_data/spell/blade_side"
   ],
   "product_id": "l2rpgcommon:blade_front",
   "product_type": "l2rpgcommon:spell",

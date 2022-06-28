@@ -21,6 +21,7 @@
     "CE->D",
     "D->A"
   ],
+  "predecessor": [],
   "product_id": "minecraft:instant_health",
   "product_type": "l2rpgcommon:effect",
   "screen": {

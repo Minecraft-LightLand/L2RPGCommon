@@ -19,6 +19,7 @@
     "C->F",
     "F->ABDE"
   ],
+  "predecessor": [],
   "product_id": "minecraft:flame",
   "product_type": "l2rpgcommon:enchantment",
   "screen": {

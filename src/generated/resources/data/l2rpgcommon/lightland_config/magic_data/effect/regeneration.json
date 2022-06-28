@@ -21,6 +21,7 @@
     "CE<->D",
     "D<->A"
   ],
+  "predecessor": [],
   "product_id": "minecraft:regeneration",
   "product_type": "l2rpgcommon:effect",
   "screen": {

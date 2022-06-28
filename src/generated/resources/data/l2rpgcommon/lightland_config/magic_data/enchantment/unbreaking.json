@@ -15,6 +15,7 @@
   "flows": [
     "ABCD|"
   ],
+  "predecessor": [],
   "product_id": "minecraft:unbreaking",
   "product_type": "l2rpgcommon:enchantment",
   "screen": {

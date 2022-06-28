@@ -22,6 +22,7 @@
     "E->A",
     "F->B"
   ],
+  "predecessor": [],
   "product_id": "minecraft:speed",
   "product_type": "l2rpgcommon:effect",
   "screen": {

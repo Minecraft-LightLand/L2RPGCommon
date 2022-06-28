@@ -17,6 +17,7 @@
   "flows": [
     "ABC<->DEF"
   ],
+  "predecessor": [],
   "product_id": "minecraft:infinity",
   "product_type": "l2rpgcommon:enchantment",
   "screen": {

@@ -17,6 +17,7 @@
   "flows": [
     "ABCD<->EF"
   ],
+  "predecessor": [],
   "product_id": "minecraft:sharpness",
   "product_type": "l2rpgcommon:enchantment",
   "screen": {

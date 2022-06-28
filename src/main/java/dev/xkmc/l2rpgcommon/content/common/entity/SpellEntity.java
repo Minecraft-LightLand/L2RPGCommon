@@ -22,7 +22,7 @@ public class SpellEntity extends BaseEntity {
 	public int time, setup, close;
 
 	@SerialClass.SerialField
-	public String spell_id = "lightland:test_spell";
+	public String spell_id = "";
 
 	private Consumer<SpellEntity> action;
 

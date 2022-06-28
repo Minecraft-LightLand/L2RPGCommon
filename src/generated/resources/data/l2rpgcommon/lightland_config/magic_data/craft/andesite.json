@@ -1,5 +1,6 @@
 {
   "_class": "dev.xkmc.l2rpgcommon.content.magic.products.recipe.DefMagicRecipe",
+  "elemental_mastery": [],
   "elements": {
     "A": "l2rpgcommon:earth",
     "B": "l2rpgcommon:air",
@@ -10,6 +11,7 @@
     "B->C",
     "C->A"
   ],
+  "predecessor": [],
   "product_id": "minecraft:andesite",
   "product_type": "l2rpgcommon:craft",
   "screen": {

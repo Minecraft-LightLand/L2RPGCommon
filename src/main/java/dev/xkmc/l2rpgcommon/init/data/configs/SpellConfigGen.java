@@ -16,7 +16,7 @@ import java.util.function.BiConsumer;
 public class SpellConfigGen {
 
 	public static void add(BiConsumer<String, BaseConfig> adder) {
-		String test_spell = "l2rpgcommon:test_spell";
+		String test_spell = SpellRenderGen.TEST_MAIN.toString();
 		adder.accept("evoker_fang", new SpellDataConfig()
 				.add(SpellRegistry.FANG_ROUND.get(), new EvokerFangSpell.EvokerFangBuilder(
 						MagicScroll.ScrollType.PARCHMENT, 30, 30, 50,

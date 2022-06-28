@@ -42,5 +42,6 @@
       "ingredient_weight": 70
     }
   },
-  "materials": {}
+  "materials": {},
+  "suffixes": []
 }

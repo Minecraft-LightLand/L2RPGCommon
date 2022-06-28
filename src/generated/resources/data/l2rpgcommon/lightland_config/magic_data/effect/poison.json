@@ -20,6 +20,7 @@
     "CE->D",
     "D->A"
   ],
+  "predecessor": [],
   "product_id": "minecraft:poison",
   "product_type": "l2rpgcommon:effect",
   "screen": {

@@ -20,6 +20,7 @@
     "CD->EF",
     "EF->A"
   ],
+  "predecessor": [],
   "product_id": "l2rpgcommon:wind_blade",
   "product_type": "l2rpgcommon:arcane",
   "screen": {

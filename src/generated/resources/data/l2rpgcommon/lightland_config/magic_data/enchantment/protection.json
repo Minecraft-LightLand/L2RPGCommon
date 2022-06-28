@@ -15,6 +15,7 @@
   "flows": [
     "ABC<->D"
   ],
+  "predecessor": [],
   "product_id": "minecraft:protection",
   "product_type": "l2rpgcommon:enchantment",
   "screen": {

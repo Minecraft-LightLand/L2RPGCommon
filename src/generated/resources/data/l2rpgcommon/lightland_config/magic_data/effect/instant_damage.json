@@ -20,6 +20,7 @@
     "D->EF",
     "EF->A"
   ],
+  "predecessor": [],
   "product_id": "minecraft:instant_damage",
   "product_type": "l2rpgcommon:effect",
   "screen": {

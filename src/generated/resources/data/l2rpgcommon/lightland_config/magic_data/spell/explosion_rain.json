@@ -20,7 +20,7 @@
     "DEF->A"
   ],
   "predecessor": [
-    "l2rpgcommon:spell/fire_rain"
+    "l2rpgcommon:magic_data/spell/fire_rain"
   ],
   "product_id": "l2rpgcommon:explosion_rain",
   "product_type": "l2rpgcommon:spell",

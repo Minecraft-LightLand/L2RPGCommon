@@ -19,6 +19,7 @@
     "CD->EF",
     "EF->AB"
   ],
+  "predecessor": [],
   "product_id": "l2rpgcommon:blade_side",
   "product_type": "l2rpgcommon:spell",
   "screen": {

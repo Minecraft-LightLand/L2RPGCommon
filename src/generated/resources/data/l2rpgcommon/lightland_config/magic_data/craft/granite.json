@@ -1,5 +1,6 @@
 {
   "_class": "dev.xkmc.l2rpgcommon.content.magic.products.recipe.DefMagicRecipe",
+  "elemental_mastery": [],
   "elements": {
     "A": "l2rpgcommon:earth",
     "B": "l2rpgcommon:earth",
@@ -9,6 +10,7 @@
   "flows": [
     "D->ABC"
   ],
+  "predecessor": [],
   "product_id": "minecraft:granite",
   "product_type": "l2rpgcommon:craft",
   "screen": {

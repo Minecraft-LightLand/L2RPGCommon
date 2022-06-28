@@ -20,7 +20,7 @@
     "EF->A"
   ],
   "predecessor": [
-    "l2rpgcommon:spell/explosion_rain"
+    "l2rpgcommon:magic_data/spell/explosion_rain"
   ],
   "product_id": "l2rpgcommon:fire_explosion",
   "product_type": "l2rpgcommon:spell",

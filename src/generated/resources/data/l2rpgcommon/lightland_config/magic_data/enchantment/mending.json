@@ -16,6 +16,7 @@
   "flows": [
     "ABCDE|"
   ],
+  "predecessor": [],
   "product_id": "minecraft:mending",
   "product_type": "l2rpgcommon:enchantment",
   "screen": {

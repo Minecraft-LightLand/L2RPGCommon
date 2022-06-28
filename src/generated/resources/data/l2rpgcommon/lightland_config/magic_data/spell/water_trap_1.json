@@ -21,7 +21,7 @@
     "EF->A"
   ],
   "predecessor": [
-    "l2rpgcommon:spell/water_trap_0"
+    "l2rpgcommon:magic_data/spell/water_trap_0"
   ],
   "product_id": "l2rpgcommon:water_trap_1",
   "product_type": "l2rpgcommon:spell",
