@@ -2,7 +2,7 @@ package dev.xkmc.l2rpgcommon.util;
 
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.AbilityPoints;
-import dev.xkmc.l2rpgcommon.init.special.MagicRegistry;
+import dev.xkmc.l2rpgcommon.init.special.LightLandRegistry;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -28,28 +28,28 @@ public class BodyAttribute {
 			AttributeInstance ins = player.getAttribute(attr.attr.get());
 			if (ins != null) {
 				ins.removeModifier(attr.id);
-				ins.addPermanentModifier(attr.get(ability));
+				ins.addTransientModifier(attr.get(ability));
 			}
 		}
 	}
 
 	public enum Attr {
-		HEALTH("lightland.health", () -> Attributes.MAX_HEALTH,
+		HEALTH("l2rpgcommon.health", () -> Attributes.MAX_HEALTH,
 				AttributeModifier.Operation.ADDITION, a -> sq(a.health) * 2),
-		ARMOR("lightland.armor", () -> Attributes.ARMOR,
+		ARMOR("l2rpgcommon.armor", () -> Attributes.ARMOR,
 				AttributeModifier.Operation.ADDITION, a -> sq(a.health)),
-		TOUGH("lightland.toughness", () -> Attributes.ARMOR_TOUGHNESS,
+		TOUGH("l2rpgcommon.toughness", () -> Attributes.ARMOR_TOUGHNESS,
 				AttributeModifier.Operation.ADDITION, a -> sq(a.health)),
-		DAMAGE("lightland.damage", () -> Attributes.ATTACK_DAMAGE,
+		DAMAGE("l2rpgcommon.damage", () -> Attributes.ATTACK_DAMAGE,
 				AttributeModifier.Operation.ADDITION, a -> sq(a.strength)),
-		ATK_SPEED("lightland.atk_speed", () -> Attributes.ATTACK_SPEED,
+		ATK_SPEED("l2rpgcommon.atk_speed", () -> Attributes.ATTACK_SPEED,
 				AttributeModifier.Operation.MULTIPLY_TOTAL, a -> exp(1.05, a.strength) + exp(1.05, a.speed)),
-		MOVE_SPEED("lightland.move_speed", () -> Attributes.MOVEMENT_SPEED,
+		MOVE_SPEED("l2rpgcommon.move_speed", () -> Attributes.MOVEMENT_SPEED,
 				AttributeModifier.Operation.MULTIPLY_TOTAL, a -> exp(1.1, a.speed)),
-		MANA("lightland.mana", MagicRegistry.ATTR_MANA, AttributeModifier.Operation.ADDITION,
-				a -> a.parent.magicAbility.magic_level * 100d),
-		SPELL_LOAD("lightland.spell_load", MagicRegistry.ATTR_LOAD, AttributeModifier.Operation.ADDITION,
-				a -> a.parent.magicAbility.spell_load * 100d);
+		MANA("l2rpgcommon.mana", LightLandRegistry.MAX_MANA, AttributeModifier.Operation.ADDITION,
+				a -> sq(a.parent.magicAbility.magic_level) * 100d),
+		SPELL_LOAD("l2rpgcommon.spell_load", LightLandRegistry.MAX_SPELL_LOAD, AttributeModifier.Operation.ADDITION,
+				a -> sq(a.parent.magicAbility.spell_load) * 100d);
 
 		public final String name;
 		public final UUID id;

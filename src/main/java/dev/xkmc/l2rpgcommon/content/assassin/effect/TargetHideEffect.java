@@ -1,5 +1,6 @@
 package dev.xkmc.l2rpgcommon.content.assassin.effect;
 
+import dev.xkmc.l2library.base.effects.api.InherentEffect;
 import dev.xkmc.l2rpgcommon.content.common.effect.SkillEffect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -8,7 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.phys.AABB;
 
-public class TargetHideEffect extends MobEffect implements SkillEffect {
+public class TargetHideEffect extends InherentEffect implements SkillEffect<TargetHideEffect> {
 
 	public TargetHideEffect(MobEffectCategory type, int color) {
 		super(type, color);

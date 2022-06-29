@@ -8,6 +8,7 @@ import dev.xkmc.l2rpgcommon.content.common.capability.restriction.ArmorEnchant;
 import dev.xkmc.l2rpgcommon.content.magic.item.MagicScroll;
 import dev.xkmc.l2rpgcommon.content.magic.spell.internal.Spell;
 import dev.xkmc.l2rpgcommon.init.registrate.LLEffects;
+import dev.xkmc.l2rpgcommon.init.special.LightLandRegistry;
 import dev.xkmc.l2rpgcommon.network.packets.CapToClient;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -125,11 +126,11 @@ public class MagicAbility {
 	}
 
 	public int getMaxMana() {
-		return magic_level * 100;
+		return (int) parent.player.getAttributeValue(LightLandRegistry.MAX_MANA.get());
 	}
 
 	public int getManaRestoration() {
-		return magic_level;
+		return (int) (getMana() * parent.player.getAttributeValue(LightLandRegistry.MANA_RESTORE.get()));
 	}
 
 	public int getMaxSpellSlot() {
@@ -137,11 +138,11 @@ public class MagicAbility {
 	}
 
 	public int getMaxSpellEndurance() {
-		return Math.max(100, spell_level * 100);
+		return (int) parent.player.getAttributeValue(LightLandRegistry.MAX_SPELL_LOAD.get());
 	}
 
 	public int getSpellLoad() {
-		return spell_load;
+		return (int) (getMana() * parent.player.getAttributeValue(LightLandRegistry.MANA_RESTORE.get()));
 	}
 
 	public int getSpellReduction() {

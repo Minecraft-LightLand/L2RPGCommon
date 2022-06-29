@@ -1,6 +1,7 @@
 package dev.xkmc.l2rpgcommon.init;
 
 import dev.xkmc.l2library.base.L2Registrate;
+import dev.xkmc.l2library.base.tabs.contents.AttributeEntry;
 import dev.xkmc.l2library.repack.registrate.providers.ProviderType;
 import dev.xkmc.l2rpgcommon.compat.GeneralCompatHandler;
 import dev.xkmc.l2rpgcommon.content.arcane.internal.ArcaneType;
@@ -106,6 +107,9 @@ public class LightLand {
 		event.enqueueWork(() -> {
 			EffectAddUtil.init();
 			LLEffects.registerBrewingRecipe();
+			AttributeEntry.add(LightLandRegistry.MAX_MANA, true, 20000);
+			AttributeEntry.add(LightLandRegistry.MAX_SPELL_LOAD, true, 21000);
+			AttributeEntry.add(LightLandRegistry.MANA_RESTORE, true, 22000);
 		});
 		StructureRegistrate.commonSetup(event);
 	}

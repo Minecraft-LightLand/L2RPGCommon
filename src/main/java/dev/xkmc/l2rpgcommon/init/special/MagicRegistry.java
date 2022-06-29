@@ -39,9 +39,6 @@ public class MagicRegistry {
 			regProd("craft", () -> new MagicProductType<>(CraftMagic.class, CraftMagic::new,
 					() -> ForgeRegistries.ITEMS, Item::getDescriptionId, ELEM_EARTH.get()));
 
-	public static final RegistryEntry<Attribute> ATTR_MANA = regAttribute("max_mana", () -> new RangedAttribute("attribute.name.max_mana", 0, 0, 1000000).setSyncable(true));
-	public static final RegistryEntry<Attribute> ATTR_LOAD = regAttribute("max_spell_load", () -> new RangedAttribute("attribute.name.max_spell_load", 100, 1, 1000000).setSyncable(true));
-
 	public static <T extends MagicProductType<?, ?>> RegistryEntry<T> regProd(String id, NonNullSupplier<T> sup) {
 		return LightLand.REGISTRATE.generic(LightLandRegistry.PRODUCT_TYPE, id, sup).defaultLang().register();
 	}

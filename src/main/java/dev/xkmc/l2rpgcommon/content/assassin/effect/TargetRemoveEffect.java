@@ -1,13 +1,12 @@
 package dev.xkmc.l2rpgcommon.content.assassin.effect;
 
-import dev.xkmc.l2rpgcommon.content.common.effect.SkillEffect;
 import dev.xkmc.l2rpgcommon.init.registrate.LLEffects;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 
-public class TargetRemoveEffect extends MobEffect implements SkillEffect {
+public class TargetRemoveEffect extends MobEffect {
 
 	public TargetRemoveEffect(MobEffectCategory type, int color) {
 		super(type, color);

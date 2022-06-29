@@ -11,6 +11,9 @@ import dev.xkmc.l2rpgcommon.content.magic.spell.internal.Spell;
 import dev.xkmc.l2rpgcommon.content.profession.Profession;
 import dev.xkmc.l2rpgcommon.content.profession.prof.*;
 import dev.xkmc.l2rpgcommon.content.skill.internal.Skill;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.RangedAttribute;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import static dev.xkmc.l2rpgcommon.init.LightLand.REGISTRATE;
 
@@ -36,6 +39,11 @@ public class LightLandRegistry {
 	public static final RegistryEntry<ChemistProfession> PROF_CHEM = genProf("chemist", ChemistProfession::new);
 	public static final RegistryEntry<TidecallerProfession> PROF_TIDE = genProf("tidecaller", TidecallerProfession::new);
 	public static final RegistryEntry<AssassinProfession> PROF_ASSASSIN = genProf("assassin", AssassinProfession::new);
+
+	public static RegistryEntry<Attribute> SPELL_BOOST = REGISTRATE.simple("spell_boost", ForgeRegistries.ATTRIBUTES.getRegistryKey(), () -> new RangedAttribute("attribute.name.spell_boost", 1, 0, 1000).setSyncable(true));
+	public static RegistryEntry<Attribute> MAX_MANA = REGISTRATE.simple("max_mana", ForgeRegistries.ATTRIBUTES.getRegistryKey(), () -> new RangedAttribute("attribute.name.max_mana", 0, 0, 1000000).setSyncable(true));
+	public static RegistryEntry<Attribute> MAX_SPELL_LOAD = REGISTRATE.simple("max_spell_load", ForgeRegistries.ATTRIBUTES.getRegistryKey(), () -> new RangedAttribute("attribute.name.max_spell_load", 100, 100, 1000000).setSyncable(true));
+	public static RegistryEntry<Attribute> MANA_RESTORE = REGISTRATE.simple("mana_restore", ForgeRegistries.ATTRIBUTES.getRegistryKey(), () -> new RangedAttribute("attribute.name.mana_restore", 0.01, 0, 1).setSyncable(true));
 
 	private static <V extends Profession> RegistryEntry<V> genProf(String name, NonNullSupplier<V> v) {
 		return REGISTRATE.generic(PROFESSION, name, v).defaultLang().register();
