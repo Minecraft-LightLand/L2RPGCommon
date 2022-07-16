@@ -28,7 +28,7 @@ public class LLMenu {
 	}
 
 	public static String getLangKey(MenuType<?> menu) {
-		ResourceLocation rl = Objects.requireNonNull(ForgeRegistries.CONTAINERS.getKey(menu));
+		ResourceLocation rl = Objects.requireNonNull(ForgeRegistries.MENU_TYPES.getKey(menu));
 		return "container." + rl.getNamespace() + "." + rl.getPath();
 	}
 

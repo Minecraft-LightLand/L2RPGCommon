@@ -13,26 +13,28 @@ import dev.xkmc.l2rpgcommon.events.ItemUseEventHandler;
 import dev.xkmc.l2rpgcommon.events.MiscEventHandler;
 import dev.xkmc.l2rpgcommon.init.data.AllTags;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
-import dev.xkmc.l2rpgcommon.init.data.recipe.RecipeGen;
 import dev.xkmc.l2rpgcommon.init.data.configs.ConfigGenDispatcher;
+import dev.xkmc.l2rpgcommon.init.data.recipe.RecipeGen;
 import dev.xkmc.l2rpgcommon.init.registrate.*;
 import dev.xkmc.l2rpgcommon.init.special.*;
 import dev.xkmc.l2rpgcommon.init.worldgenreg.StructureRegistrate;
 import dev.xkmc.l2rpgcommon.init.worldgenreg.WorldGenRegistrate;
 import dev.xkmc.l2rpgcommon.network.NetworkManager;
 import dev.xkmc.l2rpgcommon.util.EffectAddUtil;
+import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
+import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -84,6 +86,7 @@ public class LightLand {
 		bus.addListener(LightLand::onParticleRegistryEvent);
 		bus.addListener(LightLand::registerCaps);
 		bus.addListener(LLEntities::registerEntityAttributes);
+		bus.addListener(LightLand::modifyAttributes);
 	}
 
 	private static void registerCommands() {
@@ -110,8 +113,15 @@ public class LightLand {
 			AttributeEntry.add(LightLandRegistry.MAX_MANA, true, 20000);
 			AttributeEntry.add(LightLandRegistry.MAX_SPELL_LOAD, true, 21000);
 			AttributeEntry.add(LightLandRegistry.MANA_RESTORE, true, 22000);
+			//UnitTest.test();
 		});
 		StructureRegistrate.commonSetup(event);
+	}
+
+	private static void modifyAttributes(EntityAttributeModificationEvent event) {
+		event.add(EntityType.PLAYER, LightLandRegistry.MAX_MANA.get());
+		event.add(EntityType.PLAYER, LightLandRegistry.MAX_SPELL_LOAD.get());
+		event.add(EntityType.PLAYER, LightLandRegistry.MANA_RESTORE.get());
 	}
 
 	public static void gatherData(GatherDataEvent event) {
@@ -119,7 +129,7 @@ public class LightLand {
 		event.getGenerator().addProvider(true, new ConfigGenDispatcher(event.getGenerator()));
 	}
 
-	public static void onParticleRegistryEvent(ParticleFactoryRegisterEvent event) {
+	public static void onParticleRegistryEvent(RegisterParticleProvidersEvent event) {
 		LLParticle.registerClient();
 	}
 

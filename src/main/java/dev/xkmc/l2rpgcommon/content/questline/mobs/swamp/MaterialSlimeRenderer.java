@@ -16,7 +16,7 @@ public class MaterialSlimeRenderer extends SlimeRenderer {
 	@Override
 	public ResourceLocation getTextureLocation(Slime slime) {
 		if (slime instanceof MaterialSlime<?>) {
-			ResourceLocation rl = ForgeRegistries.ENTITIES.getKey(slime.getType());
+			ResourceLocation rl = ForgeRegistries.ENTITY_TYPES.getKey(slime.getType());
 			assert rl != null;
 			return new ResourceLocation(LightLand.MODID, "textures/entity/slime/" + rl.getPath() + ".png");
 		}

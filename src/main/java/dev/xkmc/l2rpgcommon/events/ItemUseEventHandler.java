@@ -28,7 +28,7 @@ public class ItemUseEventHandler {
 
 	@SubscribeEvent
 	public static void onPlayerLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
-		if (event.getPlayer().level.isClientSide()) {
+		if (event.getEntity().level.isClientSide()) {
 			new EmptyRightClickToServer(false, event.getHand() == InteractionHand.MAIN_HAND).toServer();
 		}
 		execute(event.getItemStack(), event, ItemClickHandler::onPlayerLeftClickEmpty);
@@ -41,15 +41,15 @@ public class ItemUseEventHandler {
 
 	@SubscribeEvent
 	public static void onPlayerLeftClickEntity(AttackEntityEvent event) {
-		execute(event.getPlayer().getMainHandItem(), event, ItemClickHandler::onPlayerLeftClickEntity);
+		execute(event.getEntity().getMainHandItem(), event, ItemClickHandler::onPlayerLeftClickEntity);
 	}
 
 	@SubscribeEvent
 	public static void onPlayerRightClickEmpty(PlayerInteractEvent.RightClickEmpty event) {
-		if (event.getPlayer().level.isClientSide()) {
+		if (event.getEntity().level.isClientSide()) {
 			new EmptyRightClickToServer(true, event.getHand() == InteractionHand.MAIN_HAND).toServer();
 		}
-		execute(event.getPlayer().getItemInHand(event.getHand() == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND), event, ItemClickHandler::onPlayerRightClickEmpty);
+		execute(event.getEntity().getItemInHand(event.getHand() == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND), event, ItemClickHandler::onPlayerRightClickEmpty);
 	}
 
 	@SubscribeEvent
@@ -64,7 +64,7 @@ public class ItemUseEventHandler {
 
 	@SubscribeEvent
 	public static void onCriticalHit(CriticalHitEvent event) {
-		execute(event.getPlayer().getMainHandItem(), event, ItemClickHandler::onCriticalHit);
+		execute(event.getEntity().getMainHandItem(), event, ItemClickHandler::onCriticalHit);
 	}
 
 	public interface ItemClickHandler {

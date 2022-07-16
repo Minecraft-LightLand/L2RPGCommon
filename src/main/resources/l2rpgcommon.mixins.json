@@ -6,8 +6,7 @@
   "refmap": "l2rpgcommon.refmap.json",
   "mixins": [
     "AnvilBlockMixin",
-    "LivingEntityMixin",
-    "ShapedRecipeMixin"
+    "LivingEntityMixin"
   ],
   "client": [
   ],

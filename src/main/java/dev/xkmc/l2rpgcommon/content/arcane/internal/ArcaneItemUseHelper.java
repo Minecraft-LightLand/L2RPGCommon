@@ -87,7 +87,7 @@ public class ArcaneItemUseHelper implements ItemUseEventHandler.ItemClickHandler
 	 */
 	@ServerOnly
 	private static void handleLeftClickEvent(ItemStack stack, PlayerInteractEvent event, LivingEntity target) {
-		Player player = event.getPlayer();
+		Player player = event.getEntity();
 		LLPlayerData magic = LLPlayerData.get(player);
 		if (stack.getItem() instanceof ArcaneAxe) {
 			ArcaneType type = isAxeCharged(stack) ? ArcaneType.DUBHE.get() : ArcaneType.MEGREZ.get();
@@ -112,12 +112,12 @@ public class ArcaneItemUseHelper implements ItemUseEventHandler.ItemClickHandler
 	private static void handleRightClickEvent(ItemStack stack, PlayerInteractEvent event, LivingEntity target) {
 		boolean cancellable = event.isCancelable();
 		if (stack.getItem() instanceof ArcaneAxe) {
-			rightClickAxe(event.getWorld(), stack);
+			rightClickAxe(event.getLevel(), stack);
 			if (cancellable) event.setCanceled(true);
 			event.setCancellationResult(InteractionResult.SUCCESS);
 		} else if (stack.getItem() instanceof ArcaneSword) {
-			if (executeArcane(event.getPlayer(),
-					LLPlayerData.get(event.getPlayer()),
+			if (executeArcane(event.getEntity(),
+					LLPlayerData.get(event.getEntity()),
 					stack, ArcaneType.ALKAID.get(), target)) {
 				if (cancellable) event.setCanceled(true);
 				event.setCancellationResult(InteractionResult.SUCCESS);
@@ -152,9 +152,9 @@ public class ArcaneItemUseHelper implements ItemUseEventHandler.ItemClickHandler
 	@ServerOnly
 	@Override
 	public void onCriticalHit(ItemStack stack, CriticalHitEvent event) {
-		if (event.getPlayer().level.isClientSide())
+		if (event.getEntity().level.isClientSide())
 			return;
-		Player player = event.getPlayer();
+		Player player = event.getEntity();
 		LLPlayerData magic = LLPlayerData.get(player);
 		LivingEntity le = toLiving(event.getTarget());
 		ArcaneType type = null;
@@ -176,7 +176,7 @@ public class ArcaneItemUseHelper implements ItemUseEventHandler.ItemClickHandler
 
 	@Override
 	public void onPlayerRightClickBlock(ItemStack stack, PlayerInteractEvent.RightClickBlock event) {
-		BlockState block = event.getWorld().getBlockState(event.getHitVec().getBlockPos());
+		BlockState block = event.getLevel().getBlockState(event.getHitVec().getBlockPos());
 		if (block.is(LLBlocks.LAYLINE_CHARGER.get())) {
 			event.setUseBlock(Event.Result.ALLOW);
 			return;

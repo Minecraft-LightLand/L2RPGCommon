@@ -30,7 +30,7 @@ public class DamageEventHandler {
 		DamageSource source = event.getSource();
 		if (source.getDirectEntity() instanceof LightningBolt) {
 			if (source.getEntity() instanceof Player) {
-				if (TeamAccessor.areEntitiesInSameTeam(event.getEntityLiving(), toLiving(event.getSource().getEntity()))) {
+				if (TeamAccessor.areEntitiesInSameTeam(event.getEntity(), toLiving(event.getSource().getEntity()))) {
 					event.setCanceled(true);
 					return;
 				}
@@ -57,7 +57,7 @@ public class DamageEventHandler {
 	@SubscribeEvent
 	public static void onLivingDamage(LivingDamageEvent event) {
 		DamageSource source = event.getSource();
-		LivingEntity target = event.getEntityLiving();
+		LivingEntity target = event.getEntity();
 		if ((source.getMsgId().equals("player") || source.getMsgId().equals("mob")) && source.getDirectEntity() instanceof LivingEntity e) {
 			ItemStack stack = e.getMainHandItem();
 			if (stack.getItem() instanceof IArcaneItem) {

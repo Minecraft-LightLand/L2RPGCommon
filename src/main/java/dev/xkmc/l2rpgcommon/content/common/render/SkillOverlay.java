@@ -14,9 +14,10 @@ import dev.xkmc.l2rpgcommon.init.data.LangData;
 import dev.xkmc.l2rpgcommon.init.special.SkillRegistry;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.client.gui.ForgeIngameGui;
+import net.minecraftforge.client.gui.overlay.ForgeGui;
 
 public class SkillOverlay {
 
@@ -39,7 +40,7 @@ public class SkillOverlay {
 	}
 
 	private static <S extends Skill<C, D>, C extends SkillConfig<D>, D extends SkillData> void
-	renderSkill(ForgeIngameGui gui, PoseStack stack, SkillCap.Cont<S, C, D> cont, int x, int y, int i) {
+	renderSkill(ForgeGui gui, PoseStack stack, SkillCap.Cont<S, C, D> cont, int x, int y, int i) {
 		S skill = cont.skill;
 		D skillData = cont.data;
 		C config = skill.getConfig();
@@ -52,7 +53,7 @@ public class SkillOverlay {
 			int sec = (int) Math.ceil(skillData.cooldown / 20f);
 			if (sec <= 99) renderText(gui, stack, "" + sec, x + 8, y + 8);
 		}
-		renderText(gui, stack, LangData.Keys.values()[i].map.getKey().getDisplayName().getContents().toString(), x + 8, y - 8);
+		renderText(gui, stack, LangData.Keys.values()[i].map.getKey().getDisplayName(), x + 8, y - 8);
 	}
 
 	private static void renderCooldown(int x, int y, float f) {
@@ -78,7 +79,17 @@ public class SkillOverlay {
 		BufferUploader.drawWithShader(builder.end());
 	}
 
-	public static void renderText(ForgeIngameGui gui, PoseStack mStack, String s, int cx, int cy) {
+	public static void renderText(ForgeGui gui, PoseStack mStack, Component s, int cx, int cy) {
+		int i1 = cx - gui.getFont().width(s) / 2;
+		int j1 = cy - 3;
+		gui.getFont().draw(mStack, s, (float) (i1 + 1), (float) j1, 0);
+		gui.getFont().draw(mStack, s, (float) (i1 - 1), (float) j1, 0);
+		gui.getFont().draw(mStack, s, (float) i1, (float) (j1 + 1), 0);
+		gui.getFont().draw(mStack, s, (float) i1, (float) (j1 - 1), 0);
+		gui.getFont().draw(mStack, s, (float) i1, (float) j1, 0xFFFFFF);
+	}
+
+	public static void renderText(ForgeGui gui, PoseStack mStack, String s, int cx, int cy) {
 		int i1 = cx - gui.getFont().width(s) / 2;
 		int j1 = cy - 3;
 		gui.getFont().draw(mStack, s, (float) (i1 + 1), (float) j1, 0);

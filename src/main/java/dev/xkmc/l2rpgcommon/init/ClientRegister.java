@@ -5,42 +5,55 @@ import dev.xkmc.l2rpgcommon.content.common.render.ItemNameOverlay;
 import dev.xkmc.l2rpgcommon.content.common.render.LLOverlay;
 import dev.xkmc.l2rpgcommon.content.common.render.MagicWandOverlay;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.ClientRegistry;
-import net.minecraftforge.client.gui.ForgeIngameGui;
-import net.minecraftforge.client.gui.OverlayRegistry;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.client.event.RenderGuiOverlayEvent;
+import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class ClientRegister {
+
+	public static final Set<ResourceLocation> REMOVED = new HashSet<>();
 
 	@OnlyIn(Dist.CLIENT)
 	public static void registerItemProperties() {
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public static void registerOverlays() {
-		OverlayRegistry.enableOverlay(ForgeIngameGui.HOTBAR_ELEMENT, false);
-		OverlayRegistry.enableOverlay(ForgeIngameGui.EXPERIENCE_BAR_ELEMENT, false);
-		OverlayRegistry.enableOverlay(ForgeIngameGui.JUMP_BAR_ELEMENT, false);
-		OverlayRegistry.enableOverlay(ForgeIngameGui.ITEM_NAME_ELEMENT, false);
-		OverlayRegistry.enableOverlay(ForgeIngameGui.PLAYER_HEALTH_ELEMENT, false);
-		OverlayRegistry.enableOverlay(ForgeIngameGui.ARMOR_LEVEL_ELEMENT, false);
-		OverlayRegistry.enableOverlay(ForgeIngameGui.CROSSHAIR_ELEMENT, false);
-		OverlayRegistry.enableOverlay(ForgeIngameGui.AIR_LEVEL_ELEMENT, false);
-		OverlayRegistry.enableOverlay(ForgeIngameGui.FOOD_LEVEL_ELEMENT, false);
-		OverlayRegistry.enableOverlay(ForgeIngameGui.MOUNT_HEALTH_ELEMENT, false);
-		OverlayRegistry.registerOverlayAbove(ForgeIngameGui.CROSSHAIR_ELEMENT, "MagicWand", MagicWandOverlay.INSTANCE);
-		OverlayRegistry.registerOverlayAbove(ForgeIngameGui.HOTBAR_ELEMENT, "lightland main", new LLOverlay());
-		OverlayRegistry.registerOverlayAbove(ForgeIngameGui.ITEM_NAME_ELEMENT, "ItemShifted", new ItemNameOverlay());
+	public static void disableOverlays(RenderGuiOverlayEvent.Pre event) {
+		if (REMOVED.contains(event.getOverlay().id())) {
+			event.setCanceled(true);
+		}
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	public static void registerOverlays(RegisterGuiOverlaysEvent event) {
+		REMOVED.add(VanillaGuiOverlay.HOTBAR.id());
+		REMOVED.add(VanillaGuiOverlay.EXPERIENCE_BAR.id());
+		REMOVED.add(VanillaGuiOverlay.JUMP_BAR.id());
+		REMOVED.add(VanillaGuiOverlay.ITEM_NAME.id());
+		REMOVED.add(VanillaGuiOverlay.PLAYER_HEALTH.id());
+		REMOVED.add(VanillaGuiOverlay.ARMOR_LEVEL.id());
+		REMOVED.add(VanillaGuiOverlay.CROSSHAIR.id());
+		REMOVED.add(VanillaGuiOverlay.AIR_LEVEL.id());
+		REMOVED.add(VanillaGuiOverlay.FOOD_LEVEL.id());
+		REMOVED.add(VanillaGuiOverlay.MOUNT_HEALTH.id());
+		event.registerAbove(VanillaGuiOverlay.CROSSHAIR.id(), "magic_wand", MagicWandOverlay.INSTANCE);
+		event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "lightland_main", new LLOverlay());
+		event.registerAbove(VanillaGuiOverlay.ITEM_NAME.id(), "item_shifted", new ItemNameOverlay());
 		GeneralCompatHandler.handle(GeneralCompatHandler.Stage.OVERLAY);
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public static void registerKeys() {
-		ClientRegistry.registerKeyBinding(LangData.Keys.SKILL_1.map);
-		ClientRegistry.registerKeyBinding(LangData.Keys.SKILL_2.map);
-		ClientRegistry.registerKeyBinding(LangData.Keys.SKILL_3.map);
-
+	public static void registerKeys(RegisterKeyMappingsEvent event) {
+		event.register(LangData.Keys.SKILL_1.map);
+		event.register(LangData.Keys.SKILL_2.map);
+		event.register(LangData.Keys.SKILL_3.map);
 	}
 
 }

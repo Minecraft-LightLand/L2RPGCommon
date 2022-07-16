@@ -1,5 +1,6 @@
 package dev.xkmc.l2rpgcommon.content.common.render;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.CapProxy;
@@ -18,15 +19,18 @@ import dev.xkmc.l2rpgcommon.init.registrate.LLRecipes;
 import dev.xkmc.l2rpgcommon.init.special.MagicRegistry;
 import dev.xkmc.l2rpgcommon.network.packets.CapToServer;
 import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.gui.ForgeIngameGui;
-import net.minecraftforge.client.gui.IIngameOverlay;
+import net.minecraftforge.client.gui.overlay.ForgeGui;
+import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
+import net.minecraftforge.client.gui.overlay.IGuiOverlay;
+import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 
 import java.util.*;
 
-public class MagicWandOverlay implements IIngameOverlay {
+public class MagicWandOverlay implements IGuiOverlay {
 
 	public static final MagicWandOverlay INSTANCE = new MagicWandOverlay();
 	public static final List<MagicElement> ELEM = new ArrayList<>();
@@ -75,14 +79,14 @@ public class MagicWandOverlay implements IIngameOverlay {
 	}
 
 	@Override
-	public void render(ForgeIngameGui gui, PoseStack mStack, float partialTicks, int width, int height) {
+	public void render(ForgeGui gui, PoseStack mStack, float partialTicks, int width, int height) {
 		if (!(has_magic_wand = renderMagicWandImpl(gui, mStack, partialTicks, width, height))) {
 			ELEM.clear();
-			ForgeIngameGui.CROSSHAIR_ELEMENT.render(gui, mStack, partialTicks, width, height);
+			GuiOverlayManager.findOverlay(VanillaGuiOverlay.CROSSHAIR.id()).overlay().render(gui, mStack, partialTicks, width, height);
 		}
 	}
 
-	private boolean renderMagicWandImpl(ForgeIngameGui gui, PoseStack mStack, float partialTicks, int width, int height) {
+	private boolean renderMagicWandImpl(ForgeGui gui, PoseStack mStack, float partialTicks, int width, int height) {
 		AbstractClientPlayer player = Proxy.getClientPlayer();
 		if (player == null || !player.isAlive())
 			return false;
@@ -93,6 +97,7 @@ public class MagicWandOverlay implements IIngameOverlay {
 			return false;
 		int x = width / 2 - 27;
 		int y = height / 2;
+		gui.setupOverlayRenderState(true, false);
 		for (MagicElement elem : ELEM) {
 			AbstractHexGui.drawElement(mStack, x, y + 60, elem, "");
 			x += 18;

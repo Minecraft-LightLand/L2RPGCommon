@@ -2,8 +2,18 @@ package test;
 
 import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2library.serial.codec.PacketCodec;
+import dev.xkmc.l2library.serial.codec.TagCodec;
+import dev.xkmc.l2library.serial.network.BaseConfig;
+import dev.xkmc.l2rpgcommon.init.data.configs.MagicRecipeGen;
 import io.netty.buffer.Unpooled;
+import net.minecraft.DetectedVersion;
+import net.minecraft.SharedConstants;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.Bootstrap;
+import org.apache.logging.log4j.LogManager;
+
+import java.util.HashMap;
 
 public class Test {
 
@@ -28,6 +38,9 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
+		SharedConstants.setVersion(DetectedVersion.BUILT_IN);
+		Bootstrap.bootStrap();
+
 		var buffer = new FriendlyByteBuf(Unpooled.buffer());
 		T old = new T();
 		old.str = "abc";
@@ -36,5 +49,7 @@ public class Test {
 		T t = PacketCodec.from(buffer, T.class, null);
 		System.out.println(t.str);
 	}
+
+
 
 }

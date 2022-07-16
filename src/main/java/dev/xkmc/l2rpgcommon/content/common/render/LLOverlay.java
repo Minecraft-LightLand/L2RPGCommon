@@ -16,20 +16,18 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.gui.ForgeIngameGui;
-import net.minecraftforge.client.gui.IIngameOverlay;
+import net.minecraftforge.client.gui.overlay.ForgeGui;
+import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
-public class LLOverlay implements IIngameOverlay {
+public class LLOverlay implements IGuiOverlay {
 
 	public static OverlayManager MANAGER = OverlayManager.get(LightLand.MODID, "widgets");
 
 	@Override
-	public void render(ForgeIngameGui gui, PoseStack mStack, float partialTicks, int width, int height) {
+	public void render(ForgeGui gui, PoseStack mStack, float partialTicks, int width, int height) {
 		if (gui.minecraft.options.hideGui) return;
 		if (gui.minecraft.player == null) return;
 		OverlayManager.ScreenRenderer renderer = MANAGER.getRenderer(gui, mStack);
-		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		renderer.start();
 		renderItem(renderer, partialTicks);
 		renderExperience(renderer);
