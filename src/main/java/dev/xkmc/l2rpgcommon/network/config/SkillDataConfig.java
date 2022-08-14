@@ -26,7 +26,7 @@ public class SkillDataConfig extends BaseConfig {
 	}
 
 	@DataGenOnly
-	public SkillDataConfig add(Skill<?,?> id, SkillConfig<?> config) {
+	public SkillDataConfig add(Skill<?, ?> id, SkillConfig<?> config) {
 		map.put(id.getID(), config);
 		return this;
 	}

@@ -22,7 +22,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.Consumer;
 
-@ParametersAreNonnullByDefault
 public class EmeraldPopeEffect extends MobEffect implements FirstPlayerRenderEffect {
 
 	public static final int RADIUS = 10;

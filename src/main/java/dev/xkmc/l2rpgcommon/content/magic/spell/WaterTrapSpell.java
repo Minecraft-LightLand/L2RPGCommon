@@ -48,14 +48,6 @@ public class WaterTrapSpell extends SimpleSpell<WaterTrapSpell.Config> {
 		world.addFreshEntity(e);
 	}
 
-	public static class Activation extends ActivationConfig {
-
-		public Activation(Level world, Player player) {
-			super(world, player, 64);
-		}
-
-	}
-
 	@SerialClass
 	public static class Config extends SpellConfig {
 

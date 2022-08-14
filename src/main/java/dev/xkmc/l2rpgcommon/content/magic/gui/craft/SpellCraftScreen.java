@@ -16,7 +16,6 @@ import net.minecraft.world.entity.player.Inventory;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
 
-@ParametersAreNonnullByDefault
 public class SpellCraftScreen extends BaseContainerScreen<SpellCraftContainer> implements ExtraInfo<Map.Entry<MagicElement, Integer>> {
 
 	public SpellCraftScreen(SpellCraftContainer cont, Inventory plInv, Component title) {

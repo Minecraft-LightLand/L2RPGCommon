@@ -10,7 +10,6 @@ import dev.xkmc.l2rpgcommon.content.magic.spell.internal.Spell;
 import dev.xkmc.l2rpgcommon.init.LightLand;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.RangedAttribute;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraftforge.registries.ForgeRegistries;

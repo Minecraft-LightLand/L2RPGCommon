@@ -1,6 +1,5 @@
 package dev.xkmc.l2rpgcommon.compat;
 
-import dev.xkmc.l2library.util.code.Wrappers;
 import net.minecraftforge.fml.ModList;
 
 public class GeneralCompatHandler {

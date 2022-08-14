@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SerialClass
-@ParametersAreNonnullByDefault
 public class PotionCoreRecipe extends AbstractRitualRecipe<PotionCoreRecipe> {
 
 	public PotionCoreRecipe(ResourceLocation id) {

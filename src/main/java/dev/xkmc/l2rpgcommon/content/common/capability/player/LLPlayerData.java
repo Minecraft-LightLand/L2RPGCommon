@@ -95,6 +95,7 @@ public class LLPlayerData extends PlayerCapabilityTemplate<LLPlayerData> {
 		if (isWasDeath) {
 			magicAbility.magic_mana = magicAbility.getMaxMana();
 			magicAbility.spell_load = 0;
+			skillCap.list.forEach(e -> e.data.cooldown = 0);
 		}
 	}
 

@@ -11,7 +11,7 @@ public class ItemNameOverlay implements IGuiOverlay {
 	public void render(ForgeGui gui, PoseStack mStack, float partialTicks, int width, int height) {
 		mStack.pushPose();
 		mStack.translate(0, -30, 0);
-		GuiOverlayManager.findOverlay(VanillaGuiOverlay.CROSSHAIR.id()).overlay()
+		GuiOverlayManager.findOverlay(VanillaGuiOverlay.ITEM_NAME.id()).overlay()
 				.render(gui, mStack, partialTicks, width, height);
 		mStack.popPose();
 	}

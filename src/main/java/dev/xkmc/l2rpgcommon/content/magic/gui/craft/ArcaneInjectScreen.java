@@ -16,7 +16,6 @@ import net.minecraft.world.entity.player.Inventory;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
 
-@ParametersAreNonnullByDefault
 public class ArcaneInjectScreen extends BaseContainerScreen<ArcaneInjectContainer> implements ExtraInfo<Map.Entry<MagicElement, Integer>> {
 
 	public ArcaneInjectScreen(ArcaneInjectContainer cont, Inventory plInv, Component title) {

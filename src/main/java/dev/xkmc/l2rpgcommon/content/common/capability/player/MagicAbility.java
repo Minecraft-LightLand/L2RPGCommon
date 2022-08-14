@@ -1,8 +1,8 @@
 package dev.xkmc.l2rpgcommon.content.common.capability.player;
 
 import dev.xkmc.l2library.base.effects.EffectUtil;
-import dev.xkmc.l2library.serial.NBTObj;
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.util.nbt.NBTObj;
 import dev.xkmc.l2rpgcommon.content.arcane.internal.ArcaneType;
 import dev.xkmc.l2rpgcommon.content.common.capability.restriction.ArmorEnchant;
 import dev.xkmc.l2rpgcommon.content.magic.item.MagicScroll;

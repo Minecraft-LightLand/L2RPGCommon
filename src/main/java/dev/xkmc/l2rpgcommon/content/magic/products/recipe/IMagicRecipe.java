@@ -20,8 +20,6 @@ import java.util.Map;
 import java.util.Optional;
 
 @SerialClass
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class IMagicRecipe extends BaseConfig {
 
 	@SerialClass.SerialField

@@ -14,6 +14,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
+import javax.annotation.Nullable;
+
 public class ThunderAxe extends Arcane {
 
 	private final float radius;
@@ -24,7 +26,7 @@ public class ThunderAxe extends Arcane {
 	}
 
 	@Override
-	public boolean activate(Player player, LLPlayerData magic, ItemStack stack, LivingEntity target) {
+	public boolean activate(Player player, LLPlayerData magic, ItemStack stack, @Nullable LivingEntity target) {
 		if (target == null)
 			return false;
 		Level w = player.level;

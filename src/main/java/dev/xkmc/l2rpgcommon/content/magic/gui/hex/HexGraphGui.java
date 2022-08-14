@@ -2,8 +2,8 @@ package dev.xkmc.l2rpgcommon.content.magic.gui.hex;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import dev.xkmc.l2library.idea.magic.*;
 import dev.xkmc.l2library.base.menu.WindowBox;
+import dev.xkmc.l2library.idea.magic.*;
 import dev.xkmc.l2library.util.math.Frac;
 import dev.xkmc.l2rpgcommon.content.magic.gui.AbstractHexGui;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicElement;

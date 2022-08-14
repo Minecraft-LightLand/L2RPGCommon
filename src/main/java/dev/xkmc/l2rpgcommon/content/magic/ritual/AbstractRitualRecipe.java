@@ -7,27 +7,18 @@ import dev.xkmc.l2rpgcommon.content.magic.block.RitualCore;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.ShulkerBoxBlock;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 @SerialClass
 public class AbstractRitualRecipe<R extends AbstractRitualRecipe<R>> extends BaseRecipe<R, AbstractRitualRecipe<?>, RitualCore.Inv> {
 

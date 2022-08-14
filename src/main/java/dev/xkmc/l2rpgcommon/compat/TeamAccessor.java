@@ -8,8 +8,10 @@ import net.minecraft.world.entity.TamableAnimal;
 import net.minecraftforge.fml.ModList;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNullableByDefault;
 import java.util.UUID;
 
+@ParametersAreNullableByDefault
 public class TeamAccessor {
 
 	public static final boolean PLAYER_HURT = false;

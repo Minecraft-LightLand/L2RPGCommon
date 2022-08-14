@@ -8,7 +8,6 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-@ParametersAreNonnullByDefault
 public interface MedicineItem extends DyeableLeatherItem {
 
 	static boolean eq(ItemStack a, ItemStack b) {

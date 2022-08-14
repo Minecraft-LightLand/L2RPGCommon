@@ -9,6 +9,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import javax.annotation.Nullable;
+
 public class MarkerSword extends Arcane {
 
 	public final float radius;
@@ -19,7 +21,9 @@ public class MarkerSword extends Arcane {
 	}
 
 	@Override
-	public boolean activate(Player player, LLPlayerData magic, ItemStack stack, LivingEntity target) {
+	public boolean activate(Player player, LLPlayerData magic, ItemStack stack, @Nullable LivingEntity target) {
+		if (target == null)
+			return false;
 		Level w = player.level;
 		if (!w.isClientSide()) {
 			search(w, player, radius, player.getPosition(1), target, false, (l, p, e) -> EffectAddUtil.addArcane(e, player));

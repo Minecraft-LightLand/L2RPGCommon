@@ -34,8 +34,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public record RegistryParser<T>(Class<T> cls, Supplier<IForgeRegistry<T>> registry)
 		implements ArgumentType<T>, ArgumentTypeInfo.Template<RegistryParser<?>> {
 

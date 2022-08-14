@@ -34,8 +34,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.function.Supplier;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class MagicScroll extends Item implements IGlowingTarget {
 
 	public final ScrollType type;

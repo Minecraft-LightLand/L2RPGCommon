@@ -16,8 +16,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class ElemIngredientRenderer implements IIngredientRenderer<ElementIngredient> {
 
 	@Override

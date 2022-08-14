@@ -1,6 +1,5 @@
 package dev.xkmc.l2rpgcommon.content.common.render;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.l2library.base.menu.OverlayManager;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.AbilityPoints;
@@ -8,7 +7,6 @@ import dev.xkmc.l2rpgcommon.content.common.capability.player.CapProxy;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.LLPlayerData;
 import dev.xkmc.l2rpgcommon.init.LightLand;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -18,16 +16,17 @@ import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
+import net.minecraftforge.common.util.Lazy;
 
 public class LLOverlay implements IGuiOverlay {
 
-	public static OverlayManager MANAGER = OverlayManager.get(LightLand.MODID, "widgets");
+	public static Lazy<OverlayManager> MANAGER = Lazy.of(() -> OverlayManager.get(LightLand.MODID, "widgets"));
 
 	@Override
 	public void render(ForgeGui gui, PoseStack mStack, float partialTicks, int width, int height) {
 		if (gui.minecraft.options.hideGui) return;
 		if (gui.minecraft.player == null) return;
-		OverlayManager.ScreenRenderer renderer = MANAGER.getRenderer(gui, mStack);
+		OverlayManager.ScreenRenderer renderer = MANAGER.get().getRenderer(gui, mStack);
 		renderer.start();
 		renderItem(renderer, partialTicks);
 		renderExperience(renderer);

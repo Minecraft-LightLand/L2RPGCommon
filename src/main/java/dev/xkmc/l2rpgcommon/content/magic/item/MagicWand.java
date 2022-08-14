@@ -27,8 +27,6 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class MagicWand extends Item implements IGlowingTarget {
 
 	public MagicWand(Properties props) {

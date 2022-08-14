@@ -10,11 +10,10 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@ParametersAreNonnullByDefault
 public class ElementIngredient {
 
 	public static List<ElementIngredient> collect(Stream<ElementIngredient> stream) {
-		List<ElementIngredient> list = stream.collect(Collectors.toList());
+		List<ElementIngredient> list = stream.toList();
 		LinkedHashMap<ElementIngredient, ElementIngredient> set = new LinkedHashMap<>();
 		for (ElementIngredient t : list) {
 			if (set.containsKey(t))

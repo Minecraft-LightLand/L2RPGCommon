@@ -1,8 +1,9 @@
 package dev.xkmc.l2rpgcommon.content.magic.products;
 
 import dev.xkmc.l2library.base.NamedEntry;
-import dev.xkmc.l2library.serial.NBTObj;
+import dev.xkmc.l2library.util.nbt.NBTObj;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.LLPlayerData;
+import dev.xkmc.l2rpgcommon.content.common.capability.player.MagicHolder;
 import dev.xkmc.l2rpgcommon.content.magic.products.info.TypeConfig;
 import dev.xkmc.l2rpgcommon.content.magic.products.recipe.IMagicRecipe;
 import dev.xkmc.l2rpgcommon.init.special.LightLandRegistry;
@@ -10,6 +11,7 @@ import dev.xkmc.l2rpgcommon.network.config.ProductTypeConfig;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import javax.annotation.Nullable;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -40,7 +42,7 @@ public class MagicProductType<I, P extends MagicProduct<I, P>> extends NamedEntr
 	@FunctionalInterface
 	public interface MagicFactory<I, P extends MagicProduct<I, P>> {
 
-		P get(LLPlayerData player, NBTObj nbtManager, ResourceLocation rl, IMagicRecipe r);
+		P get(@Nullable MagicHolder player, @Nullable NBTObj nbtManager, ResourceLocation rl, @Nullable IMagicRecipe r);
 
 	}
 

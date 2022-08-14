@@ -21,8 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class AbilityScreen extends AbstractAbilityScreen {
 
 	public static final Component TITLE = LangData.IDS.GUI_ABILITY.get();

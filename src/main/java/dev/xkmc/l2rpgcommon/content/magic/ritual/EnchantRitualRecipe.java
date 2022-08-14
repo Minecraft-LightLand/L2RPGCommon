@@ -12,7 +12,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
 
 @SerialClass
-@ParametersAreNonnullByDefault
 public class EnchantRitualRecipe extends AbstractLevelRitualRecipe<EnchantRitualRecipe> {
 
 	public EnchantRitualRecipe(ResourceLocation id) {

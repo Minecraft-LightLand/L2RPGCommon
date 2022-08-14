@@ -16,6 +16,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
+import javax.annotation.Nullable;
+
 public abstract class Arcane extends NamedEntry<Arcane> {
 
 	public final RegistryEntry<ArcaneType> type;
@@ -29,7 +31,7 @@ public abstract class Arcane extends NamedEntry<Arcane> {
 	}
 
 	@DoubleSidedCall
-	public abstract boolean activate(Player player, LLPlayerData magic, ItemStack stack, LivingEntity target);
+	public abstract boolean activate(Player player, LLPlayerData magic, ItemStack stack, @Nullable LivingEntity target);
 
 	@ServerOnly
 	public static void search(Level w, Player player, double radius, Vec3 center, LivingEntity target, boolean require_mark, Strike strike) {

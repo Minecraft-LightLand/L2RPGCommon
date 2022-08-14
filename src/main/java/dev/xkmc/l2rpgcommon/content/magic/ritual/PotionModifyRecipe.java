@@ -10,7 +10,6 @@ import net.minecraft.world.item.ItemStack;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @SerialClass
-@ParametersAreNonnullByDefault
 public class PotionModifyRecipe extends AbstractRitualRecipe<PotionModifyRecipe> {
 
 	public PotionModifyRecipe(ResourceLocation id) {

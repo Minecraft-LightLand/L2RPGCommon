@@ -43,8 +43,6 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.*;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class RitualCore {
 	public static final BlockEntityBlockMethod<TE> TILE_ENTITY_SUPPLIER_BUILDER = new BlockEntityBlockMethodImpl<>(LLBlocks.TE_RITUAL_CORE, TE.class);
 
@@ -171,7 +169,7 @@ public class RitualCore {
 			MinecraftServer server = world.getServer();
 			if (server == null)
 				return;
-			player.sendSystemMessage(text, ChatType.GAME_INFO);
+			player.sendSystemMessage(text, true);
 		}
 
 		private List<RitualSide.TE> getSide() {

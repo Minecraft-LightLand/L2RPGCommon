@@ -25,8 +25,6 @@ import net.minecraft.world.item.ItemStack;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class SpellCraftContainer extends BaseContainerMenu<SpellCraftContainer> {
 
 	public static final SpriteManager MANAGER = new SpriteManager(LightLand.MODID, "spell_craft");

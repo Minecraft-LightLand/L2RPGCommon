@@ -12,7 +12,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-@ParametersAreNonnullByDefault
 public class PotionCore extends Item {
 
 	public PotionCore(Properties props) {

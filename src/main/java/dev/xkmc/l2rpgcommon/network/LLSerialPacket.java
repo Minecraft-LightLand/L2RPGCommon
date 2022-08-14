@@ -1,7 +1,7 @@
 package dev.xkmc.l2rpgcommon.network;
 
-import dev.xkmc.l2library.serial.network.SerialPacketBase;
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.serial.network.SerialPacketBase;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 

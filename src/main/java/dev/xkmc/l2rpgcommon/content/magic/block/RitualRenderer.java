@@ -12,8 +12,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @OnlyIn(Dist.CLIENT)
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class RitualRenderer implements BlockEntityRenderer<RitualTE> {
 
 	public RitualRenderer(BlockEntityRendererProvider.Context dispatcher) {

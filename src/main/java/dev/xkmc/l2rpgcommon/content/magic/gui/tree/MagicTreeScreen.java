@@ -19,7 +19,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Iterator;
 import java.util.Map;
 
-@ParametersAreNonnullByDefault
 public class MagicTreeScreen extends Screen {
 
 	private static final ResourceLocation WINDOW_LOCATION = new ResourceLocation("textures/gui/advancements/window.png");

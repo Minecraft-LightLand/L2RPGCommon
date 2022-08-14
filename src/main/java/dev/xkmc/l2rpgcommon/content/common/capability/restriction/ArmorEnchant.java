@@ -22,7 +22,6 @@ import java.util.Map;
 @SerialClass
 public class ArmorEnchant extends BaseConfig {
 
-	@Nullable
 	private static ArmorEnchant getInstance() {
 		return NetworkManager.getConfig(ConfigType.ARMOR_ENCHANT);
 	}

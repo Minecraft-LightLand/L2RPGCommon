@@ -10,10 +10,8 @@ import dev.xkmc.l2rpgcommon.init.data.LangData;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.GameProfileArgument;
-import net.minecraft.network.chat.ChatType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,10 +45,7 @@ public abstract class BaseCommand {
 	}
 
 	public static void send(CommandContext<CommandSourceStack> context, Component comp) {
-		Entity entity = context.getSource().getEntity();
-		if (entity instanceof ServerPlayer player) {
-			player.sendSystemMessage(comp, ChatType.CHAT);
-		}
+		context.getSource().sendSystemMessage(comp);
 	}
 
 	private final LiteralArgumentBuilder<CommandSourceStack> base;

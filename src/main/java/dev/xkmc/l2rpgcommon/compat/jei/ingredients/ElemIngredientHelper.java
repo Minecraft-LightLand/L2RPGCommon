@@ -10,8 +10,6 @@ import net.minecraft.resources.ResourceLocation;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class ElemIngredientHelper implements IIngredientHelper<ElementIngredient> {
 
 	@Override

@@ -1,9 +1,9 @@
 package dev.xkmc.l2rpgcommon.network.packets;
 
-import dev.xkmc.l2library.util.code.Wrappers;
 import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2library.serial.codec.TagCodec;
 import dev.xkmc.l2library.util.Proxy;
+import dev.xkmc.l2library.util.code.Wrappers;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.*;
 import dev.xkmc.l2rpgcommon.network.LLSerialPacket;
 import net.minecraft.nbt.CompoundTag;

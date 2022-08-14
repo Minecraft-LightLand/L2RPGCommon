@@ -5,11 +5,13 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArcaneItemCraftHelper {
 
+	@Nullable
 	public static Arcane getArcaneOnItem(ItemStack stack, ArcaneType type) {
 		CompoundTag tag = stack.getOrCreateTagElement("arcane");
 		String s = type.getID();

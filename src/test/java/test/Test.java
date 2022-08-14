@@ -38,16 +38,11 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
-		SharedConstants.setVersion(DetectedVersion.BUILT_IN);
-		Bootstrap.bootStrap();
+		String property = "java.io.tmpdir";
 
-		var buffer = new FriendlyByteBuf(Unpooled.buffer());
-		T old = new T();
-		old.str = "abc";
-		PacketCodec.to(buffer, old);
-		buffer = new FriendlyByteBuf(buffer.copy());
-		T t = PacketCodec.from(buffer, T.class, null);
-		System.out.println(t.str);
+		// Get the temporary directory and print it.
+		String tempDir = System.getProperty(property);
+		System.out.println("OS temporary directory is " + tempDir);
 	}
 
 

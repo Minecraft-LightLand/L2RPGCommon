@@ -29,8 +29,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class DisEnchanterContainer extends BaseContainerMenu<DisEnchanterContainer> {
 
 	public static final SpriteManager MANAGER = new SpriteManager(LightLand.MODID, "disenchanter");

@@ -11,7 +11,6 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.*;
 
-@ParametersAreNonnullByDefault
 public class ExtraInfoScreen implements IGuiContainerHandler<AbstractContainerScreen<?>> {
 
 	public static final List<Wrapper> LIST = new ArrayList<>();
@@ -48,6 +47,7 @@ public class ExtraInfoScreen implements IGuiContainerHandler<AbstractContainerSc
 
 	public interface Wrapper {
 
+		@Nullable
 		Object predicate(Object left, Object right);
 
 	}

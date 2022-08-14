@@ -1,7 +1,7 @@
 package dev.xkmc.l2rpgcommon.content.common.capability.player;
 
-import dev.xkmc.l2library.serial.NBTObj;
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2library.util.nbt.NBTObj;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicElement;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicProduct;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicProductType;
@@ -94,7 +94,7 @@ public class MagicHolder {
 		if (submap.containsKey(r.product_id))
 			return submap.get(r.product_id);
 		NBTObj nbt = new NBTObj(products).getSub(type.getID()).getSub(r.product_id.toString());
-		MagicProduct<?, ?> ans = type.fac.get(parent, nbt, r.product_id, r);
+		MagicProduct<?, ?> ans = type.fac.get(this, nbt, r.product_id, r);
 		submap.put(r.product_id, ans);
 		return ans;
 	}

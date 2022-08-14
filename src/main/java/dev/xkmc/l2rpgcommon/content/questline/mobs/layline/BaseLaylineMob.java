@@ -32,7 +32,6 @@ public class BaseLaylineMob<T extends BaseLaylineMob<T>> extends BipedMonster<T>
 	}
 
 
-
 	@Override
 	public boolean wasKilled(ServerLevel level, LivingEntity target) {
 		return LaylineProperties.convert(level, target);

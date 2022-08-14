@@ -19,8 +19,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class ProfessionScreen extends AbstractAbilityScreen {
 
 	public static final Component TITLE = LangData.IDS.GUI_PROF.get();

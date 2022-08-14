@@ -103,17 +103,20 @@ public class LLBlocks {
 					.noCollission().instabreak().randomTicks();
 			BlockBehaviour.Properties prop_charger = BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK);
 			LAYROOT_HEAD = LightLand.REGISTRATE.block("layroot_head", p -> new LayrootHead(prop_root))
-					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.getEntry(), pvd.models().cross(ctx.getName(), pvd.blockTexture(ctx.getEntry()))))
+					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.getEntry(),
+							pvd.models().cross(ctx.getName(), pvd.blockTexture(ctx.getEntry())).renderType("cutout")))
 					.item().model((ctx, pvd) -> pvd.generated(ctx::getEntry, pvd.modLoc("block/" + ctx.getName()))).build()
-					.defaultLoot().defaultLang().addLayer(() -> RenderType::cutout).tag(BlockTags.CLIMBABLE).register();
+					.defaultLoot().defaultLang().tag(BlockTags.CLIMBABLE).register();
 			LAYROOT_BODY = LightLand.REGISTRATE.block("layroot_body", p -> new LayrootBody(prop_root))
-					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.getEntry(), pvd.models().cross(ctx.getName(), pvd.blockTexture(ctx.getEntry()))))
+					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.getEntry(),
+							pvd.models().cross(ctx.getName(), pvd.blockTexture(ctx.getEntry())).renderType("cutout")))
 					.loot((table, block) -> table.dropOther(block, LAYROOT_HEAD.get()))
-					.defaultLang().addLayer(() -> RenderType::cutout).tag(BlockTags.CLIMBABLE).register();
+					.defaultLang().tag(BlockTags.CLIMBABLE).register();
 			LAYLINE_HEAD = LightLand.REGISTRATE.block("layline_head", p -> new LaylineHead(prop_line))
-					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.getEntry(), pvd.models().cross(ctx.getName(), pvd.blockTexture(ctx.getEntry()))))
+					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.getEntry(),
+							pvd.models().cross(ctx.getName(), pvd.blockTexture(ctx.getEntry())).renderType("cutout")))
 					.item().model((ctx, pvd) -> pvd.generated(ctx::getEntry, pvd.modLoc("block/" + ctx.getName()))).build()
-					.defaultLoot().defaultLang().addLayer(() -> RenderType::cutout).tag(BlockTags.CLIMBABLE).register();
+					.defaultLoot().defaultLang().tag(BlockTags.CLIMBABLE).register();
 			LAYLINE_CHARGER = LightLand.REGISTRATE.block("layline_charger", LaylineChargerBlock::new)
 					.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 					.defaultBlockstate().simpleItem().defaultLoot().defaultLang().register();
@@ -123,10 +126,11 @@ public class LLBlocks {
 					.tag(BlockTags.MINEABLE_WITH_HOE)
 					.simpleItem().loot(RegistrateBlockLootTables::dropWhenSilkTouch).defaultLang().register();
 			SLIME_VINE = LightLand.REGISTRATE.block("slime_vine", p -> new WebBlock(prop_slime))
-					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.getEntry(), pvd.models().cross(ctx.getName(), pvd.blockTexture(ctx.getEntry()))))
+					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.getEntry(),
+							pvd.models().cross(ctx.getName(), pvd.blockTexture(ctx.getEntry())).renderType("cutout")))
 					.item().model((ctx, pvd) -> pvd.generated(ctx::getEntry, pvd.modLoc("block/" + ctx.getName()))).build()
 					.tag(BlockTags.MINEABLE_WITH_HOE)
-					.loot(RegistrateBlockLootTables::dropWhenSilkTouch).addLayer(() -> RenderType::cutout).defaultLang().register();
+					.loot(RegistrateBlockLootTables::dropWhenSilkTouch).defaultLang().register();
 
 		}
 		{

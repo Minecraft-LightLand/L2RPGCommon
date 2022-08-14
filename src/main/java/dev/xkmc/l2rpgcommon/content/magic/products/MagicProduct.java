@@ -1,11 +1,12 @@
 package dev.xkmc.l2rpgcommon.content.magic.products;
 
 import dev.xkmc.l2library.idea.magic.HexHandler;
-import dev.xkmc.l2library.serial.NBTObj;
 import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2library.serial.codec.TagCodec;
+import dev.xkmc.l2library.util.nbt.NBTObj;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.CapProxy;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.LLPlayerData;
+import dev.xkmc.l2rpgcommon.content.common.capability.player.MagicHolder;
 import dev.xkmc.l2rpgcommon.content.magic.products.info.ProductState;
 import dev.xkmc.l2rpgcommon.content.magic.products.recipe.IMagicRecipe;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
@@ -16,6 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +26,10 @@ public class MagicProduct<I, P extends MagicProduct<I, P>> extends IMagicProduct
 	public static final int LOCKED = -2, UNLOCKED = -1;
 
 	public final NBTObj tag;
-	public final LLPlayerData player;
+	public final MagicHolder player;
 	public final IMagicRecipe recipe;
 
-	public MagicProduct(MagicProductType<I, P> type, LLPlayerData player, NBTObj tag, ResourceLocation rl, IMagicRecipe r) {
+	public MagicProduct(MagicProductType<I, P> type, MagicHolder player, @Nullable NBTObj tag, ResourceLocation rl, IMagicRecipe r) {
 		super(type, rl);
 		this.tag = tag;
 		this.player = player;
@@ -104,6 +106,7 @@ public class MagicProduct<I, P extends MagicProduct<I, P>> extends IMagicProduct
 		return elem.equals(getMiscData().list);
 	}
 
+	@Nullable
 	public CodeState logged(LLPlayerData handler) {
 		if (!usable())
 			return null;

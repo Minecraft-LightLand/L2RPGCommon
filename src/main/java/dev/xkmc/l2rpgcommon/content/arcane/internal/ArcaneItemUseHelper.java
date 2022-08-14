@@ -25,6 +25,8 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 
+import javax.annotation.Nullable;
+
 public class ArcaneItemUseHelper implements ItemUseEventHandler.ItemClickHandler {
 
 	public static final ArcaneItemUseHelper INSTANCE = new ArcaneItemUseHelper();
@@ -39,9 +41,8 @@ public class ArcaneItemUseHelper implements ItemUseEventHandler.ItemClickHandler
 	}
 
 	@DoubleSidedCall
-	public static boolean executeArcane(
-			Player player, LLPlayerData magic,
-			ItemStack stack, ArcaneType type, LivingEntity target) {
+	public static boolean executeArcane(Player player, LLPlayerData magic,
+			ItemStack stack, ArcaneType type, @Nullable LivingEntity target) {
 		if (!magic.magicAbility.isArcaneTypeUnlocked(type))
 			return false;
 		CompoundTag tag = stack.getTagElement("arcane");
@@ -86,7 +87,7 @@ public class ArcaneItemUseHelper implements ItemUseEventHandler.ItemClickHandler
 	 * executes on server only, play animation in client
 	 */
 	@ServerOnly
-	private static void handleLeftClickEvent(ItemStack stack, PlayerInteractEvent event, LivingEntity target) {
+	private static void handleLeftClickEvent(ItemStack stack, PlayerInteractEvent event, @Nullable LivingEntity target) {
 		Player player = event.getEntity();
 		LLPlayerData magic = LLPlayerData.get(player);
 		if (stack.getItem() instanceof ArcaneAxe) {
@@ -109,7 +110,7 @@ public class ArcaneItemUseHelper implements ItemUseEventHandler.ItemClickHandler
 	 * executes on server only, play animation in client
 	 */
 	@ServerOnly
-	private static void handleRightClickEvent(ItemStack stack, PlayerInteractEvent event, LivingEntity target) {
+	private static void handleRightClickEvent(ItemStack stack, PlayerInteractEvent event, @Nullable LivingEntity target) {
 		boolean cancellable = event.isCancelable();
 		if (stack.getItem() instanceof ArcaneAxe) {
 			rightClickAxe(event.getLevel(), stack);
@@ -125,6 +126,7 @@ public class ArcaneItemUseHelper implements ItemUseEventHandler.ItemClickHandler
 		}
 	}
 
+	@Nullable
 	public static LivingEntity toLiving(Entity e) {
 		return e instanceof LivingEntity ? (LivingEntity) e : null;
 	}

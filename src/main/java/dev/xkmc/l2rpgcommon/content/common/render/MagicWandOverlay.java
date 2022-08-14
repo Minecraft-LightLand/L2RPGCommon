@@ -1,6 +1,5 @@
 package dev.xkmc.l2rpgcommon.content.common.render;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.l2library.util.Proxy;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.CapProxy;
@@ -19,7 +18,6 @@ import dev.xkmc.l2rpgcommon.init.registrate.LLRecipes;
 import dev.xkmc.l2rpgcommon.init.special.MagicRegistry;
 import dev.xkmc.l2rpgcommon.network.packets.CapToServer;
 import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;

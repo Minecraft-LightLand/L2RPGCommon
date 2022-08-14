@@ -2,7 +2,6 @@ package dev.xkmc.l2rpgcommon.content.assassin.effect;
 
 import dev.xkmc.l2library.base.effects.api.InherentEffect;
 import dev.xkmc.l2rpgcommon.content.common.effect.SkillEffect;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;

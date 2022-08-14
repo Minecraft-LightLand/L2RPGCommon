@@ -1,9 +1,9 @@
 package dev.xkmc.l2rpgcommon.content.magic.gui.hex;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import dev.xkmc.l2library.base.menu.WindowBox;
 import dev.xkmc.l2library.idea.magic.HexCell;
 import dev.xkmc.l2library.idea.magic.HexDirection;
-import dev.xkmc.l2library.base.menu.WindowBox;
 import dev.xkmc.l2library.util.math.Frac;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.LLPlayerData;
 import dev.xkmc.l2rpgcommon.content.magic.products.MagicElement;
@@ -22,7 +22,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 @OnlyIn(Dist.CLIENT)
-@ParametersAreNonnullByDefault
 public class MagicHexScreen extends Screen {
 
 	private static final Component TITLE = LangData.translate("gui.advancements");

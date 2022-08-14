@@ -31,8 +31,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @JeiPlugin
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class LightLandJeiPlugin implements IModPlugin {
 
 	public static LightLandJeiPlugin INSTANCE;

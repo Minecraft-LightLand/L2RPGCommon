@@ -15,7 +15,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 @SerialClass
-@ParametersAreNonnullByDefault
 public class PotionSpellRecipe extends AbstractRitualRecipe<PotionSpellRecipe> {
 
 	public PotionSpellRecipe(ResourceLocation id) {

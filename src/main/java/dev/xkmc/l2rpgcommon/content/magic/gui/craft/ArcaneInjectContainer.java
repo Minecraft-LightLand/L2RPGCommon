@@ -26,8 +26,6 @@ import net.minecraft.world.item.ItemStack;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class ArcaneInjectContainer extends BaseContainerMenu<ArcaneInjectContainer> {
 
 	public static final SpriteManager MANAGER = new SpriteManager(LightLand.MODID, "arcane_inject");

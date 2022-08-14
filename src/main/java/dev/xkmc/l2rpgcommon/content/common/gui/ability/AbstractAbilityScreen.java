@@ -18,8 +18,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public abstract class AbstractAbilityScreen extends Screen {
 
 	private static final ResourceLocation WINDOW_LOCATION = new ResourceLocation("textures/gui/advancements/window.png");

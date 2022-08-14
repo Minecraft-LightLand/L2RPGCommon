@@ -11,8 +11,6 @@ import net.minecraft.world.level.Level;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class ManaStorage extends Item {
 
 	public static final int ARCANE_COST = 16;

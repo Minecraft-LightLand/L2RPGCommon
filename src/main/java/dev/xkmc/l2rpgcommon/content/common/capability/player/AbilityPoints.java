@@ -27,8 +27,10 @@ public class AbilityPoints {
 	@SerialClass.SerialField
 	public int general, body, magic, element, arcane;
 	@SerialClass.SerialField
-	public int health, strength, speed, level, exp;
+	public int health, strength, speed, exp;
 
+	@SerialClass.SerialField
+	public int level;
 	@SerialClass.SerialField
 	public Profession profession = null;
 

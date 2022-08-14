@@ -11,6 +11,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import javax.annotation.Nullable;
+
 public class FireSword extends Arcane {
 
 	private final float radius;
@@ -23,7 +25,7 @@ public class FireSword extends Arcane {
 	}
 
 	@Override
-	public boolean activate(Player player, LLPlayerData magic, ItemStack stack, LivingEntity target) {
+	public boolean activate(Player player, LLPlayerData magic, ItemStack stack, @Nullable LivingEntity target) {
 		if (target == null)
 			return false;
 		Level w = player.level;

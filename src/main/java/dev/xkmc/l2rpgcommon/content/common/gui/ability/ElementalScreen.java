@@ -19,8 +19,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class ElementalScreen extends AbstractAbilityScreen {
 
 	public static final Component TITLE = LangData.IDS.GUI_ELEMENT.get();

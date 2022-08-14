@@ -30,8 +30,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class DisEnchanterRecipeCategory extends BaseRecipeCategory<IMagicRecipe, DisEnchanterRecipeCategory> {
 
 	protected static final ResourceLocation BG = new ResourceLocation(LightLand.MODID, "textures/jei/background.png");

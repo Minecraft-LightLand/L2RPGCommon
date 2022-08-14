@@ -12,7 +12,6 @@ import net.minecraft.world.entity.player.Inventory;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
 
-@ParametersAreNonnullByDefault
 public class DisEnchanterScreen extends BaseContainerScreen<DisEnchanterContainer> implements ExtraInfo<Map.Entry<MagicElement, Integer>> {
 
 	public DisEnchanterScreen(DisEnchanterContainer cont, Inventory plInv, Component title) {

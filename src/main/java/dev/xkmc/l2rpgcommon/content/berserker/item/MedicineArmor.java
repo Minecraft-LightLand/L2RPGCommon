@@ -18,8 +18,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.function.Consumer;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class MedicineArmor extends ArmorItem implements MedicineItem {
 
 	public MedicineArmor(ArmorMaterial mat, EquipmentSlot slot, Properties prop) {

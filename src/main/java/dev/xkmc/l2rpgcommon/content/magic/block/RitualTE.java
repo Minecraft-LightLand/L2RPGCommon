@@ -23,8 +23,6 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 @SerialClass
 public class RitualTE extends SyncedSingleItemTE {
 

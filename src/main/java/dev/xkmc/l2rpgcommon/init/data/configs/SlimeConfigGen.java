@@ -2,8 +2,8 @@ package dev.xkmc.l2rpgcommon.init.data.configs;
 
 import dev.xkmc.l2library.serial.network.BaseConfig;
 import dev.xkmc.l2rpgcommon.content.questline.mobs.swamp.SlimeProperties;
-import dev.xkmc.l2rpgcommon.init.registrate.LLItems;
 import dev.xkmc.l2rpgcommon.init.registrate.LLEffects;
+import dev.xkmc.l2rpgcommon.init.registrate.LLItems;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Items;
 

@@ -15,6 +15,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
+import javax.annotation.Nullable;
+
 public class ThunderSword extends Arcane {
 
 	public final float dist;
@@ -25,7 +27,7 @@ public class ThunderSword extends Arcane {
 	}
 
 	@Override
-	public boolean activate(Player player, LLPlayerData magic, ItemStack stack, LivingEntity target) {
+	public boolean activate(Player player, LLPlayerData magic, ItemStack stack,@Nullable LivingEntity target) {
 		if (target == null) {
 			target = RayTraceUtil.serverGetTarget(player);
 			if (target == null) {

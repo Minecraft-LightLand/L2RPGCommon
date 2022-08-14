@@ -18,8 +18,6 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 @SerialClass
 public abstract class SyncedSingleItemTE extends BaseBlockEntity implements WorldlyContainer {
 

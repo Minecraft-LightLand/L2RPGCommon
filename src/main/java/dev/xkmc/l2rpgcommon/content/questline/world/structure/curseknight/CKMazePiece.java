@@ -19,8 +19,6 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 
-import java.util.Random;
-
 public class CKMazePiece extends TemplateStructurePiece {
 
 	private static final int SHIFT = 7;

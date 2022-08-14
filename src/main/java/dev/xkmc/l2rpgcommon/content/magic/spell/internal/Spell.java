@@ -9,12 +9,15 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
+import javax.annotation.Nullable;
+
 public abstract class Spell<C extends SpellConfig, A extends ActivationConfig> extends NamedEntry<Spell<?, ?>> {
 
 	public Spell() {
 		super(LightLandRegistry.SPELL);
 	}
 
+	@Nullable
 	protected abstract A canActivate(Type type, Level world, ServerPlayer player);
 
 	public abstract C getConfig(Level world, Player player);

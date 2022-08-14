@@ -8,14 +8,12 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 
 @SerialClass
-@ParametersAreNonnullByDefault
 public class PotionBoostRecipe extends AbstractLevelRitualRecipe<PotionBoostRecipe> {
 
 	@SerialClass.SerialField

@@ -17,8 +17,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class MedicineLeather extends Item implements MedicineItem {
 
 	private final int rep;

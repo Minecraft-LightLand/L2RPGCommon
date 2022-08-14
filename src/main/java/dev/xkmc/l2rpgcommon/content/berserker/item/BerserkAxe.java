@@ -12,8 +12,6 @@ import net.minecraft.world.item.Tier;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
 public class BerserkAxe extends AxeItem {
 
 	public BerserkAxe(Tier tier, float damage, float cooldown, Properties properties) {
