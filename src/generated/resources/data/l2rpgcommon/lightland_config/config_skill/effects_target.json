@@ -13,21 +13,21 @@
           {
             "amplifier": 0,
             "duration": 600,
-            "id": "l2rpgcommon:target_attractor"
+            "id": "l2foundation:target_attractor"
           }
         ],
         [
           {
             "amplifier": 1,
             "duration": 750,
-            "id": "l2rpgcommon:target_attractor"
+            "id": "l2foundation:target_attractor"
           }
         ],
         [
           {
             "amplifier": 2,
             "duration": 900,
-            "id": "l2rpgcommon:target_attractor"
+            "id": "l2foundation:target_attractor"
           }
         ]
       ],
@@ -38,7 +38,7 @@
             "amplifier": 0,
             "duration": 600,
             "for_enemy": true,
-            "id": "l2rpgcommon:target_attracted",
+            "id": "l2foundation:target_attracted",
             "range": 10.0
           }
         ],
@@ -47,7 +47,7 @@
             "amplifier": 1,
             "duration": 750,
             "for_enemy": true,
-            "id": "l2rpgcommon:target_attracted",
+            "id": "l2foundation:target_attracted",
             "range": 14.0
           }
         ],
@@ -56,7 +56,7 @@
             "amplifier": 2,
             "duration": 900,
             "for_enemy": true,
-            "id": "l2rpgcommon:target_attracted",
+            "id": "l2foundation:target_attracted",
             "range": 18.0
           }
         ]
@@ -74,21 +74,21 @@
           {
             "amplifier": 0,
             "duration": 600,
-            "id": "l2rpgcommon:target_hide"
+            "id": "l2foundation:target_hide"
           }
         ],
         [
           {
             "amplifier": 0,
             "duration": 900,
-            "id": "l2rpgcommon:target_hide"
+            "id": "l2foundation:target_hide"
           }
         ],
         [
           {
             "amplifier": 1,
             "duration": 900,
-            "id": "l2rpgcommon:target_hide"
+            "id": "l2foundation:target_hide"
           }
         ]
       ],

@@ -13,36 +13,36 @@
           {
             "amplifier": 0,
             "duration": 600,
-            "id": "l2rpgcommon:armor_breaker"
+            "id": "l2foundation:armor_breaker"
           },
           {
             "amplifier": 0,
             "duration": 600,
-            "id": "l2rpgcommon:armor_reduce"
+            "id": "l2foundation:armor_reduce"
           }
         ],
         [
           {
             "amplifier": 1,
             "duration": 600,
-            "id": "l2rpgcommon:armor_breaker"
+            "id": "l2foundation:armor_breaker"
           },
           {
             "amplifier": 0,
             "duration": 600,
-            "id": "l2rpgcommon:armor_reduce"
+            "id": "l2foundation:armor_reduce"
           }
         ],
         [
           {
             "amplifier": 2,
             "duration": 600,
-            "id": "l2rpgcommon:armor_breaker"
+            "id": "l2foundation:armor_breaker"
           },
           {
             "amplifier": 0,
             "duration": 600,
-            "id": "l2rpgcommon:armor_reduce"
+            "id": "l2foundation:armor_reduce"
           }
         ]
       ],
@@ -65,21 +65,21 @@
           {
             "amplifier": 0,
             "duration": 600,
-            "id": "l2rpgcommon:blood_thirst"
+            "id": "l2foundation:blood_thirst"
           }
         ],
         [
           {
             "amplifier": 1,
             "duration": 600,
-            "id": "l2rpgcommon:blood_thirst"
+            "id": "l2foundation:blood_thirst"
           }
         ],
         [
           {
             "amplifier": 2,
             "duration": 600,
-            "id": "l2rpgcommon:blood_thirst"
+            "id": "l2foundation:blood_thirst"
           }
         ]
       ],
@@ -102,21 +102,21 @@
           {
             "amplifier": 0,
             "duration": 600,
-            "id": "l2rpgcommon:no_knockback"
+            "id": "l2foundation:no_knockback"
           }
         ],
         [
           {
             "amplifier": 0,
             "duration": 900,
-            "id": "l2rpgcommon:no_knockback"
+            "id": "l2foundation:no_knockback"
           }
         ],
         [
           {
             "amplifier": 0,
             "duration": 1200,
-            "id": "l2rpgcommon:no_knockback"
+            "id": "l2foundation:no_knockback"
           }
         ]
       ],

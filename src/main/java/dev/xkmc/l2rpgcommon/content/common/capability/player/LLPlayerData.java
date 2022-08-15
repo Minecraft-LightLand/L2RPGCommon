@@ -21,7 +21,7 @@ import java.util.function.Consumer;
 @SerialClass
 public class LLPlayerData extends PlayerCapabilityTemplate<LLPlayerData> {
 
-	public static final Capability<LLPlayerData> CAPABILITY = CapabilityManager.get(new CapabilityToken<LLPlayerData>() {
+	public static final Capability<LLPlayerData> CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {
 	});
 
 	public static final PlayerCapabilityHolder<LLPlayerData> HOLDER = new PlayerCapabilityHolder<>(

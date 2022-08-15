@@ -23,7 +23,7 @@
           {
             "amplifier": 0,
             "duration": 600,
-            "id": "l2rpgcommon:quick_pull"
+            "id": "l2foundation:quick_pull"
           }
         ],
         [
@@ -40,7 +40,7 @@
           {
             "amplifier": 1,
             "duration": 600,
-            "id": "l2rpgcommon:quick_pull"
+            "id": "l2foundation:quick_pull"
           }
         ],
         [
@@ -57,12 +57,12 @@
           {
             "amplifier": 2,
             "duration": 600,
-            "id": "l2rpgcommon:quick_pull"
+            "id": "l2foundation:quick_pull"
           },
           {
             "amplifier": 0,
             "duration": 600,
-            "id": "l2rpgcommon:run_bow"
+            "id": "l2foundation:run_bow"
           }
         ]
       ],
