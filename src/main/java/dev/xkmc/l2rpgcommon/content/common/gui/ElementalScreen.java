@@ -26,7 +26,7 @@ public class ElementalScreen extends AbstractAbilityScreen {
 		LLPlayerData handler = CapProxy.getHandler();
 		return handler.abilityPoints.canLevelElement() ||
 				LightLandRegistry.ELEMENT.get().getValues().stream()
-						.anyMatch(e -> handler.magicHolder.getElementalMastery(e) > 0);
+						.anyMatch(e -> handler.getMagicHolder().getElementalMastery(e) > 0);
 	}
 
 	protected ElementalScreen() {

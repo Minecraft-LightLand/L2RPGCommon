@@ -4,15 +4,10 @@ import dev.xkmc.l2library.serial.network.BaseConfig;
 import dev.xkmc.l2library.serial.network.PacketHandlerWithConfig;
 import dev.xkmc.l2rpgcommon.content.common.capability.restriction.ArmorEnchant;
 import dev.xkmc.l2rpgcommon.content.common.capability.restriction.ArmorWeight;
-import dev.xkmc.l2rpgcommon.content.questline.mobs.swamp.SlimeProperties;
 import dev.xkmc.l2rpgcommon.init.LightLand;
-import dev.xkmc.l2rpgcommon.network.config.ProductTypeConfig;
 import dev.xkmc.l2rpgcommon.network.config.SkillDataConfig;
-import dev.xkmc.l2rpgcommon.network.config.SpellDataConfig;
-import dev.xkmc.l2rpgcommon.network.config.SpellEntityConfig;
 import dev.xkmc.l2rpgcommon.network.packets.CapToClient;
 import dev.xkmc.l2rpgcommon.network.packets.CapToServer;
-import dev.xkmc.l2rpgcommon.network.packets.EmptyRightClickToServer;
 import dev.xkmc.l2rpgcommon.network.packets.SkillToServer;
 import net.minecraft.resources.ResourceLocation;
 
@@ -33,7 +28,6 @@ public class NetworkManager {
 			new ResourceLocation(LightLand.MODID, "main"), 1, "lightland_config",
 			e -> e.create(CapToClient.class, PLAY_TO_CLIENT),
 			e -> e.create(CapToServer.class, PLAY_TO_SERVER),
-			e -> e.create(EmptyRightClickToServer.class, PLAY_TO_SERVER),
 			e -> e.create(SkillToServer.class, PLAY_TO_SERVER)
 	);
 
@@ -56,10 +50,6 @@ public class NetworkManager {
 		});
 		addSimpleMapConfig(ConfigType.ARMOR_ENCHANT, ArmorEnchant::new, e -> e.map, (e, map) -> e.map = map);
 		addSimpleMapConfig(ConfigType.CONFIG_SKILL, SkillDataConfig::new, e -> e.map, (e, map) -> e.map = map);
-		addSimpleMapConfig(ConfigType.CONFIG_SPELL, SpellDataConfig::new, e -> e.map, (e, map) -> e.map = map);
-		addSimpleMapConfig(ConfigType.PRODUCT_TYPE, ProductTypeConfig::new, e -> e.map, (e, map) -> e.map = map);
-		addSimpleMapConfig(ConfigType.CONFIG_SPELL_ENTITY, SpellEntityConfig::new, e -> e.map, (e, map) -> e.map = map);
-		addSimpleMapConfig(ConfigType.POTION_SLIME_DROP, SlimeProperties::new, e -> e.map, (e, map) -> e.map = map);
 	}
 
 	@SuppressWarnings("unchecked")

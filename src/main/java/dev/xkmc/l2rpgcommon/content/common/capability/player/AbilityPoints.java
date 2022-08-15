@@ -1,11 +1,11 @@
 package dev.xkmc.l2rpgcommon.content.common.capability.player;
 
+import dev.xkmc.l2foundation.init.registrate.LFEffects;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2rpgcommon.content.common.capability.restriction.ArmorWeight;
 import dev.xkmc.l2rpgcommon.content.profession.Profession;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
-import dev.xkmc.l2rpgcommon.init.registrate.LLEffects;
 import dev.xkmc.l2rpgcommon.util.BodyAttribute;
 import net.minecraft.world.effect.MobEffectInstance;
 
@@ -126,7 +126,7 @@ public class AbilityPoints {
 		int base = getWeightAble();
 		int slow = weight <= base ? 0 : weight <= base * 1.2 ? 1 : 2;
 		if (slow > 0) {
-			MobEffectInstance ins = new MobEffectInstance(LLEffects.HEAVY.get(), 40, slow - 1);
+			MobEffectInstance ins = new MobEffectInstance(LFEffects.HEAVY.get(), 40, slow - 1);
 			EffectUtil.addEffect(parent.player, ins, EffectUtil.AddReason.SELF, parent.player);
 		}
 

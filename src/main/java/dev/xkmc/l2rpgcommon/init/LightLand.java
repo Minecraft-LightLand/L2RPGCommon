@@ -1,27 +1,22 @@
 package dev.xkmc.l2rpgcommon.init;
 
 import dev.xkmc.l2library.base.L2Registrate;
-import dev.xkmc.l2library.base.tabs.contents.AttributeEntry;
 import dev.xkmc.l2library.repack.registrate.providers.ProviderType;
 import dev.xkmc.l2rpgcommon.compat.GeneralCompatHandler;
-import dev.xkmc.l2rpgcommon.content.arcane.internal.ArcaneType;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.LLPlayerData;
-import dev.xkmc.l2rpgcommon.content.common.command.*;
-import dev.xkmc.l2rpgcommon.events.DamageEventHandler;
+import dev.xkmc.l2rpgcommon.content.common.command.BaseCommand;
+import dev.xkmc.l2rpgcommon.content.common.command.MainCommand;
+import dev.xkmc.l2rpgcommon.content.common.command.RegistryParser;
 import dev.xkmc.l2rpgcommon.events.GenericEventHandler;
-import dev.xkmc.l2rpgcommon.events.ItemUseEventHandler;
 import dev.xkmc.l2rpgcommon.events.MiscEventHandler;
 import dev.xkmc.l2rpgcommon.init.data.AllTags;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
+import dev.xkmc.l2rpgcommon.init.data.RecipeGen;
 import dev.xkmc.l2rpgcommon.init.data.configs.ConfigGenDispatcher;
-import dev.xkmc.l2rpgcommon.init.data.recipe.RecipeGen;
-import dev.xkmc.l2rpgcommon.init.registrate.*;
-import dev.xkmc.l2rpgcommon.init.special.*;
-import dev.xkmc.l2rpgcommon.init.worldgenreg.StructureRegistrate;
-import dev.xkmc.l2rpgcommon.init.worldgenreg.WorldGenRegistrate;
+import dev.xkmc.l2rpgcommon.init.registrate.LLItems;
+import dev.xkmc.l2rpgcommon.init.special.LightLandRegistry;
+import dev.xkmc.l2rpgcommon.init.special.SkillRegistry;
 import dev.xkmc.l2rpgcommon.network.NetworkManager;
-import dev.xkmc.l2rpgcommon.util.EffectAddUtil;
-import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.ForgeMod;
@@ -48,20 +43,8 @@ public class LightLand {
 
 	private static void registerRegistrates(IEventBus bus) {
 		ForgeMod.enableMilkFluid();
-		LLBlocks.register();
-		LLEntities.register();
 		LLItems.register();
-		LLMenu.register();
-		LLRecipes.register(bus);
-		LLEffects.register();
-		LLParticle.register();
-		WorldGenRegistrate.register();
-		StructureRegistrate.register();
 		LightLandRegistry.register();
-		MagicRegistry.register();
-		ArcaneType.register();
-		ArcaneRegistry.register();
-		SpellRegistry.register();
 		SkillRegistry.register();
 		AllTags.register();
 		NetworkManager.register();
@@ -72,9 +55,7 @@ public class LightLand {
 	}
 
 	private static void registerForgeEvents() {
-		MinecraftForge.EVENT_BUS.register(ItemUseEventHandler.class);
 		MinecraftForge.EVENT_BUS.register(GenericEventHandler.class);
-		MinecraftForge.EVENT_BUS.register(DamageEventHandler.class);
 		MinecraftForge.EVENT_BUS.register(MiscEventHandler.class);
 
 	}
@@ -85,15 +66,12 @@ public class LightLand {
 		bus.addListener(EventPriority.LOWEST, LightLand::gatherData);
 		bus.addListener(LightLand::onParticleRegistryEvent);
 		bus.addListener(LightLand::registerCaps);
-		bus.addListener(LLEntities::registerEntityAttributes);
 		bus.addListener(LightLand::modifyAttributes);
 	}
 
 	private static void registerCommands() {
 		RegistryParser.register();
 		BaseCommand.LIST.add(MainCommand::new);
-		BaseCommand.LIST.add(ArcaneCommand::new);
-		BaseCommand.LIST.add(MagicCommand::new);
 	}
 
 	public LightLand() {
@@ -108,20 +86,10 @@ public class LightLand {
 
 	private static void setup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			EffectAddUtil.init();
-			LLEffects.registerBrewingRecipe();
-			AttributeEntry.add(LightLandRegistry.MAX_MANA, true, 20000);
-			AttributeEntry.add(LightLandRegistry.MAX_SPELL_LOAD, true, 21000);
-			AttributeEntry.add(LightLandRegistry.MANA_RESTORE, true, 22000);
-			//UnitTest.test();
 		});
-		StructureRegistrate.commonSetup(event);
 	}
 
 	private static void modifyAttributes(EntityAttributeModificationEvent event) {
-		event.add(EntityType.PLAYER, LightLandRegistry.MAX_MANA.get());
-		event.add(EntityType.PLAYER, LightLandRegistry.MAX_SPELL_LOAD.get());
-		event.add(EntityType.PLAYER, LightLandRegistry.MANA_RESTORE.get());
 	}
 
 	public static void gatherData(GatherDataEvent event) {
@@ -130,7 +98,6 @@ public class LightLand {
 	}
 
 	public static void onParticleRegistryEvent(RegisterParticleProvidersEvent event) {
-		LLParticle.registerClient();
 	}
 
 	public static void registerCaps(RegisterCapabilitiesEvent event) {

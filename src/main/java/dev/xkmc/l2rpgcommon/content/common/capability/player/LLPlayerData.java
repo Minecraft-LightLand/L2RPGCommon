@@ -4,6 +4,8 @@ import dev.xkmc.l2library.capability.player.PlayerCapabilityHolder;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityNetworkHandler;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityTemplate;
 import dev.xkmc.l2library.serial.SerialClass;
+import dev.xkmc.l2magic.content.common.capability.MagicAbility;
+import dev.xkmc.l2magic.content.common.capability.MagicHolder;
 import dev.xkmc.l2rpgcommon.init.LightLand;
 import dev.xkmc.l2rpgcommon.network.packets.CapToClient;
 import net.minecraft.resources.ResourceLocation;
@@ -53,14 +55,9 @@ public class LLPlayerData extends PlayerCapabilityTemplate<LLPlayerData> {
 	@SerialClass.SerialField
 	public AbilityPoints abilityPoints = new AbilityPoints(this);
 	@SerialClass.SerialField
-	public MagicAbility magicAbility = new MagicAbility(this);
-	@SerialClass.SerialField
 	public SkillCap skillCap = new SkillCap(this);
-	@SerialClass.SerialField
-	public MagicHolder magicHolder = new MagicHolder(this);
 
 	public void tick() {
-		magicAbility.tick();
 		skillCap.tick();
 	}
 
@@ -73,7 +70,6 @@ public class LLPlayerData extends PlayerCapabilityTemplate<LLPlayerData> {
 			reset(Reset.FOR_INJECT);
 		}
 		if (state != State.ACTIVE) {
-			magicHolder.checkUnlocks();
 			abilityPoints.updateAttribute();
 			state = State.ACTIVE;
 		}
@@ -93,8 +89,6 @@ public class LLPlayerData extends PlayerCapabilityTemplate<LLPlayerData> {
 	@Override
 	public void onClone(boolean isWasDeath) {
 		if (isWasDeath) {
-			magicAbility.magic_mana = magicAbility.getMaxMana();
-			magicAbility.spell_load = 0;
 			skillCap.list.forEach(e -> e.data.cooldown = 0);
 		}
 	}
@@ -113,6 +107,16 @@ public class LLPlayerData extends PlayerCapabilityTemplate<LLPlayerData> {
 			state = State.PREINIT;
 	}
 
+	public MagicAbility getMagicAbility() {
+		//FIXME
+		return null;
+	}
+
+	public MagicHolder getMagicHolder() {
+		//FIXME
+		return null;
+	}
+
 
 	public enum State {
 		PREINJECT, PREINIT, ACTIVE
@@ -120,25 +124,19 @@ public class LLPlayerData extends PlayerCapabilityTemplate<LLPlayerData> {
 
 	public enum Reset {
 		ABILITY((h) -> {
-			h.magicAbility = new MagicAbility(h);
 			h.abilityPoints = new AbilityPoints(h);
 			h.abilityPoints.updateAttribute();
-		}), HOLDER((h) -> {
-			h.magicHolder = new MagicHolder(h);
-			h.magicHolder.checkUnlocks();
-		}), SKILL(h -> {
+		}),
+		SKILL(h -> {
 			h.skillCap = new SkillCap(h);
 		}),
 		ALL((h) -> {
 			ABILITY.cons.accept(h);
-			HOLDER.cons.accept(h);
 			SKILL.cons.accept(h);
 		}), FOR_INJECT((h) -> {
 			h.state = State.PREINJECT;
-			h.magicAbility = new MagicAbility(h);
 			h.abilityPoints = new AbilityPoints(h);
 			h.skillCap = new SkillCap(h);
-			h.magicHolder = new MagicHolder(h);
 		});
 
 		final Consumer<LLPlayerData> cons;

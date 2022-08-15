@@ -1,9 +1,9 @@
 package dev.xkmc.l2rpgcommon.init.registrate;
 
+import dev.xkmc.l2foundation.content.item.misc.ScreenBook;
 import dev.xkmc.l2library.repack.registrate.util.entry.ItemEntry;
 import dev.xkmc.l2rpgcommon.content.common.gui.ProfessionScreen;
 import dev.xkmc.l2rpgcommon.content.common.item.RecordPearl;
-import dev.xkmc.l2rpgcommon.content.common.item.misc.ScreenBook;
 import dev.xkmc.l2rpgcommon.init.LightLand;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.world.item.CreativeModeTab;
@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 
 import static dev.xkmc.l2rpgcommon.init.LightLand.REGISTRATE;
 
-@SuppressWarnings({"rawtypes", "unchecked", "unsafe"})
+@SuppressWarnings({"rawtypes", "unsafe"})
 @MethodsReturnNonnullByDefault
 public class LLItems {
 

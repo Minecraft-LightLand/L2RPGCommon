@@ -3,11 +3,6 @@ package dev.xkmc.l2rpgcommon.init.special;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2library.repack.registrate.util.nullness.NonNullSupplier;
-import dev.xkmc.l2rpgcommon.content.arcane.internal.Arcane;
-import dev.xkmc.l2rpgcommon.content.arcane.internal.ArcaneType;
-import dev.xkmc.l2rpgcommon.content.magic.products.MagicElement;
-import dev.xkmc.l2rpgcommon.content.magic.products.MagicProductType;
-import dev.xkmc.l2rpgcommon.content.magic.spell.internal.Spell;
 import dev.xkmc.l2rpgcommon.content.profession.Profession;
 import dev.xkmc.l2rpgcommon.content.profession.prof.*;
 import dev.xkmc.l2rpgcommon.content.skill.internal.Skill;
@@ -19,11 +14,6 @@ import static dev.xkmc.l2rpgcommon.init.LightLand.REGISTRATE;
 
 public class LightLandRegistry {
 
-	public static final L2Registrate.RegistryInstance<MagicElement> ELEMENT = REGISTRATE.newRegistry("magic_element", MagicElement.class);
-	public static final L2Registrate.RegistryInstance<MagicProductType<?, ?>> PRODUCT_TYPE = REGISTRATE.newRegistry("magic_product_type", MagicProductType.class);
-	public static final L2Registrate.RegistryInstance<ArcaneType> ARCANE_TYPE = REGISTRATE.newRegistry("arcane_type", ArcaneType.class);
-	public static final L2Registrate.RegistryInstance<Arcane> ARCANE = REGISTRATE.newRegistry("arcane", Arcane.class);
-	public static final L2Registrate.RegistryInstance<Spell<?, ?>> SPELL = REGISTRATE.newRegistry("spell", Spell.class);
 	public static final L2Registrate.RegistryInstance<Profession> PROFESSION = REGISTRATE.newRegistry("profession", Profession.class);
 	public static final L2Registrate.RegistryInstance<Skill<?, ?>> SKILL = REGISTRATE.newRegistry("skill", Skill.class);
 

@@ -1,9 +1,9 @@
 package dev.xkmc.l2rpgcommon.content.skill;
 
+import dev.xkmc.l2foundation.compat.TeamAccessor;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2library.util.annotation.DataGenOnly;
-import dev.xkmc.l2rpgcommon.compat.TeamAccessor;
 import dev.xkmc.l2rpgcommon.content.skill.internal.Skill;
 import dev.xkmc.l2rpgcommon.content.skill.internal.SkillConfig;
 import dev.xkmc.l2rpgcommon.content.skill.internal.SkillData;

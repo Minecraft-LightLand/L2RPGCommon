@@ -1,27 +1,14 @@
 package dev.xkmc.l2rpgcommon.init.data;
 
-import dev.xkmc.l2library.idea.magic.HexDirection;
 import dev.xkmc.l2library.repack.registrate.providers.RegistrateLangProvider;
-import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
-import dev.xkmc.l2rpgcommon.content.arcane.internal.ArcaneType;
-import dev.xkmc.l2rpgcommon.content.common.gui.ability.AbilityScreen;
-import dev.xkmc.l2rpgcommon.content.magic.gui.craft.ArcaneInjectContainer;
-import dev.xkmc.l2rpgcommon.content.magic.gui.craft.SpellCraftContainer;
-import dev.xkmc.l2rpgcommon.content.magic.gui.hex.HexStatus;
-import dev.xkmc.l2rpgcommon.content.magic.products.info.ProductState;
 import dev.xkmc.l2rpgcommon.init.LightLand;
-import dev.xkmc.l2rpgcommon.init.registrate.LLEffects;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.TranslatableContents;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potion;
 import org.lwjgl.glfw.GLFW;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.function.BiConsumer;
@@ -131,15 +118,6 @@ public class LangData {
 	public static final Map<Class<? extends LangEnum<?>>, String> LANG_MAP = new HashMap<>();
 
 	static {
-		MAP.put(HexDirection.class, "screen.hex.direction.");
-		MAP.put(HexStatus.Compile.class, "screen.hex.compile.");
-		MAP.put(HexStatus.Save.class, "screen.hex.save.");
-		MAP.put(AbilityScreen.AbilityType.class, "screen.ability.ability.");
-		MAP.put(ArcaneType.Hit.class, "screen.ability.arcane.activate.");
-		MAP.put(ProductState.class, "screen.magic_tree.status.");
-
-		LANG_MAP.put(SpellCraftContainer.Error.class, "screen.spell_craft.error.");
-		LANG_MAP.put(ArcaneInjectContainer.Error.class, "screen.arcane_inject.error.");
 	}
 
 	public static MutableComponent get(Enum<?> obj, Object... args) {
@@ -196,13 +174,6 @@ public class LangData {
 			}
 		});
 
-		List<Item> list = List.of(Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION);
-		for (RegistryEntry<? extends Potion> ent : LLEffects.POTION_LIST) {
-			for (Item item : list) {
-				String str = ent.get().getName(item.getDescriptionId() + ".effect.");
-				pvd.accept(str, RegistrateLangProvider.toEnglishName(str));
-			}
-		}
 		for (Lore lore : Lore.values()) {
 			pvd.accept("lore." + LightLand.MODID + "." + lore.id, lore.lore);
 		}

@@ -9,15 +9,10 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import dev.xkmc.l2library.util.code.Wrappers;
-import dev.xkmc.l2rpgcommon.content.arcane.internal.Arcane;
-import dev.xkmc.l2rpgcommon.content.arcane.internal.ArcaneType;
-import dev.xkmc.l2rpgcommon.content.magic.products.MagicElement;
-import dev.xkmc.l2rpgcommon.content.magic.spell.internal.Spell;
 import dev.xkmc.l2rpgcommon.content.profession.Profession;
 import dev.xkmc.l2rpgcommon.content.skill.internal.Skill;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
 import dev.xkmc.l2rpgcommon.init.special.LightLandRegistry;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.synchronization.ArgumentTypeInfo;
@@ -26,7 +21,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -38,11 +32,7 @@ public record RegistryParser<T>(Class<T> cls, Supplier<IForgeRegistry<T>> regist
 		implements ArgumentType<T>, ArgumentTypeInfo.Template<RegistryParser<?>> {
 
 	public static final Set<RegistryParser<?>> SET = new HashSet<>();
-	public static final RegistryParser<MagicElement> ELEMENT = new RegistryParser<>(MagicElement.class, LightLandRegistry.ELEMENT);
-	public static final RegistryParser<ArcaneType> ARCANE_TYPE = new RegistryParser<>(ArcaneType.class, LightLandRegistry.ARCANE_TYPE);
-	public static final RegistryParser<Arcane> ARCANE = new RegistryParser<>(Arcane.class, LightLandRegistry.ARCANE);
 	public static final RegistryParser<Profession> PROFESSION = new RegistryParser<>(Profession.class, LightLandRegistry.PROFESSION);
-	public static final RegistryParser<Spell<?, ?>> SPELL = new RegistryParser(Spell.class, LightLandRegistry.SPELL);
 	public static final RegistryParser<Skill<?, ?>> SKILL = new RegistryParser(Skill.class, LightLandRegistry.SKILL);
 
 	private static final RegistryInfo INFO = new RegistryInfo();

@@ -1,8 +1,8 @@
 package dev.xkmc.l2rpgcommon.content.profession.prof;
 
+import dev.xkmc.l2magic.init.special.MagicRegistry;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.LLPlayerData;
 import dev.xkmc.l2rpgcommon.content.profession.Profession;
-import dev.xkmc.l2rpgcommon.init.special.MagicRegistry;
 
 public class ArcaneProfession extends Profession {
 
@@ -10,7 +10,7 @@ public class ArcaneProfession extends Profession {
 	public void init(LLPlayerData handler) {
 		handler.abilityPoints.arcane += 2;
 		handler.abilityPoints.general += 2;
-		handler.magicHolder.addElementalMastery(MagicRegistry.ELEM_QUINT.get());
+		handler.getMagicHolder().addElementalMastery(MagicRegistry.ELEM_QUINT.get());
 		handler.abilityPoints.element++;
 	}
 

@@ -1,18 +1,18 @@
 package dev.xkmc.l2rpgcommon.content.profession.prof;
 
+import dev.xkmc.l2magic.init.special.MagicRegistry;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.LLPlayerData;
 import dev.xkmc.l2rpgcommon.content.profession.Profession;
-import dev.xkmc.l2rpgcommon.init.special.MagicRegistry;
 
 public class MagicianProfession extends Profession {
 
 	@Override
 	public void init(LLPlayerData handler) {
-		handler.magicHolder.addElementalMastery(MagicRegistry.ELEM_EARTH.get());
-		handler.magicHolder.addElementalMastery(MagicRegistry.ELEM_WATER.get());
-		handler.magicHolder.addElementalMastery(MagicRegistry.ELEM_AIR.get());
-		handler.magicHolder.addElementalMastery(MagicRegistry.ELEM_FIRE.get());
-		handler.magicAbility.magic_level += 2;
+		handler.getMagicHolder().addElementalMastery(MagicRegistry.ELEM_EARTH.get());
+		handler.getMagicHolder().addElementalMastery(MagicRegistry.ELEM_WATER.get());
+		handler.getMagicHolder().addElementalMastery(MagicRegistry.ELEM_AIR.get());
+		handler.getMagicHolder().addElementalMastery(MagicRegistry.ELEM_FIRE.get());
+		handler.getMagicAbility().spell_level += 2;
 		handler.abilityPoints.magic++;
 		handler.abilityPoints.general++;
 	}
