@@ -7,6 +7,8 @@ import dev.xkmc.l2rpgcommon.init.data.LangData;
 import dev.xkmc.l2rpgcommon.init.special.LightLandRegistry;
 import net.minecraft.resources.ResourceLocation;
 
+import javax.annotation.Nullable;
+
 public abstract class Profession extends NamedEntry<Profession> {
 
 	public Profession() {
@@ -29,10 +31,11 @@ public abstract class Profession extends NamedEntry<Profession> {
 	 * return null if pass
 	 * return failure reason if failed
 	 */
+	@Nullable
 	public LangData.IDS allowLevel(AbilityPoints.LevelType type, LLPlayerData handler) {
 		int level = handler.abilityPoints.level;
 		if (type == AbilityPoints.LevelType.SPELL) {
-			int lv = handler.magicAbility.spell_level;
+			int lv = handler.getMagicAbility().spell_level;
 			if (lv == 9)
 				return LangData.IDS.LVUP_MAX_REACHED;
 			if (level < 10) {
@@ -44,7 +47,7 @@ public abstract class Profession extends NamedEntry<Profession> {
 					return LangData.IDS.LVUP_PROF_MAX;
 			}
 		} else if (type == AbilityPoints.LevelType.MANA) {
-			int lv = handler.magicAbility.magic_level;
+			int lv = handler.getMagicAbility().magic_level;
 			if (lv >= 10)
 				return LangData.IDS.LVUP_MAX_REACHED;
 			if (level < 10) {

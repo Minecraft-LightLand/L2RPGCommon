@@ -43,7 +43,7 @@ public class LLOverlay implements IGuiOverlay {
 		Player player = renderer.localPlayer;
 		int sel = player.getInventory().selected;
 		if (LLPlayerData.isProper(player)) {
-			x = CapProxy.getHandler().magicAbility.spell_level;
+			x = CapProxy.getHandler().getMagicAbility().spell_level;
 		}
 		// render hotbar
 		if (x > 0) {
@@ -170,10 +170,10 @@ public class LLOverlay implements IGuiOverlay {
 	private void renderMagicBars(OverlayManager.ScreenRenderer renderer) {
 		if (renderer.localPlayer == null || !LLPlayerData.isProper(renderer.localPlayer)) return;
 		LLPlayerData data = CapProxy.getHandler();
-		int mana = data.magicAbility.getMana();
-		int mana_max = data.magicAbility.getMaxMana();
-		int load = data.magicAbility.getSpellLoad();
-		int load_max = data.magicAbility.getMaxSpellEndurance();
+		int mana = data.getMagicAbility().getMana();
+		int mana_max = data.getMagicAbility().getMaxMana();
+		int load = data.getMagicAbility().getSpellLoad();
+		int load_max = data.getMagicAbility().getMaxSpellEndurance();
 		renderer.draw("mp_strip_empty");
 		renderer.drawLeftRight("mp_strip", mana, mana_max);
 		renderer.draw("mp");

@@ -2,13 +2,12 @@ package dev.xkmc.l2rpgcommon.content.common.gui;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
+import dev.xkmc.l2magic.content.magic.gui.AbstractHexGui;
+import dev.xkmc.l2magic.content.magic.products.MagicElement;
+import dev.xkmc.l2magic.init.special.MagicRegistry;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.CapProxy;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.LLPlayerData;
-import dev.xkmc.l2rpgcommon.content.magic.gui.AbstractHexGui;
-import dev.xkmc.l2rpgcommon.content.magic.products.MagicElement;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
-import dev.xkmc.l2rpgcommon.init.special.LightLandRegistry;
-import dev.xkmc.l2rpgcommon.init.special.MagicRegistry;
 import dev.xkmc.l2rpgcommon.network.packets.CapToServer;
 import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
@@ -25,7 +24,7 @@ public class ElementalScreen extends AbstractAbilityScreen {
 	public static boolean canAccess() {
 		LLPlayerData handler = CapProxy.getHandler();
 		return handler.abilityPoints.canLevelElement() ||
-				LightLandRegistry.ELEMENT.get().getValues().stream()
+				MagicRegistry.ELEMENT.get().getValues().stream()
 						.anyMatch(e -> handler.getMagicHolder().getElementalMastery(e) > 0);
 	}
 
@@ -54,7 +53,7 @@ public class ElementalScreen extends AbstractAbilityScreen {
 			return false;
 		for (ElemType e : ElemType.values()) {
 			if (e.within(mx - w / 2f, my - h / 2f)) {
-				if (handler.magicHolder.addElementalMastery(e.elem.get())) {
+				if (handler.getMagicHolder().addElementalMastery(e.elem.get())) {
 					CapToServer.addElemMastery(e.elem.get());
 					handler.abilityPoints.levelElement();
 				}
@@ -68,8 +67,8 @@ public class ElementalScreen extends AbstractAbilityScreen {
 		LLPlayerData handler = CapProxy.getHandler();
 		for (ElemType e : ElemType.values()) {
 			if (e.within(mx - w / 2f, my - h / 2f)) {
-				int lv = handler.magicHolder.getElementalMastery(e.elem.get());
-				int count = handler.magicHolder.getElement(e.elem.get());
+				int lv = handler.getMagicHolder().getElementalMastery(e.elem.get());
+				int count = handler.getMagicHolder().getElement(e.elem.get());
 				int rem = handler.abilityPoints.element;
 				List<FormattedText> list = new ArrayList<>();
 				list.add(e.elem.get().getDesc());
@@ -98,8 +97,8 @@ public class ElementalScreen extends AbstractAbilityScreen {
 		}
 
 		public void renderElem(LLPlayerData handler, PoseStack matrix, int mx, int my) {
-			int lv = handler.magicHolder.getElementalMastery(elem.get());
-			int count = handler.magicHolder.getElement(elem.get());
+			int lv = handler.getMagicHolder().getElementalMastery(elem.get());
+			int count = handler.getMagicHolder().getElement(elem.get());
 			AbstractHexGui.drawElement(matrix, x, y, elem.get(), "" + lv);
 			if (within(mx, my) && handler.abilityPoints.canLevelElement())
 				fill(matrix, x - 8, y - 8, x + 8, y + 8, 0x80FFFFFF);

@@ -47,9 +47,9 @@ public class BodyAttribute {
 		MOVE_SPEED("l2rpgcommon.move_speed", () -> Attributes.MOVEMENT_SPEED,
 				AttributeModifier.Operation.MULTIPLY_TOTAL, a -> exp(1.1, a.speed)),
 		MANA("l2rpgcommon.mana", LightLandRegistry.MAX_MANA, AttributeModifier.Operation.ADDITION,
-				a -> sq(a.parent.magicAbility.magic_level) * 100d),
+				a -> sq(a.parent.getMagicAbility().magic_level) * 100d),
 		SPELL_LOAD("l2rpgcommon.spell_load", LightLandRegistry.MAX_SPELL_LOAD, AttributeModifier.Operation.ADDITION,
-				a -> sq(a.parent.magicAbility.spell_load) * 100d);
+				a -> sq(a.parent.getMagicAbility().spell_load) * 100d);
 
 		public final String name;
 		public final UUID id;

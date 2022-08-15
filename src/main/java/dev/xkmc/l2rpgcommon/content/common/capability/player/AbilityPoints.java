@@ -151,12 +151,12 @@ public class AbilityPoints {
 		}, h -> h.abilityPoints.speed),
 		MANA((h) -> h.abilityPoints.canLevelMagic(), (h) -> {
 			if (h.abilityPoints.levelMagic())
-				h.magicAbility.magic_level++;
-		}, h -> h.magicAbility.magic_level),
+				h.getMagicAbility().magic_level++;
+		}, h -> h.getMagicAbility().magic_level),
 		SPELL((h) -> h.abilityPoints.canLevelMagic(), (h) -> {
 			if (h.abilityPoints.levelMagic())
-				h.magicAbility.spell_level++;
-		}, h -> h.magicAbility.spell_level);
+				h.getMagicAbility().spell_level++;
+		}, h -> h.getMagicAbility().spell_level);
 
 		private final Predicate<LLPlayerData> check;
 		private final Consumer<LLPlayerData> run;
@@ -168,6 +168,7 @@ public class AbilityPoints {
 			this.level = level;
 		}
 
+		@Nullable
 		public LangData.IDS checkLevelUp(LLPlayerData handler) {
 			if (!check.test(handler)) {
 				return LangData.IDS.LVUP_NO_POINT;

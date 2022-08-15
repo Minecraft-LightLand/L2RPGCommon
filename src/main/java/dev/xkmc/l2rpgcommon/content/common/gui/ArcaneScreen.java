@@ -5,10 +5,10 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import dev.xkmc.l2library.repack.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2magic.content.arcane.internal.ArcaneType;
 import dev.xkmc.l2magic.content.magic.gui.AbstractHexGui;
+import dev.xkmc.l2magic.init.special.MagicRegistry;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.CapProxy;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.LLPlayerData;
 import dev.xkmc.l2rpgcommon.init.data.LangData;
-import dev.xkmc.l2rpgcommon.init.special.LightLandRegistry;
 import dev.xkmc.l2rpgcommon.network.packets.CapToServer;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.client.Minecraft;
@@ -27,8 +27,8 @@ public class ArcaneScreen extends AbstractAbilityScreen {
 	public static boolean canAccess() {
 		LLPlayerData handler = CapProxy.getHandler();
 		return handler.abilityPoints.canLevelArcane() ||
-				LightLandRegistry.ARCANE_TYPE.get().getValues().stream()
-						.anyMatch(handler.magicAbility::isArcaneTypeUnlocked);
+				MagicRegistry.ARCANE_TYPE.get().getValues().stream()
+						.anyMatch(handler.getMagicAbility()::isArcaneTypeUnlocked);
 	}
 
 	protected ArcaneScreen() {
@@ -57,7 +57,7 @@ public class ArcaneScreen extends AbstractAbilityScreen {
 		for (ArcaneEntry e : ArcaneEntry.values()) {
 			if (e.within(mx - w / 2f, my - h / 2f)) {
 				if (handler.abilityPoints.canLevelArcane()) {
-					handler.magicAbility.unlockArcaneType(e.type.get(), false);
+					handler.getMagicAbility().unlockArcaneType(e.type.get(), false);
 					CapToServer.unlockArcaneType(e.type.get());
 					return true;
 				}
@@ -74,7 +74,7 @@ public class ArcaneScreen extends AbstractAbilityScreen {
 				int cost = handler.abilityPoints.arcane + handler.abilityPoints.magic + handler.abilityPoints.general;
 				List<FormattedText> list = new ArrayList<>();
 				list.add(e.type.get().getDesc());
-				if (!handler.magicAbility.isArcaneTypeUnlocked(e.type.get())) {
+				if (!handler.getMagicAbility().isArcaneTypeUnlocked(e.type.get())) {
 					list.add(LangData.IDS.GUI_ARCANE_COST.get(1, cost));
 				}
 				list.add(LangData.get(e.type.get().hit));
@@ -104,7 +104,7 @@ public class ArcaneScreen extends AbstractAbilityScreen {
 
 
 		public void render(LLPlayerData handler, PoseStack matrix, int mx, int my) {
-			boolean unlocked = handler.magicAbility.isArcaneTypeUnlocked(type.get());
+			boolean unlocked = handler.getMagicAbility().isArcaneTypeUnlocked(type.get());
 			boolean hover = within(mx, my) && !unlocked;
 			AbstractHexGui.drawFrame(matrix, unlocked ? FrameType.CHALLENGE : FrameType.TASK, hover, x, y);
 			ItemStack stack = type.get().getStack();

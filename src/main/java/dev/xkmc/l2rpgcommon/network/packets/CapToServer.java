@@ -3,6 +3,7 @@ package dev.xkmc.l2rpgcommon.network.packets;
 import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2magic.content.arcane.internal.ArcaneType;
 import dev.xkmc.l2magic.content.magic.products.MagicElement;
+import dev.xkmc.l2magic.init.special.MagicRegistry;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.AbilityPoints;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.LLPlayerData;
 import dev.xkmc.l2rpgcommon.content.profession.Profession;
@@ -36,14 +37,14 @@ public class CapToServer extends LLSerialPacket {
 			handler.abilityPoints.setProfession(prof);
 		}),
 		ELEMENTAL((handler, tag) -> {
-			MagicElement elem = LightLandRegistry.ELEMENT.get().getValue(new ResourceLocation(tag.getString("id")));
+			MagicElement elem = MagicRegistry.ELEMENT.get().getValue(new ResourceLocation(tag.getString("id")));
 			if (elem == null)
 				return;
 			if (handler.abilityPoints.canLevelElement() && handler.getMagicHolder().addElementalMastery(elem))
 				handler.abilityPoints.levelElement();
 		}),
 		ARCANE((handler, tag) -> {
-			ArcaneType type = LightLandRegistry.ARCANE_TYPE.get().getValue(new ResourceLocation(tag.getString("id")));
+			ArcaneType type = MagicRegistry.ARCANE_TYPE.get().getValue(new ResourceLocation(tag.getString("id")));
 			if (type == null)
 				return;
 			if (handler.abilityPoints.canLevelArcane() && !handler.getMagicAbility().isArcaneTypeUnlocked(type)) {

@@ -5,6 +5,7 @@ import dev.xkmc.l2library.capability.player.PlayerCapabilityNetworkHandler;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityTemplate;
 import dev.xkmc.l2library.serial.SerialClass;
 import dev.xkmc.l2magic.content.common.capability.MagicAbility;
+import dev.xkmc.l2magic.content.common.capability.MagicData;
 import dev.xkmc.l2magic.content.common.capability.MagicHolder;
 import dev.xkmc.l2rpgcommon.init.LightLand;
 import dev.xkmc.l2rpgcommon.network.packets.CapToClient;
@@ -108,15 +109,12 @@ public class LLPlayerData extends PlayerCapabilityTemplate<LLPlayerData> {
 	}
 
 	public MagicAbility getMagicAbility() {
-		//FIXME
-		return null;
+		return MagicData.get(player).magicAbility;
 	}
 
 	public MagicHolder getMagicHolder() {
-		//FIXME
-		return null;
+		return MagicData.get(player).magicHolder;
 	}
-
 
 	public enum State {
 		PREINJECT, PREINIT, ACTIVE
