@@ -1,6 +1,9 @@
 package dev.xkmc.l2rpgcommon.init.data;
 
+import dev.xkmc.l2library.idea.magic.HexDirection;
 import dev.xkmc.l2library.repack.registrate.providers.RegistrateLangProvider;
+import dev.xkmc.l2magic.content.arcane.internal.ArcaneType;
+import dev.xkmc.l2rpgcommon.content.common.gui.AbilityScreen;
 import dev.xkmc.l2rpgcommon.init.LightLand;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.network.chat.MutableComponent;
@@ -20,23 +23,9 @@ public class LangData {
 		PROF_EXIST("chat.profession_already_exist", 0),
 		LOCKED("chat.locked", 0),
 		UNLOCKED("chat.unlocked", 0),
-		GET_ARCANE_MANA("chat.show_arcane_mana", 2),
-		SPELL_SLOT("chat.spell_slot", 1),
 		ACTION_SUCCESS("chat.action_success", 0),
 		PLAYER_NOT_FOUND("chat.player_not_found", 0),
 		WRONG_ITEM("chat.wrong_item", 0),
-		TARGET_ALLY("tooltip.target.ally", 0),
-		TARGET_ENEMY("tooltip.target.enemy", 0),
-		TARGET_ALL("tooltip.target.all", 0),
-		POTION_RADIUS("tooltip.potion.radius", 1),
-		CONT_RITUAL("container.ritual", 0),
-		MANA_COST("tooltip.mana_cost", 1),
-		ENCH_LV("tooltip.enchantment_result.level", 1),
-		ENCH_NEXT("tooltip.enchantment_result.next", 1),
-		ENCH_ELEM("tooltip.enchantment_result.elements", 0),
-		RITUAL_WRONG("chat.ritual.fail.wrong", 0),
-		RITUAL_ZERO("chat.ritual.fail.zero", 0),
-		RITUAL_ELEM("chat.ritual.fail.element", 0),
 		ARMOR_WEIGHT("tooltip.weight", 1),
 		ARMOR_ENCHANT("tooltip.enchant", 1),
 
@@ -45,12 +34,6 @@ public class LangData {
 		LVUP_MAX_REACHED("screen.ability.ability.error.max_reached", 0),
 		LVUP_PROF_MAX("screen.ability.ability.error.prof_max", 0),
 
-		HEX_COST("screen.hex.cost", 1),
-		GUI_TREE_ELEM_PRE("screen.magic_tree.elem.require", 0),
-		GUI_TREE_ELEM_POST("screen.magic_tree.elem.lv", 1),
-		GUI_TREE_COST("screen.magic_tree.cost", 1),
-		GUI_TREE_SHORT("screen.magic_tree.short", 0),
-		GUI_TREE_REPEAT("screen.magic_tree.repeat", 0),
 		GUI_ABILITY("screen.ability.ability.title", 0),
 		GUI_ABILITY_LV("screen.ability.ability.desc.lv", 1),
 		GUI_ABILITY_COST("screen.ability.ability.desc.cost", 2),
@@ -61,9 +44,7 @@ public class LangData {
 		GUI_ELEMENT_COUNT("screen.ability.elemental.desc.count", 1),
 		GUI_ELEMENT_COST("screen.ability.elemental.desc.cost", 2),
 		GUI_PROF("screen.ability.profession.title", 0),
-		GUI_PROF_EXIST("screen.ability.profession.desc.prof_already_exist", 0),
-
-		GUI_SPELL_CRAFT_ELEM_COST("screen.spell_craft.elem_cost", 2);
+		GUI_PROF_EXIST("screen.ability.profession.desc.prof_already_exist", 0);
 
 		final String id;
 		final int count;
@@ -82,9 +63,9 @@ public class LangData {
 	}
 
 	public enum Keys {
-		SKILL_1("key.lightland.skill_1", GLFW.GLFW_KEY_Z),
-		SKILL_2("key.lightland.skill_2", GLFW.GLFW_KEY_X),
-		SKILL_3("key.lightland.skill_3", GLFW.GLFW_KEY_C);
+		SKILL_1("key.l2rpgcommon.skill_1", GLFW.GLFW_KEY_Z),
+		SKILL_2("key.l2rpgcommon.skill_2", GLFW.GLFW_KEY_X),
+		SKILL_3("key.l2rpgcommon.skill_3", GLFW.GLFW_KEY_C);
 
 		public final String id;
 		public final int key;
@@ -93,7 +74,7 @@ public class LangData {
 		Keys(String id, int key) {
 			this.id = id;
 			this.key = key;
-			map = new KeyMapping(id, key, "key.categories.lightland");
+			map = new KeyMapping(id, key, "key.categories.l2rpgcommon");
 		}
 
 	}
@@ -118,6 +99,8 @@ public class LangData {
 	public static final Map<Class<? extends LangEnum<?>>, String> LANG_MAP = new HashMap<>();
 
 	static {
+		MAP.put(AbilityScreen.AbilityType.class, "screen.ability.ability.");
+		MAP.put(ArcaneType.Hit.class, "screen.ability.arcane.activate.");
 	}
 
 	public static MutableComponent get(Enum<?> obj, Object... args) {
