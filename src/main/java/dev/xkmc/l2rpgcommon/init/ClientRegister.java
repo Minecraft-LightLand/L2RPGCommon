@@ -1,5 +1,6 @@
 package dev.xkmc.l2rpgcommon.init;
 
+import dev.xkmc.l2magic.init.L2Magic;
 import dev.xkmc.l2rpgcommon.compat.GeneralCompatHandler;
 import dev.xkmc.l2rpgcommon.content.common.render.ItemNameOverlay;
 import dev.xkmc.l2rpgcommon.content.common.render.LLOverlay;
@@ -32,7 +33,7 @@ public class ClientRegister {
 
 	@OnlyIn(Dist.CLIENT)
 	public static void registerOverlays(RegisterGuiOverlaysEvent event) {
-		REMOVED.add(VanillaGuiOverlay.HOTBAR.id());
+		REMOVED.add(new ResourceLocation(L2Magic.MODID, "spell_bar"));
 		REMOVED.add(VanillaGuiOverlay.EXPERIENCE_BAR.id());
 		REMOVED.add(VanillaGuiOverlay.JUMP_BAR.id());
 		REMOVED.add(VanillaGuiOverlay.ITEM_NAME.id());

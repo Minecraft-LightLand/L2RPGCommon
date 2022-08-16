@@ -60,6 +60,8 @@ public class LLPlayerData extends PlayerCapabilityTemplate<LLPlayerData> {
 
 	public void tick() {
 		skillCap.tick();
+		if (player.tickCount % 20 == 0)
+			abilityPoints.tickSeconds();
 	}
 
 	public void reset(Reset reset) {

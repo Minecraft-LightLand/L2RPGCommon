@@ -2,7 +2,9 @@ package dev.xkmc.l2rpgcommon.init;
 
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.l2library.repack.registrate.providers.ProviderType;
+import dev.xkmc.l2magic.compat.api.MagicBehaviorHandler;
 import dev.xkmc.l2rpgcommon.compat.GeneralCompatHandler;
+import dev.xkmc.l2rpgcommon.compat.L2MagicHandler;
 import dev.xkmc.l2rpgcommon.content.common.capability.player.LLPlayerData;
 import dev.xkmc.l2rpgcommon.content.common.command.BaseCommand;
 import dev.xkmc.l2rpgcommon.content.common.command.MainCommand;
@@ -77,6 +79,7 @@ public class LightLand {
 	public LightLand() {
 		FMLJavaModLoadingContext ctx = FMLJavaModLoadingContext.get();
 		IEventBus bus = ctx.getModEventBus();
+		MagicBehaviorHandler.INSTANCE = new L2MagicHandler();
 		registerModBusEvents(bus);
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> LLClient.onCtorClient(bus, MinecraftForge.EVENT_BUS));
 		registerRegistrates(bus);
